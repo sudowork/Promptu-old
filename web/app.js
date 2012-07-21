@@ -8,8 +8,8 @@ var fs = require('fs')
   , http = require('http')
   , exec = require('./exec')
   , routes = require('./routes')  // Loads from index.js route already
-  , fs = require('fs')
-  , config = require('./config');
+  , config = require('./config')
+  ;
 
 /**
  * Globals
@@ -56,10 +56,10 @@ mongoose.connect(config.mongoUri);
 
 // Load all routes in ./routes/
 var routes = _.chain(fs.readdirSync('routes/'))
-  .filter(function  ( file) {
+  .filter(function (file) {
     return (/^[\w\-\.]+\.js$/).test(file);
   })
-  .reduce(function  ( memo, file) {
+  .reduce(function (memo, file) {
     console.log('Loading route ' + file);
     var newRoute = require('./routes/' + file.slice(0, -3));
     return _.extend(memo, newRoute);
