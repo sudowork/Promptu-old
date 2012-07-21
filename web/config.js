@@ -4,6 +4,12 @@ config.development = {
   vendorcss: [
     'css/bootstrap/bootstrap-responsive.css',
     'css/bootstrap/bootstrap.css'
+  ],
+  vendorjs: [
+    'js/vendor/underscore.js',
+    'js/vendor/jquery-1.7.2.js',
+    'js/vendor/backbone.js',
+    'js/vendor/bootstrap/bootstrap.js'
   ]
 };
 
@@ -11,6 +17,12 @@ config.production = {
   vendorcss: [
     'css/bootstrap/bootstrap-responsive.min.css',
     'css/bootstrap/bootstrap.min.css'
+  ],
+  vendorjs: [
+    'js/vendor/underscore.min.js',
+    'js/vendor/jquery-1.7.2.min.js',
+    'js/vendor/backbone.min.js',
+    'js/vendor/bootstrap/bootstrap.min.js'
   ]
 };
 
