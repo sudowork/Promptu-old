@@ -8,6 +8,8 @@ var fs = require('fs')
   , http = require('http')
   , exec = require('./exec')
   , routes = require('./routes')  // Loads from index.js route already
+  , fs = require('fs')
+  , config = require('./config');
 
 /**
  * Globals
@@ -29,8 +31,24 @@ app.configure(function () {
 });
 
 app.configure('development', function () {
+  app.set('config', _.defaults(config.development, config.default));
   app.use(express.errorHandler());
 });
+
+app.configure('production', function(){
+  app.set('config', _.defaults(config.production, config.default));
+  app.use(express.errorHandler());
+});
+
+// Alias app.settings.config to config
+config = app.settings.config;
+
+/**
+ * Mongoose/MongoDB Setup
+ */
+mongoose = require('mongoose');
+mongoose.connect(config.mongoUri);
+// TODO: Add models as a global
 
 /**
  * Routes
@@ -60,6 +78,10 @@ app.get('/group/tree/:id', routes.getGroupTree);
 app.post('/group/create', routes.createGroup);
 app.del('/group/delete/:id', routes.deleteGroup);
 
-http.createServer(app).listen(app.get('port'), function () {
+/**
+ * Initialize Server
+ */
+
+http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
