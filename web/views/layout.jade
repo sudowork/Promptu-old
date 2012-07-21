@@ -22,7 +22,7 @@ html(class='no-js', lang='en')
     each css in vendorcss
       link(rel='stylesheet', href=css)
 
-    script(src='javascripts/vendor/modernizr-2.5.3.min.js')
+    script(src='js/vendor/modernizr-2.5.3.min.js')
 
   body.container-fluid
     block content
@@ -36,10 +36,10 @@ html(class='no-js', lang='en')
 
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
     script
-      window.jQuery || document.write("<script src=\"javascripts/vendor/jquery-1.7.2.min.js\"><\/script>")
+      window.jQuery || document.write("<script src=\"js/vendor/jquery-1.7.2.min.js\"><\/script>")
 
-    script(src='javascripts/plugins.js')
-    script(src='javascripts/script.js')
+    script(src='js/plugins.js')
+    script(src='js/script.js')
 
     script
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
