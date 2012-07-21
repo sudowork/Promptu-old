@@ -113,7 +113,7 @@
 {
     if (!_trackTintColor)
     {
-	_trackTintColor = TEXT_COLOR_LIGHT;
+	_trackTintColor = COLOR_TEXT_LIGHT;
     }
     return _trackTintColor;
 }
@@ -122,7 +122,7 @@
 {
     if (!_progressTintColor)
     {
-	_progressTintColor = TEXT_COLOR;
+	_progressTintColor = COLOR_TEXT;
     }
     return _progressTintColor;
 }

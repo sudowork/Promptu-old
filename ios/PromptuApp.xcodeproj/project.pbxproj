@@ -21,8 +21,17 @@
 		E5B1EEEC15BB61830089CC77 /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEEB15BB61830089CC77 /* Prompt.m */; };
 		E5B1EEEF15BB62810089CC77 /* PromptCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEEE15BB62810089CC77 /* PromptCenter.m */; };
 		E5B1EEF215BB62B10089CC77 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF115BB62B10089CC77 /* Singleton.m */; };
-		E5B1EEF915BB66160089CC77 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */; };
+		E5B1EEF915BB66160089CC77 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		E5B1EEFA15BB66160089CC77 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */; };
+		E5B1EF0E15BB6D350089CC77 /* MGBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0115BB6D350089CC77 /* MGBox.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E5B1EF0F15BB6D350089CC77 /* MGBoxLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0315BB6D350089CC77 /* MGBoxLine.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E5B1EF1015BB6D350089CC77 /* MGButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0615BB6D350089CC77 /* MGButton.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E5B1EF1115BB6D350089CC77 /* MGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0815BB6D350089CC77 /* MGScrollView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E5B1EF1215BB6D350089CC77 /* MGStyledBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0A15BB6D350089CC77 /* MGStyledBox.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E5B1EF1315BB6D350089CC77 /* PrettyToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF0D15BB6D350089CC77 /* PrettyToolbar.m */; };
+		E5B1EF1615BB6D540089CC77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B1EF1515BB6D540089CC77 /* QuartzCore.framework */; };
+		E5B1EF1A15BB6EED0089CC77 /* RefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */; };
+		E5B1EF1E15BB70700089CC77 /* UIColor+CreateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +65,24 @@
 		E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		E5B1EEF715BB66160089CC77 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		E5B1EF0015BB6D350089CC77 /* MGBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBox.h; sourceTree = "<group>"; };
+		E5B1EF0115BB6D350089CC77 /* MGBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBox.m; sourceTree = "<group>"; };
+		E5B1EF0215BB6D350089CC77 /* MGBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBoxLine.h; sourceTree = "<group>"; };
+		E5B1EF0315BB6D350089CC77 /* MGBoxLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBoxLine.m; sourceTree = "<group>"; };
+		E5B1EF0415BB6D350089CC77 /* MGBoxProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBoxProtocol.h; sourceTree = "<group>"; };
+		E5B1EF0515BB6D350089CC77 /* MGButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGButton.h; sourceTree = "<group>"; };
+		E5B1EF0615BB6D350089CC77 /* MGButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGButton.m; sourceTree = "<group>"; };
+		E5B1EF0715BB6D350089CC77 /* MGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGScrollView.h; sourceTree = "<group>"; };
+		E5B1EF0815BB6D350089CC77 /* MGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGScrollView.m; sourceTree = "<group>"; };
+		E5B1EF0915BB6D350089CC77 /* MGStyledBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGStyledBox.h; sourceTree = "<group>"; };
+		E5B1EF0A15BB6D350089CC77 /* MGStyledBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGStyledBox.m; sourceTree = "<group>"; };
+		E5B1EF0C15BB6D350089CC77 /* PrettyToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyToolbar.h; sourceTree = "<group>"; };
+		E5B1EF0D15BB6D350089CC77 /* PrettyToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyToolbar.m; sourceTree = "<group>"; };
+		E5B1EF1515BB6D540089CC77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E5B1EF1815BB6EED0089CC77 /* RefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewController.h; sourceTree = "<group>"; };
+		E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshViewController.m; sourceTree = "<group>"; };
+		E5B1EF1C15BB70700089CC77 /* UIColor+CreateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CreateMethods.h"; sourceTree = "<group>"; };
+		E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CreateMethods.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B1EF1615BB6D540089CC77 /* QuartzCore.framework in Frameworks */,
 				E5B1EEAA15BB526D0089CC77 /* UIKit.framework in Frameworks */,
 				E5B1EEAC15BB526D0089CC77 /* Foundation.framework in Frameworks */,
 				E5B1EEAE15BB526D0089CC77 /* CoreGraphics.framework in Frameworks */,
@@ -80,6 +108,7 @@
 				E5B1EEA815BB526D0089CC77 /* Frameworks */,
 				E5B1EEA615BB526D0089CC77 /* Products */,
 				E5B1EED915BB5D860089CC77 /* Libraries */,
+				E5B1EF1715BB6E930089CC77 /* Resources */,
 				775E628BF93D4FDEA52A036E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +124,7 @@
 		E5B1EEA815BB526D0089CC77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EF1515BB6D540089CC77 /* QuartzCore.framework */,
 				E5B1EEA915BB526D0089CC77 /* UIKit.framework */,
 				E5B1EEAB15BB526D0089CC77 /* Foundation.framework */,
 				E5B1EEAD15BB526D0089CC77 /* CoreGraphics.framework */,
@@ -136,6 +166,8 @@
 		E5B1EED915BB5D860089CC77 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEFF15BB6D350089CC77 /* MGBox */,
+				E5B1EF0B15BB6D350089CC77 /* PrettyKit */,
 				E5B1EEF315BB66150089CC77 /* DACircularProgress */,
 				E5B1EEF615BB66150089CC77 /* IOSBoilerplate */,
 				E5B1EEDA15BB5D860089CC77 /* ZUUIRevealController */,
@@ -165,7 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				E5B1EEE715BB5FD60089CC77 /* RevealController.h */,
+				E5B1EF1815BB6EED0089CC77 /* RefreshViewController.h */,
 				E5B1EEE815BB5FD60089CC77 /* RevealController.m */,
+				E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +218,8 @@
 			children = (
 				E5B1EEF015BB62B10089CC77 /* Singleton.h */,
 				E5B1EEF115BB62B10089CC77 /* Singleton.m */,
+				E5B1EF1C15BB70700089CC77 /* UIColor+CreateMethods.h */,
+				E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -211,6 +247,40 @@
 				E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */,
 			);
 			path = IOSBoilerplate;
+			sourceTree = "<group>";
+		};
+		E5B1EEFF15BB6D350089CC77 /* MGBox */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EF0015BB6D350089CC77 /* MGBox.h */,
+				E5B1EF0115BB6D350089CC77 /* MGBox.m */,
+				E5B1EF0215BB6D350089CC77 /* MGBoxLine.h */,
+				E5B1EF0315BB6D350089CC77 /* MGBoxLine.m */,
+				E5B1EF0415BB6D350089CC77 /* MGBoxProtocol.h */,
+				E5B1EF0515BB6D350089CC77 /* MGButton.h */,
+				E5B1EF0615BB6D350089CC77 /* MGButton.m */,
+				E5B1EF0715BB6D350089CC77 /* MGScrollView.h */,
+				E5B1EF0815BB6D350089CC77 /* MGScrollView.m */,
+				E5B1EF0915BB6D350089CC77 /* MGStyledBox.h */,
+				E5B1EF0A15BB6D350089CC77 /* MGStyledBox.m */,
+			);
+			path = MGBox;
+			sourceTree = "<group>";
+		};
+		E5B1EF0B15BB6D350089CC77 /* PrettyKit */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EF0C15BB6D350089CC77 /* PrettyToolbar.h */,
+				E5B1EF0D15BB6D350089CC77 /* PrettyToolbar.m */,
+			);
+			path = PrettyKit;
+			sourceTree = "<group>";
+		};
+		E5B1EF1715BB6E930089CC77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +373,14 @@
 				E5B1EEF215BB62B10089CC77 /* Singleton.m in Sources */,
 				E5B1EEF915BB66160089CC77 /* DACircularProgressView.m in Sources */,
 				E5B1EEFA15BB66160089CC77 /* EGORefreshTableHeaderView.m in Sources */,
+				E5B1EF0E15BB6D350089CC77 /* MGBox.m in Sources */,
+				E5B1EF0F15BB6D350089CC77 /* MGBoxLine.m in Sources */,
+				E5B1EF1015BB6D350089CC77 /* MGButton.m in Sources */,
+				E5B1EF1115BB6D350089CC77 /* MGScrollView.m in Sources */,
+				E5B1EF1215BB6D350089CC77 /* MGStyledBox.m in Sources */,
+				E5B1EF1315BB6D350089CC77 /* PrettyToolbar.m in Sources */,
+				E5B1EF1A15BB6EED0089CC77 /* RefreshViewController.m in Sources */,
+				E5B1EF1E15BB70700089CC77 /* UIColor+CreateMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
