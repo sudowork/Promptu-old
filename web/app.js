@@ -17,6 +17,8 @@ var fs = require('fs')
 _ = require('underscore');
 app = express();
 E = require('./lib/exception');
+exists = function(obj) { return (typeof obj !== 'undefined'); };
+existsOrElse = function(obj, def) { return (exists(obj)) ? obj : def; };
 
 /**
  * Compile Less files
