@@ -25,11 +25,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+
+    // Push Notification Setup
+
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+
+    // Look and Feel
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+
+    // Setup initial View controllers
+
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+    NSString *str = [NSString stringWithFormat:@"%@",deviceToken];
+    NSString *newString = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    newString = [newString stringByReplacingOccurrencesOfString:@">" withString:@""];
+
+    NSLog(@"Your deviceToken ---> %@",newString);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Error: Push Notifs");
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
