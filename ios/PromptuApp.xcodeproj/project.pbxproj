@@ -19,6 +19,10 @@
 		E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEDC15BB5D860089CC77 /* ZUUIRevealController.m */; };
 		E5B1EEE915BB5FD60089CC77 /* RevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEE815BB5FD60089CC77 /* RevealController.m */; };
 		E5B1EEEC15BB61830089CC77 /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEEB15BB61830089CC77 /* Prompt.m */; };
+		E5B1EEEF15BB62810089CC77 /* PromptCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEEE15BB62810089CC77 /* PromptCenter.m */; };
+		E5B1EEF215BB62B10089CC77 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF115BB62B10089CC77 /* Singleton.m */; };
+		E5B1EEF915BB66160089CC77 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */; };
+		E5B1EEFA15BB66160089CC77 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,14 @@
 		E5B1EEE815BB5FD60089CC77 /* RevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevealController.m; sourceTree = "<group>"; };
 		E5B1EEEA15BB61830089CC77 /* Prompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prompt.h; sourceTree = "<group>"; };
 		E5B1EEEB15BB61830089CC77 /* Prompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prompt.m; sourceTree = "<group>"; };
+		E5B1EEED15BB62810089CC77 /* PromptCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptCenter.h; sourceTree = "<group>"; };
+		E5B1EEEE15BB62810089CC77 /* PromptCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptCenter.m; sourceTree = "<group>"; };
+		E5B1EEF015BB62B10089CC77 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		E5B1EEF115BB62B10089CC77 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		E5B1EEF415BB66150089CC77 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		E5B1EEF715BB66160089CC77 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +136,8 @@
 		E5B1EED915BB5D860089CC77 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEF315BB66150089CC77 /* DACircularProgress */,
+				E5B1EEF615BB66150089CC77 /* IOSBoilerplate */,
 				E5B1EEDA15BB5D860089CC77 /* ZUUIRevealController */,
 			);
 			path = Libraries;
@@ -159,6 +173,8 @@
 		E5B1EEE415BB5EB90089CC77 /* Centers */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEED15BB62810089CC77 /* PromptCenter.h */,
+				E5B1EEEE15BB62810089CC77 /* PromptCenter.m */,
 			);
 			name = Centers;
 			sourceTree = "<group>";
@@ -166,6 +182,8 @@
 		E5B1EEE515BB5ECA0089CC77 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEF015BB62B10089CC77 /* Singleton.h */,
+				E5B1EEF115BB62B10089CC77 /* Singleton.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -175,6 +193,24 @@
 			children = (
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		E5B1EEF315BB66150089CC77 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EEF415BB66150089CC77 /* DACircularProgressView.h */,
+				E5B1EEF515BB66150089CC77 /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
+		E5B1EEF615BB66150089CC77 /* IOSBoilerplate */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EEF715BB66160089CC77 /* EGORefreshTableHeaderView.h */,
+				E5B1EEF815BB66160089CC77 /* EGORefreshTableHeaderView.m */,
+			);
+			path = IOSBoilerplate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +299,10 @@
 				E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */,
 				E5B1EEE915BB5FD60089CC77 /* RevealController.m in Sources */,
 				E5B1EEEC15BB61830089CC77 /* Prompt.m in Sources */,
+				E5B1EEEF15BB62810089CC77 /* PromptCenter.m in Sources */,
+				E5B1EEF215BB62B10089CC77 /* Singleton.m in Sources */,
+				E5B1EEF915BB66160089CC77 /* DACircularProgressView.m in Sources */,
+				E5B1EEFA15BB66160089CC77 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
