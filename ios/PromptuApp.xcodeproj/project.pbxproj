@@ -18,6 +18,7 @@
 		E5B1EEC015BB526D0089CC77 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EEBE15BB526D0089CC77 /* ViewController.xib */; };
 		E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEDC15BB5D860089CC77 /* ZUUIRevealController.m */; };
 		E5B1EEE915BB5FD60089CC77 /* RevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEE815BB5FD60089CC77 /* RevealController.m */; };
+		E5B1EEEC15BB61830089CC77 /* Prompt.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEEB15BB61830089CC77 /* Prompt.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		E5B1EEDF15BB5DAF0089CC77 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E5B1EEE715BB5FD60089CC77 /* RevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevealController.h; sourceTree = "<group>"; };
 		E5B1EEE815BB5FD60089CC77 /* RevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevealController.m; sourceTree = "<group>"; };
+		E5B1EEEA15BB61830089CC77 /* Prompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prompt.h; sourceTree = "<group>"; };
+		E5B1EEEB15BB61830089CC77 /* Prompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prompt.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 		E5B1EEE215BB5EA60089CC77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEEA15BB61830089CC77 /* Prompt.h */,
+				E5B1EEEB15BB61830089CC77 /* Prompt.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				E5B1EEBD15BB526D0089CC77 /* ViewController.m in Sources */,
 				E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */,
 				E5B1EEE915BB5FD60089CC77 /* RevealController.m in Sources */,
+				E5B1EEEC15BB61830089CC77 /* Prompt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
