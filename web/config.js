@@ -47,7 +47,10 @@ config.default = {
       },
       cacheLength: 100
     }
-  }
+  },
+  appjs: [
+    'js/controller/router.js'
+  ]
 };
 
 module.exports = config;

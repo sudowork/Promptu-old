@@ -44,6 +44,9 @@ html(class='no-js', lang='en')
     each js in vendorjs
       script(src=js)
 
+    each js in appjs
+      script(src=js)
+
     script
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
