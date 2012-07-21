@@ -1,9 +1,17 @@
 var config = {};
 
 config.development = {
+  vendorcss: [
+    'css/bootstrap/bootstrap-responsive.css',
+    'css/bootstrap/bootstrap.css'
+  ]
 };
 
 config.production = {
+  vendorcss: [
+    'css/bootstrap/bootstrap-responsive.min.css',
+    'css/bootstrap/bootstrap.min.css'
+  ]
 };
 
 config.default = {
@@ -17,7 +25,7 @@ config.default = {
       cert: 'PromptuPushCert.pem',
       key: 'PromptuPushKey.pem',
       //ca: 'aps_development.cer',
-      passphrase: process.env.APN_PASSPHRASE,
+      passphrase: process.env.APN_PASSPHRASE
     },
     options: {
       port: 2195,

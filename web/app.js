@@ -15,8 +15,7 @@ var fs = require('fs')
  * Globals
  */
 _ = require('underscore');
-
-var app = express();
+app = express();
 
 /**
  * Compile Less files

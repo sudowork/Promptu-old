@@ -19,6 +19,9 @@ html(class='no-js', lang='en')
 
     link(rel='stylesheet', href='/css/style.css')
 
+    each css in vendorcss
+      link(rel='stylesheet', href=css)
+
     script(src='javascripts/vendor/modernizr-2.5.3.min.js')
 
   body.container-fluid
