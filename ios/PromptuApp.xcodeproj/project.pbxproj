@@ -16,6 +16,7 @@
 		E5B1EEBA15BB526D0089CC77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEB915BB526D0089CC77 /* AppDelegate.m */; };
 		E5B1EEBD15BB526D0089CC77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEBC15BB526D0089CC77 /* ViewController.m */; };
 		E5B1EEC015BB526D0089CC77 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EEBE15BB526D0089CC77 /* ViewController.xib */; };
+		E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EEDC15BB5D860089CC77 /* ZUUIRevealController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		E5B1EEBB15BB526D0089CC77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E5B1EEBC15BB526D0089CC77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E5B1EEBF15BB526D0089CC77 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		E5B1EEDB15BB5D860089CC77 /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
+		E5B1EEDC15BB5D860089CC77 /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
+		E5B1EEDF15BB5DAF0089CC77 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 				E5B1EEAF15BB526D0089CC77 /* PromptuApp */,
 				E5B1EEA815BB526D0089CC77 /* Frameworks */,
 				E5B1EEA615BB526D0089CC77 /* Products */,
+				E5B1EED915BB5D860089CC77 /* Libraries */,
 				775E628BF93D4FDEA52A036E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -83,12 +88,17 @@
 		E5B1EEAF15BB526D0089CC77 /* PromptuApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EEE515BB5ECA0089CC77 /* Util */,
+				E5B1EEE415BB5EB90089CC77 /* Centers */,
+				E5B1EEE315BB5EAD0089CC77 /* ViewControllers */,
+				E5B1EEE215BB5EA60089CC77 /* Models */,
+				E5B1EEB015BB526D0089CC77 /* Supporting Files */,
+				E5B1EEDF15BB5DAF0089CC77 /* Constants.h */,
 				E5B1EEB815BB526D0089CC77 /* AppDelegate.h */,
 				E5B1EEB915BB526D0089CC77 /* AppDelegate.m */,
 				E5B1EEBB15BB526D0089CC77 /* ViewController.h */,
 				E5B1EEBC15BB526D0089CC77 /* ViewController.m */,
 				E5B1EEBE15BB526D0089CC77 /* ViewController.xib */,
-				E5B1EEB015BB526D0089CC77 /* Supporting Files */,
 			);
 			path = PromptuApp;
 			sourceTree = "<group>";
@@ -102,6 +112,51 @@
 				E5B1EEB715BB526D0089CC77 /* PromptuApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E5B1EED915BB5D860089CC77 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EEDA15BB5D860089CC77 /* ZUUIRevealController */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		E5B1EEDA15BB5D860089CC77 /* ZUUIRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EEDB15BB5D860089CC77 /* ZUUIRevealController.h */,
+				E5B1EEDC15BB5D860089CC77 /* ZUUIRevealController.m */,
+			);
+			path = ZUUIRevealController;
+			sourceTree = "<group>";
+		};
+		E5B1EEE215BB5EA60089CC77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E5B1EEE315BB5EAD0089CC77 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E5B1EEE415BB5EB90089CC77 /* Centers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Centers;
+			sourceTree = "<group>";
+		};
+		E5B1EEE515BB5ECA0089CC77 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +242,7 @@
 				E5B1EEB615BB526D0089CC77 /* main.m in Sources */,
 				E5B1EEBA15BB526D0089CC77 /* AppDelegate.m in Sources */,
 				E5B1EEBD15BB526D0089CC77 /* ViewController.m in Sources */,
+				E5B1EEDD15BB5D860089CC77 /* ZUUIRevealController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
