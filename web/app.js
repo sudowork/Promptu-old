@@ -66,7 +66,7 @@ config = app.settings.config;
  */
 mongoose = require('mongoose');
 mongoose.connect(config.mongoUri);
-// TODO: Add models as a global
+Models = require('./models/models');
 
 /**
  * Routes
