@@ -16,6 +16,7 @@ var fs = require('fs')
  */
 _ = require('underscore');
 app = express();
+E = require('./lib/exception');
 
 /**
  * Compile Less files
