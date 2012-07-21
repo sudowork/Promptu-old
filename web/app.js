@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-var express = require('express')
+var fs = require('fs')
+  , express = require('express')
   , routes = require('./routes')  // Loads from index.js route already
   , http = require('http');
 
