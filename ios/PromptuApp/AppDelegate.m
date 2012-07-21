@@ -39,6 +39,9 @@
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
+
+
     return YES;
 }
 
@@ -54,7 +57,7 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"Error: Push Notifs");
+    NSLog(@"Error: Cannot receive push notifs");
 
 }
 
