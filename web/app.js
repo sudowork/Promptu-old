@@ -10,7 +10,7 @@ var express = require('express')
 /**
  * Globals
  */
-_ = require('undescore');
+_ = require('underscore');
 
 var app = express();
 
