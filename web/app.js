@@ -18,6 +18,25 @@ _ = require('underscore');
 
 var app = express();
 
+/**
+ * Compile Less files
+ */
+(function () {
+  var cssDir = 'public/css'
+    , path, cmd;
+  _.chain(fs.readdirSync(cssDir))
+    .filter(function (file) {
+      // return (/^[a-zA-Z0-9\-_\.]+\.less/).test(file);
+      return (/^style\.less/).test(file);
+    })
+    .each(function (file) {
+      path = cssDir + '/' + file;
+      console.log('Compiling LESS file ' + path);
+      cmd = 'lessc ' + path + ' > ' + path.replace('less', 'css');
+      exec(cmd);
+    });
+}());
+
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
