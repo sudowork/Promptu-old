@@ -1,13 +1,13 @@
 (function (window, $, _, Backbone, PUApp) {
-  var Prompt = PUApp.models.Prompt,
-    Prompts = PUApp.collections.Prompts,
-    PromptsView = PUApp.views.PromptsView,
-	  Group = PUApp.models.Group,
+	var Prompt = PUApp.models.Prompt,
+		Prompts = PUApp.collections.Prompts,
+		PromptsView = PUApp.views.PromptsView,
+		Group = PUApp.models.Group,
 		Groups = PUApp.collections.Groups,
 		GroupsView = PUApp.views.GroupsView;
 
 	var $prompts = $('#prompts-container'),
-    $groups = $('#groups-container'),
+		$groups = $('#groups-container'),
 		$detail = $('#detail-container'),
 		$prefs = $('#prefs-container'),
 		$current, $next;
@@ -31,7 +31,7 @@
 			'' : 'prompts',
 			'prompts': 'prompts',
 			'detail/:id': 'showDetail',
-      'groups': 'showGroup',
+			'groups': 'showGroup',
 			'prefs': 'showPrefs',
 			'sortby/:field': 'sortPrompts',
 			'search/:query': 'searchPrompts',
@@ -75,15 +75,15 @@
 			this.promptsView.render();
 			$('#main .search-query').attr('value', '').blur();
 		},
-    showGroup: function () {
+		showGroup: function () {
 			transition.push($groups);
 
-      this.groupsModel = this.groupsModel || new Groups();
-      this.groupsView = this.groupsView || new GroupsView({
+			this.groupsModel = this.groupsModel || new Groups();
+			this.groupsView = this.groupsView || new GroupsView({
 	model: this.groupsModel
-      });
+			});
 
-      this.groupsModel.reset([
+			this.groupsModel.reset([
 	{ id: 0, priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
 	{ id: 1, priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
 	{ id: 2, priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
@@ -106,12 +106,12 @@
 	{ id: 19, priority: 1, header: 'test2', body: 'yolo', tags: [] },
 	{ id: 20, priority: 1, header: 'test3', body: 'yolo', tags: [] },
 	{ id: 21, priority: 1, header: 'test4', body: 'yolo', tags: [] }
-      ]);
+			]);
 
-      this.groupsView.render();
-    },
-    showDetail: function (id) {
-      transition.push($detail);
+			this.groupsView.render();
+		},
+		showDetail: function (id) {
+			transition.push($detail);
 		},
 		showPrefs: function () {
 			transition.push($prefs);
