@@ -92,9 +92,9 @@ body {
 		padding: 10px;
 		color: black;
 		border: 1px solid #CCC;
-		// background-color: #F0F0F0;
+    width: 96%;
     .white();
-		width: 94%;
+    .round(5px);
 
 		i {
 			float:left;
@@ -148,8 +148,17 @@ body {
 #prefs-container {
 }
 
-footer {
-	text-align: center;
+#subscribed-container {
+  overflow-y: scroll;
+  position: relative;
+}
+
+#join-container {
+
+}
+
+#invites-container {
+
 }
 
 .prompt {
@@ -192,7 +201,11 @@ footer {
 	.footer {
 		border-top: 1px solid #FFF;
 		.tag {
-			.statechange(@blue, darken(@blue, 10%));
+      .blueButton();
 		}
 	}
+}
+
+footer {
+  text-align: center;
 }

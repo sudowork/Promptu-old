@@ -2,6 +2,16 @@
   .color(#0095cd, #00adee, #0078a5);
 }
 
+.blueButton {
+  .color(#0095cd, #00adee, #0078a5);
+  &:hover {
+    .color(#007ead, #0095cc, #00678e);
+  }
+  &:active {
+    .color(#80bed6, #0078a5, #00adee)
+  }
+}
+
 .white {
   .color(#606060, #fff, #ededed);
 }
@@ -12,6 +22,16 @@
 
 .white:active {
   .color(#999, #ededed, #fff);
+}
+
+.redButton {
+  .color(#d81b21, #ed1c24, #aa1317)
+  &:hover {
+    .color(#b61318, #c9151b, #a11115);
+  }
+  &:active {
+    .color(#de898c, #aa1317, #ed1c24);
+  }
 }
 
 .color (@base: white, @light: white, @dark: black) {
