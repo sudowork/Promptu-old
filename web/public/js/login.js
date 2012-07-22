@@ -40,13 +40,13 @@ $(document).ready(function () {
 			passwordconf = $passwordconf.val();
 		if (!validemail) {
 			$emailcontainer.addClass('error');
-		} else if (!password || (register && password !== passwordconf)) {
-			$password.addClass('error');
+		} else if (!password || (register && password != passwordconf)) {
+			$passwordcontainer.addClass('error');
 		} else {
 			if (register) {
 				console.log('register');
 			} else {
-				$.post('http://192.168.1.116:3000/auth', {
+				$.post('http://promptuapp.com:3000/auth', {
 					email: email,
 					password: password
 				}, function (data) {
