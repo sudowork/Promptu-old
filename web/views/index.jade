@@ -29,35 +29,29 @@ block content
           ul.nav
             li.active: a(href="#") My Prompts
             li: a(href="#") Subscribed Groups
-            li: a(href="#") Owned Groups 
+            li: a(href="#") Owned Groups
             li: i(class="icon-search")
 
   #content.container-fluid
     .row-fluid
       div#sideBar.span1
-        p
-          button(rel="tooltip",title="Filter by pinned").buttonStyle.white
-            i.icon-search
-        p
-          button(rel="tooltip",title="Filter by date due").buttonStyle.white
-            i.icon-search
-        p
-          button(rel="tooltip",title="Filter by priority").buttonStyle.white
-            i.icon-search
-        p
-          button(rel="tooltip",title="Filter by group").buttonStyle.white
-            i.icon-search
-        p
-          button(rel="tooltip",title="Filter by completion").buttonStyle.white
-            i.icon-search
-      div#notifs.span5
+        button.white(rel="tooltip",title="Filter by pinned")
+          i.icon-search
+        button.white(rel="tooltip",title="Filter by date due")
+          i.icon-search
+        button.white(rel="tooltip",title="Filter by priority")
+          i.icon-search
+        button.white(rel="tooltip",title="Filter by group")
+          i.icon-search
+        button.white(rel="tooltip",title="Filter by completion")
+          i.icon-search
+      div#main
         .navbar
-          .navbar-inner
-            .container-fluid
-              a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
+          .container
+            form.nav-search.pull-left
+              input.search-query(type="text", placeholder="Search")
+                    .btn-group.pull-right
 
-              form.nav-search.pull-left
-                input.search-query(type="text", placeholder="Search")
+        #prompts-container.sheet
+        #detail-container.sheet
+        #prefs-container.sheet

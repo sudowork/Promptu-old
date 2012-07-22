@@ -1,13 +1,8 @@
 @import 'mixins.less';
 @import 'colors.less';
 
-html, body {
-  height: 100%;
-}
-
 body {
-  // padding-top: 60px;
-  // padding-bottom: 40px;
+  padding-top: 60px;
   background: url(../assets/bg.png);
 }
 
@@ -45,21 +40,19 @@ body {
 }
 
 #content {
-  margin-right: 20%;
-  margin-left: 20%;
-  height: 3000px;
-  background-color: rgba(100,100,100,.1);
+  margin: 0 auto;
+  border: 1px solid;
+  // background-color: rgba(100,100,100,.1);
   .round(10px);
+  width: 70%;
 }
 
 #sideBar {
-
-  margin-top: 150px;
-  margin-left: 50px;
-
   position: fixed;
+  top: 150px;
+  left: 50px;
 
-  .buttonStyle {
+  button {
     display: inline-block;
     zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
     *display: inline;
@@ -73,28 +66,25 @@ body {
 
     .round(0.5em);
     .shadow(0, 1px, 2px, rgba(0,0,0,0.2));
+
+    &:active {
+      position: relative;
+      top: 1px;
+    }
   }
 
-  .buttonStyle:active {
-    position: relative;
-    top: 1px;
-  }
 
 }
 
 #notifs {
-  margin-top:100px;
-  margin-left: 140px;
-  position:fixed;
-
   .navbar-inner {
     .color(#606060, #fff, #ededed);
     padding: 0px;
   }
 
-  .navbar .nav .active > a, .navbar .nav .active > a:hover{
-    .color(#606060, #fff, #ededed);
-  }
+  // .navbar .nav .active > a, .navbar .nav .active > a:hover{
+  //   .color(#606060, #fff, #ededed);
+  // }
 
   .navbar .nav > li > a {
     color: white;
@@ -130,4 +120,8 @@ body {
 
 #prefs-container {
   background-color: #0F0;
+}
+
+footer {
+  text-align: center;
 }
