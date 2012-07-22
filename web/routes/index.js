@@ -8,7 +8,7 @@ var render = function (res, page, ctx) {
 };
 
 exports.index = function (req, res) {
-  render(res, 'index', { title: 'Express' });
+  render(res, 'index', { title: 'Promptu App' });
 };
 
 exports.login = function (req, res) {
