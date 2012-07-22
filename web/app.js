@@ -64,6 +64,8 @@ app.configure(function () {
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
+  app.use(express.cookieParser());
+  app.use(express.session({secret: config.default.expressSecret}));
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
@@ -107,15 +109,15 @@ var routes = _.chain(fs.readdirSync('routes/'))
 
 app.get('/', routes.index);
 
-app.post('/prompt/create', routes.createPrompt);
-
 app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);
 
-app.get('/group/:id', routes.getGroup);
-app.get('/group/tree/:id', routes.getGroupTree);
-app.post('/group/create', routes.createGroup);
-app.del('/group/delete/:id', routes.deleteGroup);
+app.post('/prompt/create', routes.session, routes.createPrompt);
+
+app.get('/group/:id', routes.session, routes.getGroup);
+app.get('/group/tree/:id', routes.session, routes.getGroupTree);
+app.post('/group/create', routes.session, routes.createGroup);
+app.del('/group/delete/:id', routes.session, routes.deleteGroup);
 
 /**
  * Initialize Server

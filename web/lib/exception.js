@@ -18,6 +18,14 @@ var exceptions = {
   SIGNUP_EXCEPTION: {
     code: 409,
     msg: 'Could not create user because user already exists'
+  },
+  SESSION_EXPIRED_EXCEPTION: {
+    code: 403,
+    msg: 'Session has expired; request a new session token'
+  },
+  SESSION_MISSING_EXCEPTION: {
+    code: 403,
+    msg: 'Need to provide session token in sessionToken param'
   }
 }
 

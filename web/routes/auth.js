@@ -105,3 +105,29 @@ exports.signup = function (req, res) {
   });
 }
 
+/**
+ * Any request needing authentication needs to go through this internal endpoint
+ * @param req http request needs to have sessionToken
+ * @param res http response
+ * @param next next route to call
+ */
+exports.session = function (req, res, next) {
+  // @NOTE: can use session or query string. Used for testing.
+  var sessionToken = req.session.sessionToken || req.body.sessionToken || req.query.sessionToken;
+  if (sessionToken)
+  Models.User.findOne({
+    session: sessionToken
+  }, function (err, user) {
+    if (!exists(user)) { E.send(res, 'NOT_FOUND_EXCEPTION', {session: sessionToken}); return; }
+    // Check if session has expired
+    if (new Date() > user.sessionExp) {
+      E.send(res, 'SESSION_EXPIRED_EXCEPTION', {expired: user.sessionExp});
+      return false;
+    }
+    // Store userid, and groups
+    req.session.userId = user._id;
+    req.session.userGroups = user.groups;
+    next();
+  });
+};
+
