@@ -64,10 +64,37 @@ exports.syncPrompts = function (req, res) {
     {group: {$in: ancestors}
   }, function (err, prompts) {
     if (err) { E.send(res, err); return; }
-    prompts = _(prompts).map(function (p) {
-      if (exists(p.duedate)) { p.duedate = new Date(p.duedate) / 1000; }
-      return p;
+    var promptsToReturn = [];
+    _(prompts).each(function (p) {
+      var newPrompt = {};
+      _.chain(p)
+        .pick(
+          '_id',
+          'group',
+          'author',
+          'original',
+          'header',
+          'body',
+          'priority',
+          'attachment',
+          'tags',
+          'channels',
+          'expiration',
+          'sendtime',
+          'duedate',
+          'sent',
+          'type',
+          'updated'
+        )
+        .each(function (v, k) {
+          if (k === 'duedate') {
+            newPrompt[k] = v/1000;
+          } else {
+            newPrompt[k] = v;
+          }
+        });
+      promptsToReturn.push(newPrompt);
     });
-    res.json({yolo: prompts});
+    res.json({yolo: promptsToReturn});
   });
 }
