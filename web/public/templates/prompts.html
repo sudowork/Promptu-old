@@ -1,0 +1,22 @@
+<% _.each(arguments[0], function (prompts) { %>
+<div class="prompts box_shadow">
+  <div class="prompts-priority priority-<%= prompts.priority %>"></div>
+  <div class="prompts-content">
+    <h1 class="prompts-header">
+      <div class="prompts-header-text">
+        <%= prompts.header %>
+      </div>
+    </h1>
+    <div class="prompts-body">
+      <span class="prompts-body-text">
+        <%= prompts.body %>
+      </span>
+      <span class="prompts-tags">
+        <% for (var i = 0, l = prompts.tags.length; i < l; i += 1) { %>
+          <a class="prompts-tag"><%= prompts.tags[i] %></a>
+        <% } %>
+      </span>
+    </div>
+  </div>
+</div>
+<% }); %>

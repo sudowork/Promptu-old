@@ -39,6 +39,24 @@ existsOrElse = function(obj, def) { return (exists(obj)) ? obj : def; };
     });
 }());
 
+/**
+ * Prepare Underscore Templates
+ */
+(function () {
+  var templatesDir = 'public/templates';
+  config.default.templates = _.chain(fs.readdirSync(templatesDir))
+    .filter(function (file) {
+      return (/^[\w\-\.]+\.html$/).test(file);
+    })
+    .reduce(function (memo, file) {
+      console.log('Loading template ' + file);
+      memo[file.slice(0, -5)] = fs.readFileSync(templatesDir + '/' + file).toString();
+      return memo;
+    }, {})
+    .value();
+}());
+
+
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');

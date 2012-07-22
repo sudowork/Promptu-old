@@ -1,9 +1,8 @@
 (function (window, $, _, Backbone, PUApp) {
   var PromptsView = Backbone.View.extend({
     el: '#prompts',
-    // template: _.template($('#prompt-template').html() || ''),
+    template: PUApp.templates['prompts-template'],
     initialize: function () {
-      this.model = this.options.model;
     },
     events: {
     },

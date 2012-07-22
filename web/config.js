@@ -61,7 +61,10 @@ config.default = {
     }
   },
   appjs: [
-    'js/controller/router.js'
+    'js/controller/router.js',
+    'js/model/prompt.js',
+    'js/collection/prompts.js',
+    'js/view/promptsview.js'
   ]
 };
 

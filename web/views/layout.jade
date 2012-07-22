@@ -24,6 +24,10 @@ html(class='no-js', lang='en')
 
     script(src='js/vendor/modernizr-2.5.3.min.js')
 
+    each val, key in templates
+      script(id=key+'-template', type='text/template')
+        != val
+
   body.container-fluid
     block content
 
@@ -39,11 +43,11 @@ html(class='no-js', lang='en')
       window.jQuery || document.write("<script src=\"js/vendor/jquery-1.7.2.min.js\"><\/script>")
 
     script(src='js/plugins.js')
-    script(src='js/script.js')
 
     each js in vendorjs
       script(src=js)
 
+    script(src='js/script.js')
     each js in appjs
       script(src=js)
 
