@@ -147,7 +147,7 @@ exports.addMemberToGroup = function (req, res) {
         group.save(function (err) {
           if (err) { E.sendUnk(res, err); return; }
         });
-        res(201);
+        res.send(201);
       });
   });
 }
