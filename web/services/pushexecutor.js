@@ -58,11 +58,8 @@ var channelToAction = {
       notif.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
       notif.alert = prompt.header;
       notif.device = device;
-      notif.payload = _.extend(
-        {},
-        {'messageFrom': 'PromptU'},
-        promptPayload
-      );
+      notif.payload = {'messageFrom': 'PromptU'};
+      _.extend(notif,prompt);
 
       console.log('APN:', user.email, d.token, prompt.header);
       apn.sendNotification(notif);
