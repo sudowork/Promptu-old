@@ -1,7 +1,10 @@
 @import 'mixins.less';
 @import 'colors.less';
-@height: 566px;
+@height: 560px;
 
+html, body {
+	height: 100%;
+}
 body {
 	background: url(../assets/bg.png);
 }
@@ -76,56 +79,53 @@ body {
 }
 
 #main {
-  margin-top: 20px;
+	margin-top: 20px;
 	float: right;
 	min-height: @height;
-  background-color: none;
+	background-color: none;
 
-	.sheet {
-		padding: 10px;
-    margin-bottom: 20px;
-	}
 	.navbar {
 		margin: 10px 0;
-    padding: 10px;
+		padding: 10px;
 		color: black;
-    border: 1px solid #CCC;
-    background-color: #F0F0F0;
-    width: 94%;
+		border: 1px solid #CCC;
+		background-color: #F0F0F0;
+		width: 94%;
 
-    i {
+		i {
 			float:left;
 			font-size: 24px;
 			margin-left: 15px;
 			margin-top: 6px;
 		}
 
-    .search-query {
+		.search-query {
 			float:left;
 		}
 
-    input[type=text] {
+		input[type=text] {
 			margin: 0;
 		}
 
-    a.navlink {
+		a.navlink {
 			padding: 10px;
 		}
 
-    .divider-vertical {
-      float:left;
-      margin-left: 20px;
-      margin-right: 0px;
-      height: 30px;
-      color: #CCC;
-      background-color: #CCC;
-      border-right: 1px solid white
-    }
+		.divider-vertical {
+			float:left;
+			margin-left: 20px;
+			margin-right: 0px;
+			height: 30px;
+			color: #CCC;
+			background-color: #CCC;
+			border-right: 1px solid white
+		}
 
 	}
 
 	.sheet {
 		display: none;
+		padding-bottom: 10px;
 		height: @height;
 	}
 }
@@ -159,26 +159,25 @@ footer {
 		padding: 5px 10px;
 	}
 	.header {
-    .priority {
-      width: 20px;
-      height: 20px;
-      float: left;
-      margin: 10px 10px 10px 0px;
-    }
+		.priority {
+			width: 20px;
+			height: 20px;
+			float: left;
+			margin: 10px 10px 10px 0px;
+		}
 
-    .priority[priority="0"] {
-      .statechange(@p0);
-     }
-    .priority[priority="1"] {
-      .statechange(@p1);
-     }
-    .priority[priority="2"] {
-      .statechange(@p2);
-     }
-    .priority[priority="3"] {
-      .statechange(@p3);
-     }
-
+		.priority[priority="0"] {
+			.statechange(@p0);
+		 }
+		.priority[priority="1"] {
+			.statechange(@p1);
+		 }
+		.priority[priority="2"] {
+			.statechange(@p2);
+		 }
+		.priority[priority="3"] {
+			.statechange(@p3);
+		 }
 	}
 
 	.body {
@@ -187,7 +186,7 @@ footer {
 	.footer {
 		border-top: 1px solid #FFF;
 		.tag {
-      .statechange(@blue, darken(@blue, 10%));
+			.statechange(@blue, darken(@blue, 10%));
 		}
 	}
 }
