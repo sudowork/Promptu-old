@@ -5,12 +5,17 @@
 		initialize: function () {
 		},
 		events: {
-			'click .tag': 'filterByTag'
+			'click .tag': 'filterByTag',
+			'click .priority': 'filterByPriority'
 		},
 		lastquery: undefined,
 		filterByTag: function (e) {
 			var tagName = $(e.target).html();
 			this.render(this.model.filterByTag(tagName), true);
+		},
+		filterByPriority: function (e) {
+			var priority = $(e.target).attr('priority');
+			this.render(this.model.filterByPriority(priority), true);
 		},
 		search: function (query) {
 			if (query !== this.lastquery) {

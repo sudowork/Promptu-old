@@ -15,6 +15,11 @@
         return _.include(prompt.get('tags'), tag);
       });
     },
+    filterByPriority: function (priority) {
+      return this.filter(function (prompt) {
+        return prompt.get('priority') == priority;
+      });
+    },
 		search: function (query) {
 			return this.filter(function (prompt) {
 				return prompt.get('header').indexOf(query) >= 0 ||
