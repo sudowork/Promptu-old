@@ -114,6 +114,7 @@ app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);
 
 app.post('/prompt/create', routes.session, routes.createPrompt);
+app.get('/prompt/sync', routes.session, routes.syncPrompts);
 
 app.get('/group/:id', routes.session, routes.getGroup);
 app.get('/group/tree/:id', routes.session, routes.getGroupTree);

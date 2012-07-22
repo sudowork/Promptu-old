@@ -41,3 +41,29 @@ exports.createPrompt = function (req, res) {
     }
   });
 }
+
+/**
+ * GET /prompt/sync
+ */
+exports.syncPrompts = function (req, res) {
+  var userId = req.session.userId
+    , userGroups = req.session.userGroups;
+  // find all possible ancestor groups that user is a member of
+  var ancestors = _.chain(userGroups)
+    .map(function (group) {
+      if (_.isEmpty(group.path)) {
+        return [group._id];
+      } else {
+        return _.union([group._id], group.path.split(','));
+      }
+    })
+    .flatten()
+    .uniq()
+    .value();
+  Models.Prompt.find(
+    {group: {$in: ancestors}
+  }, function (err, prompts) {
+    if (err) { E.sendE(res, err); return; }
+    res.json(prompts);
+  });
+}

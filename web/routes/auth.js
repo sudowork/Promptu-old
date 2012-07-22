@@ -115,19 +115,20 @@ exports.session = function (req, res, next) {
   // @NOTE: can use session or query string. Used for testing.
   var sessionToken = req.session.sessionToken || req.body.sessionToken || req.query.sessionToken;
   if (sessionToken)
-  Models.User.findOne({
-    session: sessionToken
-  }, function (err, user) {
-    if (!exists(user)) { E.send(res, 'NOT_FOUND_EXCEPTION', {session: sessionToken}); return; }
-    // Check if session has expired
-    if (new Date() > user.sessionExp) {
-      E.send(res, 'SESSION_EXPIRED_EXCEPTION', {expired: user.sessionExp});
-      return false;
-    }
-    // Store userid, and groups
-    req.session.userId = user._id;
-    req.session.userGroups = user.groups;
-    next();
-  });
+  Models.User.findOne({session: sessionToken})
+    .populate('groups', ['_id', 'path'])
+    .exec(function (err, user) {
+      if (!user) { E.send(res, 'SESSION_INVALID_EXCEPTION', {session: sessionToken}); return; }
+      // Check if session has expired
+      if (new Date() > user.sessionExp) {
+        E.send(res, 'SESSION_EXPIRED_EXCEPTION', {expired: user.sessionExp});
+        return false;
+      }
+      // Store userid, and groups
+      console.log(user);
+      req.session.userId = user._id;
+      req.session.userGroups = user.groups;
+      next();
+    });
 };
 
