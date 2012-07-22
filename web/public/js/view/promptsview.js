@@ -8,7 +8,7 @@
 		},
 		sort: function (models) {
 			var top = 0,
-	z = models.length + 1;
+				z = models.length + 1;
 			_.each(models, function (m, i) {
 				top += $('#prompt-' + m.id).delay(i * 25).animate({
 						'z-index': z--,

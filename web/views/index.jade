@@ -7,10 +7,12 @@ block content
 				a.brand(href="#") promptu
 				ul.nav
 					li.active: a(href="#") Prompts
-					li: a(href="#") Groups
+					li: a(href="#detail/1") Groups
+
 				.btn-group.pull-right
-					a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
+					a.btn(href="#prefs")
 						i.icon-cog
+					button.btn.dropdown-toggle(data-toggle="dropdown")
 						span.caret
 					ul.dropdown-menu
 						li: a(href="#") Profile
@@ -23,11 +25,11 @@ block content
 	#content.container-fluid
 		.row-fluid
 			div#sideBar.span1
-				button.byheader.white(rel="tooltipLeft",title="Filter by Pinned")
+				button.white(rel="tooltipLeft",title="Filter by Pinned")
 					i.icon-pushpin
 				button.white(rel="tooltipLeft",title="Filter by Date Due")
 					i.icon-calendar
-				button.bypriority.white(rel="tooltipLeft",title="Filter by Priority")
+				button.white(rel="tooltipLeft",title="Filter by Priority")
 					i.icon-exclamation-sign
 				button.white(rel="tooltipLeft",title="Filter by Group")
 					i.icon-group
@@ -39,7 +41,7 @@ block content
 					.container
 						input.search-query(type="text", placeholder="Search")
 						i.icon-time(rel="tooltipTop",title="Sort by Date Due")
-						i.icon-exclamation-sign(rel="tooltipTop",title="Sort by Priority")
+						i.bypriority.icon-exclamation-sign(rel="tooltipTop",title="Sort by Priority")
 						i.icon-random(rel="tooltipTop",title="Filter by Random")
 
 				#prompts-container.sheet
