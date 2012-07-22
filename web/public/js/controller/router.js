@@ -52,12 +52,12 @@
 			return true;
 		},
 		init: function () {
-			if (checkConnection()) {
+			if (this.checkConnection()) {
 				//sync
 			}
 		},
 		prompts: function () {
-			checkConnection();
+			this.checkConnection();
 			transition.push($prompts);
 
 			this.promptsModel = this.promptsModel || new Prompts();
@@ -94,7 +94,7 @@
 			$('#main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {
-			checkConnection();
+			this.checkConnection();
 			transition.push($groups);
 
 			this.groupsModel = this.groupsModel || new Groups();
@@ -121,23 +121,23 @@
 			this.groupsView.render();
 		},
 		showPrefs: function () {
-			checkConnection();
+			this.checkConnection();
 			transition.push($prefs);
 		},
 		sortPrompts: function (field) {
-			checkConnection();
+			this.checkConnection();
 			this.promptsView.sort(field);
 		},
 		filterByTag: function (tag) {
-			checkConnection();
+			this.checkConnection();
 			this.promptsView.filterByTag(tag);
 		},
 		filterByPriority: function (priority) {
-			checkConnection();
+			this.checkConnection();
 			this.promptsView.filterByPriority(priority);
 		},
 		searchPrompts: function (query) {
-			checkConnection();
+			this.checkConnection();
 			this.promptsView.search(query);
 		},
 		redirect: function () {
