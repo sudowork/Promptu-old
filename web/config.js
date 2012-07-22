@@ -9,7 +9,19 @@ config.development = {
     'js/vendor/underscore.js',
     'js/vendor/jquery-1.7.2.js',
     'js/vendor/backbone.js',
-    'js/vendor/bootstrap/bootstrap.js'
+    'js/vendor/bootstrap/bootstrap.js',
+    'js/vendor/bootstrap/alert.js',
+    'js/vendor/bootstrap/button.js',
+    'js/vendor/bootstrap/carousel.js',
+    'js/vendor/bootstrap/collapse.js',
+    'js/vendor/bootstrap/dropdown.js',
+    'js/vendor/bootstrap/modal.js',
+    'js/vendor/bootstrap/popover.js',
+    'js/vendor/bootstrap/scrollspy.js',
+    'js/vendor/bootstrap/tab.js',
+    'js/vendor/bootstrap/tooltip.js',
+    'js/vendor/bootstrap/transition.js',
+    'js/vendor/bootstrap/typeahead.js'
   ]
 };
 
