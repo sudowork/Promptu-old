@@ -1,60 +1,59 @@
 extends layout
 
 block content
-  .navbar.navbar-fixed-top.center
-    .navbar-inner
-      .container-fluid
-        a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+	.navbar.navbar-fixed-top.center
+		.navbar-inner
+			.container-fluid
+				a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
 
-        a.brand(href="#") promptu
+				a.brand(href="#") promptu
 
-        .btn-group.pull-right
-          a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
-            i.icon-user
-            | Preferences
-            span.caret
+				.btn-group.pull-right
+					a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
+						i.icon-user
+						| Preferences
+						span.caret
 
-          ul.dropdown-menu
-            li: a(href="#") Profile
-            li: a(href="#") Setting 1
-            li: a(href="#") Setting 2
-            li: a(href="#") Setting 3
-            li.divider
-            li: a(href="#") Sign Out
+					ul.dropdown-menu
+						li: a(href="#") Profile
+						li: a(href="#") Setting 1
+						li: a(href="#") Setting 2
+						li: a(href="#") Setting 3
+						li.divider
+						li: a(href="#") Sign Out
 
-        .nav-collapse
-          ul.nav
-            li.active: a(href="#") My Prompts
-            li: a(href="#") Subscribed Groups
-            li: a(href="#") Owned Groups
-            li: i(class="icon-search")
+				.nav-collapse
+					ul.nav
+						li.active: a(href="#") My Prompts
+						li: a(href="#") Subscribed Groups
+						li: a(href="#") Owned Groups
+						li: i(class="icon-search")
 
-  #content.container-fluid
-    .row-fluid
-      div#sideBar.span1
-        button.white(rel="tooltip",title="Filter by pinned")
-          i.icon-search
-        button.white(rel="tooltip",title="Filter by date due")
-          i.icon-search
-        button.white(rel="tooltip",title="Filter by priority")
-          i.icon-search
-        button.white(rel="tooltip",title="Filter by group")
-          i.icon-search
-        button.white(rel="tooltip",title="Filter by completion")
-          i.icon-search
+	#content.container-fluid
+		.row-fluid
+			div#sideBar.span1
+				button.white(rel="tooltip",title="Filter by pinned")
+					i.icon-search
+				button.white(rel="tooltip",title="Filter by date due")
+					i.icon-search
+				button.white(rel="tooltip",title="Filter by priority")
+					i.icon-search
+				button.white(rel="tooltip",title="Filter by group")
+					i.icon-search
+				button.white(rel="tooltip",title="Filter by completion")
+					i.icon-search
 
-      div#main.span8.pull-right
-        .navbar
-          .container
-	    input.search-query(type="text", placeholder="Search")
-                    .btn-group.pull-right
-	    a.navlink(href="#") Home
-	    a.navlink(href="#detail/1") Detail
-	    a.navlink(href="#prefs") Prefs
+			div#main.span8.pull-right
+				.navbar
+					.container
+						input.search-query(type="text", placeholder="Search")
+						a.navlink(href="#") Home
+						a.navlink(href="#detail/1") Detail
+						a.navlink(href="#prefs") Prefs
 
-        #prompts-container.sheet
-        #detail-container.sheet
-        #prefs-container.sheet
+				#prompts-container.sheet
+				#detail-container.sheet
+				#prefs-container.sheet
