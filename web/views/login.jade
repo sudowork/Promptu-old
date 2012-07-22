@@ -1,0 +1,53 @@
+extends layout
+
+block content
+	style
+		.container {
+			width: 27%;
+			margin-top: 20%;
+		}
+		.logo {
+			margin: 10px 20px;
+			display: block;
+		}
+		.form-vertical {
+			-webkit-border-radius: 20px;
+			border-radius: 20px;
+			background-color: rgba(255,255,255,0.95);
+			position: relative;
+		}
+		.form-vertical:after {
+			content: "";
+			width: 0px;
+			height: 10px;
+			position: absolute;
+			border-width: 16px;
+			border-style: solid;
+			border-color: white transparent transparent;
+			bottom: -42px;
+		}
+		.form-vertical h1 {
+			padding-bottom: 15px;
+			color: #007EBA;
+			font-weight: lighter;
+			font-size: 35px;
+		}
+		body {
+			background: #00adee; /* Old browsers */
+			background: -moz-radial-gradient(center, ellipse cover,  #00adee 0%, #0078a5 100%); /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00adee), color-stop(100%,#0078a5)); /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover,  #00adee 0%,#0078a5 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover,  #00adee 0%,#0078a5 100%); /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover,  #00adee 0%,#0078a5 100%); /* IE10+ */
+			background: radial-gradient(ellipse at center,  #00adee 0%,#0078a5 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adee', endColorstr='#0078a5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		}
+	.container
+		form.well.form-vertical.span3
+			h1 promptu
+			label.email
+				input.input(type="text",placeholder="Email")
+			label.password
+				input.input(type="password",placeholder="Password")
+			button.btn.btn-primary(type="submit") Sign in
+			button.btn.pull-right(type="register") Register

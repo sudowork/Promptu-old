@@ -108,6 +108,7 @@ var routes = _.chain(fs.readdirSync('routes/'))
   .value();
 
 app.get('/', routes.index);
+app.get('/login', routes.login);
 
 app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);
