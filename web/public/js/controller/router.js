@@ -29,8 +29,5 @@
     }
   });
 
-  $(document).ready(function () {
-    new Doc();
-  });
-
+  new Doc();
 }(window, $, _, Backbone, PUApp));

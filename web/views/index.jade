@@ -1,41 +1,77 @@
 extends layout
 
 block content
-  #doc
-    .navbar.navbar-fixed-top
-      #global-nav.navbar-inner
-        .container
-          a.brand(href='#') promptu
+  div.navbar.navbar-fixed-top
+    div.navbar-inner
+      div.container-fluid
+	a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
+	  span.icon-bar
+	  span.icon-bar
+	  span.icon-bar
 
+	a.brand(href="#") promptu
+	div.btn-group.pull-right
+	  a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
+	    i.icon-user
+	    | Preferences
+	    span.caret
+
+	  ul.dropdown-menu
+	    li: a(href="#") Profile
+	    li: a(href="#") Setting 1
+	    li: a(href="#") Setting 2
+	    li: a(href="#") Setting 3
+	    li.divider
+	    li: a(href="#") Sign Out
+
+
+	div.nav-collapse
           ul.nav
-            li#brand
-            li#home
-              a(href='#') home
-            li#tasks
-              a(href='#') tasks
-            li#groups
-              a(href='#') groups
+	    li.active: a(href="#") Home
+	    li: a(href="#") Notifs
+	    li: a(href="#") Groups
 
-          ul.nav.pull-right
-            li#prefs
-              a.dropdown-toggle(href='#',data-toggle="dropdown")
-                | prefs
-                b.caret
-              ul.dropdown-menu
-                li
-                  a(href='#') item
-                li
-                  a(href='#') item
-                li.divider
-                li
-                  a(href='#') item
+  div#main.container-fluid
+    div.row-fluid
+      div.span3
+	div.well.sidebar-nav
+	  ul.nav.nav-list
+	    li.nav-header Sidebar
+	    li.option.active: a
+	      img.icon(src='assets/icons/groups.png')
+	      | Groups
+	    li.option: a
+	      img.icon(src='assets/icons/priority.png')
+	      | Priority
+	    li.option: a
+	      img.icon(src='assets/icons/subscribed.png')
+	      | Subscribed
+	    li.option: a
+	      img.icon(src='assets/icons/tag.png')
+	      | Tag
+	    li.option: a
+	      img.icon(src='assets/icons/time.png')
+	      | Time
 
-    #page-outer
-      #page
-        .row.span12
-          .span3
-            | aseutsnahoeusntoaehusaonetuhoe
-            | asonteuhsaontehuasonetuh
-          .span8
-            | aoeutsnahoeusntoaehusaonetuhoe
-            | aoeutsnahoeusntoaehusaonetuhoe
+      div.span9
+	div.hero-unit
+	  h1 Hello, world!
+	  p This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+	  p: a.btn.btn-primary.btn-largeLearn more &raquo;
+
+	div.row-fluid
+	  div.span4
+	    h2 Heading
+	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+	    p: a.btn(href="#") View details &raquo;
+	  div.span4
+	    h2 Heading
+	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+	    p: a.btn(href="#") View details &raquo;
+	  div.span4
+	    h2 Heading
+	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+	    p: a.btn(href="#") View details &raquo;
+    hr
+    footer
+      p &copy; Promptu App 2012

@@ -1,25 +1,23 @@
 @import 'mixins.less';
 @import 'colors.less';
 
-html, body, #doc{
+html, body, #doc, #page-outer {
   height: 100%;
 }
 
 body {
-  height: 800px;
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
-#page-outer {
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+#main {
   background: url(../assets/bg.png);
 }
 
-#page {
-  position: relative;
-  width: 837px;
-  min-height: 100%;
-  padding: 45px 0 15px;
-  margin: 0 auto;
-}
-
-.wrapper {
-
+.icon {
+  width: 30px;
+  height: 30px;
 }

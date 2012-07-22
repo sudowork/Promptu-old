@@ -6,3 +6,7 @@ var PUApp = {
   config: {},
   user: {}
 };
+
+$(document).ready(function () {
+  $('.dropdown-toggle').dropdown();
+});
