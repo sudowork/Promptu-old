@@ -16,7 +16,7 @@
 		$next: undefined,
 		param: 'fast',
 		push: function (next) {
-			if (this.$current != next) {
+			if (this.$current !== next) {
 				this.$next = next;
 				if (this.$current) this.$current.slideUp(this.param);
 				if (this.$next) this.$next.slideDown(this.param);
@@ -77,22 +77,12 @@
 		showGroup: function () {
 			this.checkConnection();
 			transition.push($groups);
-
-			this.groupsModel.reset([
-				{ id: 0, priority: 0, header: 'test', body: 'yolo' },
-				{ id: 1, priority: 1, header: 'test2', body: 'yolo' },
-				{ id: 2, priority: 2, header: 'test3', body: 'yolo' },
-				{ id: 3, priority: 3, header: 'test', body: 'yolo' },
-				{ id: 4, priority: 1, header: 'test2', body: 'yolo' },
-				{ id: 5, priority: 2, header: 'test3', body: 'yolo' },
-				{ id: 6, priority: 1, header: 'test', body: 'yolo' },
-				{ id: 7, priority: 1, header: 'test2', body: 'yolo' },
-				{ id: 17, priority: 3, header: 'test3', body: 'yolo' },
-				{ id: 18, priority: 0, header: 'test', body: 'yolo' },
-				{ id: 19, priority: 1, header: 'test2', body: 'yolo' },
-				{ id: 20, priority: 1, header: 'test3', body: 'yolo' },
-				{ id: 21, priority: 1, header: 'test4', body: 'yolo'  }
-			]);
+			this.groupsModel.fetch({
+				success: _.bind(function (data) {
+					this.groupsView.render();
+					transition.push($groups);
+				}, this)
+			});
 
 			this.groupsView.render();
 		},
