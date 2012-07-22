@@ -1,41 +1,52 @@
 <div class="admin-view">
-  <form class="form-horizontal" _lpchecked="1">
-    <fieldset>
-      <div class="control-group">
+	<form class="form-horizontal" _lpchecked="1">
+		<fieldset>
+			<div class="control-group">
 	<label class="control-label">Main</label>
 	<div class="controls docs-input-sizes">
-	  <textarea id="header" class="input-medium" type="text" placeholder="Header"></textarea>
-	  <textarea id="body" class="input-medium" type="text" placeholder="Body"></textarea>
-	  <p class="help-block">This is the core of a Prompt. In order to ensure the effectiveness of each message, we have placed a <em>140</em> character limit on the message body and <em>30</em> character limit on the message header</p>
+		<textarea id="header" class="input-medium" type="text" placeholder="Header"></textarea>
+		<textarea id="body" class="input-medium" type="text" placeholder="Body"></textarea>
+		<p class="help-block">This is the core of a Prompt. In order to ensure the effectiveness of each message, we have placed a <em>140</em> character limit on the message body and <em>30</em> character limit on the message header</p>
 	</div>
-      </div>
-      <div class="control-group">
+			</div>
+			<div class="control-group">
 	<label class="control-label" for="prependedInput">Target Groups</label>
 	<div class="controls">
-	  <div class="input-prepend">
-	    <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
-	  </div>
-	  <p class="help-block">Here's a list of groups you can send your prompt to</p>
+		<div class="control-group">
+			<% _.each(arguments[0].groups, function (group) { %>
+				<label class="checkbox">
+					<input type="checkbox" name="<%= group.name %>" value="group._id">
+					<%= group.name %>
+				</label>
+			<% }); %>
+			<p class="help-block"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+		</div>
+		<div class="input-prepend">
+			<span class="add-on">@</span>
+			<input class="span2" id="prependedInput" size="16" type="text">
+			<div id="selected"></div>
+		</div>
+		<p class="help-block">Here's a list of groups you can send your prompt to</p>
 	</div>
-      </div>
-      <div class="control-group">
+			</div>
+			<div class="control-group">
 	<label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
 	<div class="controls">
-	  <label class="checkbox inline">
-	    <input type="checkbox" id="inlineCheckbox1" value="apn"> Push
-	  </label>
-	  <label class="checkbox inline">
-	    <input type="checkbox" id="inlineCheckbox2" value="email"> Email
-	  </label>
-	  <label class="checkbox inline">
-	    <input type="checkbox" id="inlineCheckbox3" value="sms"> SMS
-	  </label>
+		<label class="checkbox inline">
+			<input type="checkbox" id="inlineCheckbox1" value="apn"> Push
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" id="inlineCheckbox2" value="email"> Email
+		</label>
+		<label class="checkbox inline">
+			<input type="checkbox" id="inlineCheckbox3" value="sms"> SMS
+		</label>
 	</div>
-      </div>
-      <div class="form-actions">
+			</div>
+			<div class="form-actions">
 			<button type="submit" class="btn btn-primary">Send</button>
 			<button class="btn">Cancel</button>
-      </div>
-    </fieldset>
-  </form>
+			</div>
+		</fieldset>
+	</form>
 </div>
