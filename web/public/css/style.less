@@ -79,16 +79,19 @@ body {
   margin-top: 20px;
 	float: right;
 	min-height: @height;
+  background-color: none;
 
-	.navbar, .sheet {
-		border: 1px solid #DDD;
-		background-color: #F0F0F0;
+	.sheet {
 		padding: 10px;
+    margin-bottom: 20px;
 	}
 	.navbar {
 		margin: 10px 0;
+    padding: 10px;
 		color: black;
     border: 1px solid #CCC;
+    background-color: #F0F0F0;
+    width: 94%;
 
     i {
 			float:left;
@@ -147,7 +150,7 @@ footer {
 	position: absolute;
 	width: 94%;
 	border: 1px solid #CCC;
-	.shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.5));
+	.shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.1));
 	.round(5px);
 	background-color: #EEE;
 	margin-top: 10px;
