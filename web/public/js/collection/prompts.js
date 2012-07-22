@@ -4,6 +4,11 @@
   var Prompts = Backbone.Collection.extend({
     model: Prompt,
     initialize: function () {
+    },
+    sort: function (field) {
+      return this.sortBy(function (model) {
+	return model.get(field);
+      });
     }
   });
 

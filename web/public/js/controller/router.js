@@ -37,28 +37,28 @@
       });
 
       this.prompts.add([
-	{ priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
-	{ priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
-	{ priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
-	{ priority: 3, header: 'test', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
-	{ priority: 2, header: 'test3', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
-	{ priority: 2, header: 'test3', body: 'yolo', tags: [] },
-	{ priority: 3, header: 'test', body: 'yolo', tags: ['bbb'] },
-	{ priority: 0, header: 'test2', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test3', body: 'yolo', tags: [] },
-	{ priority: 2, header: 'test', body: 'yolo', tags: ['bbb'] },
-	{ priority: 3, header: 'test2', body: 'yolo', tags: [] },
-	{ priority: 0, header: 'test3', body: 'yolo', tags: ['bbb'] },
-	{ priority: 1, header: 'test', body: 'yolo', tags: [] },
-	{ priority: 2, header: 'test2', body: 'yolo', tags: [] },
-	{ priority: 3, header: 'test3', body: 'yolo', tags: [] },
-	{ priority: 0, header: 'test', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test2', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test3', body: 'yolo', tags: [] },
-	{ priority: 1, header: 'test4', body: 'yolo', tags: [] }
+	{ id: 0, priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
+	{ id: 1, priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
+	{ id: 2, priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
+	{ id: 3, priority: 3, header: 'test', body: 'yolo', tags: [] },
+	{ id: 4, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
+	{ id: 5, priority: 2, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 6, priority: 1, header: 'test', body: 'yolo', tags: [] },
+	{ id: 7, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
+	{ id: 8, priority: 2, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 9, priority: 3, header: 'test', body: 'yolo', tags: ['bbb'] },
+	{ id: 10, priority: 0, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 11, priority: 1, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 12, priority: 2, header: 'test', body: 'yolo', tags: ['bbb'] },
+	{ id: 13, priority: 3, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 14, priority: 0, header: 'test3', body: 'yolo', tags: ['bbb'] },
+	{ id: 15, priority: 1, header: 'test', body: 'yolo', tags: [] },
+	{ id: 16, priority: 2, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 17, priority: 3, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 18, priority: 0, header: 'test', body: 'yolo', tags: [] },
+	{ id: 19, priority: 1, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 20, priority: 1, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 21, priority: 1, header: 'test4', body: 'yolo', tags: [] }
       ]);
 
       this.promptsview.render();
@@ -84,10 +84,17 @@
       console.log('init');
     },
     events: {
+      'click #sideBar button.byheader': 'sortByHeader',
+      'click #sideBar button.bypriority': 'sortByPriority',
       'keyup': 'keyUpHandler'
     },
+    sortByHeader: function (e) {
+      router.promptsview.sort(router.prompts.sort('header'));
+    },
+    sortByPriority: function (e) {
+      router.promptsview.sort(router.prompts.sort('priority'));
+    },
     keyUpHandler: function (e) {
-      console.log(e.which);
     }
   });
 

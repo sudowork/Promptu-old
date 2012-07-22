@@ -9,7 +9,6 @@ config.development = {
   ],
   vendorjs: [
     'js/vendor/underscore.js',
-    'js/vendor/jquery-1.7.2.js',
     'js/vendor/backbone.js',
     'js/vendor/bootstrap/bootstrap.js',
     'js/vendor/bootstrap/alert.js',

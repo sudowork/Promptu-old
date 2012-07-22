@@ -1,5 +1,6 @@
 @import 'mixins.less';
 @import 'colors.less';
+@height: 500px;
 
 body {
   background: url(../assets/bg.png);
@@ -23,14 +24,14 @@ body {
         }
       }
       i {
-	font-size: 24px;
-	padding-right: 5px;
+        font-size: 24px;
+        padding-right: 5px;
       }
       ul {
-	font-size: 15px;
+        font-size: 15px;
       }
       .btn.dropdown-toggle [class^="icon-"], .btn.dropdown-toggle [class*=" icon-"] {
-	line-height: 0em;
+        line-height: 0em;
       }
 
       .search-query {
@@ -39,7 +40,7 @@ body {
         min-width: 10%;
       }
       .dropdown-menu {
-	font-size: 13px;
+  font-size: 13px;
       }
     }
     .blue();
@@ -86,6 +87,7 @@ body {
   float: right;
   min-height: 500px;
   height: 100%;
+  min-height: @height;
 
   .navbar, .sheet {
     border: 1px solid #DDD;
@@ -115,13 +117,14 @@ body {
 
   .sheet {
     display: none;
-    height: 500px;
+    height: @height;
   }
 }
 
 
 #prompts-container {
   overflow-y: scroll;
+  position: relative;
 }
 
 #detail-container {
@@ -132,4 +135,16 @@ body {
 
 footer {
   text-align: center;
+}
+
+.prompt {
+  position: absolute;
+  width: 96%;
+  padding: 5px 10px;
+  border: 1px solid #DDD;
+  .round(5px);
+  background-color: #f0f0f0;
+  margin-top: 10px;
+  &:first-child {
+  }
 }
