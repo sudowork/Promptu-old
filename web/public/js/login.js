@@ -54,7 +54,7 @@ $(document).ready(function () {
 			var auth = function () {
 				$.ajax({
 					url: 'http://promptuapp.com:3000/auth',
-					method: 'post',
+					type: 'post',
 					data: {
 						email: email,
 						password: password
@@ -74,7 +74,7 @@ $(document).ready(function () {
 			if (register) {
 				$.ajax({
 					url: 'http://promptuapp.com:3000/signup',
-					method: 'post',
+					type: 'post',
 					data: {
 						email: email,
 						password: password
