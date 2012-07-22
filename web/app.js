@@ -89,7 +89,7 @@ var routes = _.chain(fs.readdirSync('routes/'))
 
 app.get('/', routes.index);
 
-app.get('/notif', routes.notif);
+app.get('/prompt', routes.prompt);
 
 app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);

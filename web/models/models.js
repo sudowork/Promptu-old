@@ -46,7 +46,7 @@ var UserSchema = new Schema(
     , grous:         Mixed
     , confirmed:     Boolean
     , needsreset:    Boolean
-    , updated:       {type:    Date, index:    true}
+    , updated:       {type:    Date, required: true, index:    true}
     , session:       String
     , sessionExp:    Date
   }
@@ -54,7 +54,7 @@ var UserSchema = new Schema(
 );
 
 /**
- * Group relevant schemas
+ * Group Schemas
  */
 var MemberSchema = new Schema(
   {
@@ -74,7 +74,30 @@ var GroupSchema = new Schema(
     , owner:       {type:    ObjectId, ref:          'User', index:   true, required:         true}
     , members:     {type:    [MemberSchema], index:  true}
     , visibility:  {type:    String, index:          true, enum:      ['public', 'private']}
-    , updated:     {type:    Date, index:            true}
+    , updated:     {type:    Date, required: true, index:            true}
+  }
+  , {strict: true}
+);
+
+/**
+ * Prompt Schemas
+ */
+var PromptSchema = new Schema(
+  {
+      _id:         ObjectId
+    , group:       {type:    ObjectId, ref:     'Group', required:                        true, index:  true}
+    , author:      {type:    ObjectId, ref:     'User', required:                         true, index:  true}
+    , original:    {type:    ObjectId, ref:     'Prompt', required:                       true, index:  true}
+    , header:      {type:    String, required:  true}
+    , body:        String
+    , priority:    Number
+    , tags:        {type:    [String], index:   true}
+    , expiration:  {type:    Date, index:       true}
+    , sendtime:    {type:    Date, index:       true}
+    , due:         {type:    Date, index:       true}
+    , sent:        {type:    Boolean, index:    true}
+    , type:        {type:    String, enum:      ['original', 'edit', 'reminder'], index:  true}
+    , updated:     {type:    Date, required:    true, index:                              true}
   }
   , {strict: true}
 );
@@ -82,6 +105,8 @@ var GroupSchema = new Schema(
 module.exports = {
   User: mongoose.model('User', UserSchema),
   Device: mongoose.model('Device', DeviceSchema),
-  Group: mongoose.model('Group', GroupSchema)
+  Member: mongoose.model('Member', MemberSchema),
+  Group: mongoose.model('Group', GroupSchema),
+  Prompt: mongoose.model('Prompt', PromptSchema)
 }
 
