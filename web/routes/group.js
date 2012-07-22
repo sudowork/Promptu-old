@@ -6,7 +6,7 @@
  * @param includeRoot boolean that specifies whether to include the root
  * @param cb callback function with signature cb(groups)
  */
-function actOnChildren(groupid, allDescendents, includeRoot, cb) {
+exports.actOnChildren = function (groupid, allDescendents, includeRoot, cb) {
   var all = existsOrElse(allDescendents, false)
     , root = existsOrElse(includeRoot, false)
     , r
@@ -61,7 +61,7 @@ exports.getGroupTree = function (req, res) {
   var returnChildren = function(groups) {
     res.json(groups);
   };
-  actOnChildren(root, true, true, returnChildren);
+  this.actOnChildren(root, true, true, returnChildren);
 }
 
 /**
@@ -152,6 +152,6 @@ exports.deleteGroup = function (req, res) {
         }
       });
     }
-    actOnChildren(root, true, true, deleteGroupAndDescendents);
+    this.actOnChildren(root, true, true, deleteGroupAndDescendents);
   });
 }

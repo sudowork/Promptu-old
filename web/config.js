@@ -23,7 +23,8 @@ config.development = {
     'js/vendor/bootstrap/tooltip.js',
     'js/vendor/bootstrap/transition.js',
     'js/vendor/bootstrap/typeahead.js'
-  ]
+  ],
+  apnGateway: 'gateway.sandbox.push.apple.com'
 };
 
 config.production = {
@@ -40,6 +41,7 @@ config.production = {
     'js/vendor/bootstrap/bootstrap.min.js'
   ],
   mongoUri: process.env.PROMPTU_PRODUCTION_MONGO_URI || 'mongodb://localhost/promptu',
+  apnGateway: 'gateway.push.apple.com'
 };
 
 config.default = {
@@ -49,9 +51,9 @@ config.default = {
   mongoUri: process.env.PROMPTU_MONGO_URI || 'mongodb://localhost/promptu',
   apn: {
     cert: {
-      path: '../res/push/',
-      cert: 'PromptuPushCert.pem',
-      key: 'PromptuPushKey.pem',
+      path: '../res/apn/',
+      cert: 'PromptuPushAppCert.pem',
+      key: 'PromptuPushAppKey.pem',
       //ca: 'aps_development.cer',
       passphrase: process.env.APN_PASSPHRASE
     },
@@ -69,7 +71,8 @@ config.default = {
     'js/collection/prompts.js',
     'js/view/promptsview.js',
     'js/controller/router.js'
-  ]
+  ],
+	executorInterval: 60
 };
 
 module.exports = config;

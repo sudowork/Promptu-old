@@ -93,19 +93,19 @@ var GroupSchema = new Schema(
 var PromptSchema = new Schema(
   {
       _id:         ObjectId
-    , group:       {type:    ObjectId, ref:     'Group', required:  true, index:  true}
-    , author:      {type:    ObjectId, ref:     'User', required:   true, index:  true}
-    , original:    {type:    ObjectId, ref:     'Prompt', index:  true}
-    , header:      {type:    String, required:  true}
-    , body:        {type: String, default:      ''}
+    , group:       {type:    ObjectId, ref:      'Group', required:  true, index:  true}
+    , author:      {type:    ObjectId, ref:      'User', required:   true, index:  true}
+    , original:    {type:    ObjectId, ref:      'Prompt', index:    true}
+    , header:      {type:    String, required:   true}
+    , body:        {type: String, default:       ''}
     , priority:    {type: Number, default: 3}
     , attachment:  Mixed
-    , tags:        {type:    [String], index:   true}
-    , channels:    {type:    [String], required: true, validate:    channelValidator, default: ['apn', 'mail']}
-    , expiration:  {type:    Date, index:       true}
-    , sendtime:    {type:    Date, index:       true}
-    , duedate:     {type:    Date, index:       true}
-    , sent:        {type:    Boolean, index:    true}
+    , tags:        {type:    [String], index:    true}
+    , channels:    {type:    [String], required:  true, validate:    channelValidator, default: ['apn', 'mail']}
+    , expiration:  {type:    Date, index:        true}
+    , sendtime:    {type:    Date, index:        true}
+    , duedate:     {type:    Date, index:        true}
+    , sent:        {type:    Boolean, reqquired: true, index:        true, default: false}
     , type:        {type:    String, enum:      ['original', 'edit', 'reminder'], index:  true}
     , updated:     {type:    Date, required:    true, index:                              true}
   }
