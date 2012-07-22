@@ -45,12 +45,14 @@ var channelToAction = {
     // Remove _id key/value pair
     var promptPayload = {}
       , devices = user.devices;
-    _.chain(prompt)
-      .keys()
-      .each(function (k) {
-      if (k !== '_id') promptPayload = prompt[k];
-      })
-      .values();
+    var promptPayload = _(prompt).pick(
+        'id_',
+        'header',
+        'body',
+        'priority',
+        'duedate',
+        'tags'
+    );
     // Send notification to device
     _(devices).each(function (d) {
       var device = new Device(d.token)
@@ -59,7 +61,8 @@ var channelToAction = {
       notif.alert = prompt.header;
       notif.device = device;
       notif.payload = {'messageFrom': 'PromptU'};
-      _.extend(notif,prompt);
+      // Add custom data to payload
+      _.extend(notif.payload, promptPayload);
 
       console.log('APN:', user.email, d.token, prompt.header);
       apn.sendNotification(notif);
