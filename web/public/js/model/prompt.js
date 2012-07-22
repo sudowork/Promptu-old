@@ -1,8 +1,8 @@
 (function (window, $, _, Backbone, PUApp) {
-  var Notif = Backbone.Model.extend({
+  var Prompt = Backbone.Model.extend({
     initialize: function () {
     }
   });
 
-  PUApp.models.Notif = Notif;
+  PUApp.models.Prompt = Prompt;
 }(window, $, _, Backbone, PUApp));

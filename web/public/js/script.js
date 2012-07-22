@@ -9,10 +9,12 @@ var PUApp = {
 };
 
 $(document).ready(function () {
-  $('script[type="text/template"]').each(function (i, e) {
-      var $e = $(e);
-      PUApp.templates[$e.attr('id')] = _.template($e.html());
-  }).remove();
-
-  $('.dropdown-toggle').dropdown();
+  Backbone.history.start();
 });
+
+$('script[type="text/template"]').each(function (i, e) {
+    var $e = $(e);
+    PUApp.templates[$e.attr('id')] = _.template($e.html());
+}).remove();
+
+$('.dropdown-toggle').dropdown();
