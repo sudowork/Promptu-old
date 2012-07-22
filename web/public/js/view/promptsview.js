@@ -5,13 +5,18 @@
 		initialize: function () {
 		},
 		events: {
+			'click .tag': 'filterByTag'
 		},
-		lastquery: '',
+		lastquery: undefined,
+		filterByTag: function (e) {
+			var tagName = $(e.target).html();
+			this.render(this.model.filterByTag(tagName), true);
+		},
 		search: function (query) {
 			if (query !== this.lastquery) {
-				this.render(this.model.search(query));
-			this.lastquery = query;
-			return true;
+				this.render(this.model.search(query), true);
+				this.lastquery = query;
+				return true;
 			}
 			return false;
 		},
@@ -23,14 +28,14 @@
 					'z-index': z--
 				}).delay(delay ? i * 35 : 0).animate({
 					top: top + 'px'
-				}, animate || 'slow').outerHeight(true);
+				}, animate).outerHeight(true);
 			});
 		},
-		render: function (models) {
+		render: function (models, animate) {
 			var prompts = models || this.model.models,
 				templateCtx = (models && _.invoke(models, 'toJSON')) || this.model.toJSON();
 			this.$el.html(this.template(templateCtx));
-			this.sort(prompts, false, 500);
+			this.sort(prompts, false, animate ? 'slow' : 0);
 			return this;
 		}
 	});

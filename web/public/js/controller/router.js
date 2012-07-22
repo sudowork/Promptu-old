@@ -33,7 +33,7 @@
 
 			this.prompts = new Prompts();
 			this.promptsview = new PromptsView({
-	model: this.prompts
+				model: this.prompts
 			});
 
 			this.prompts.add([
@@ -103,7 +103,7 @@
 		},
 		keyUpHandler: function (e) {
 			if (e.which === 27) {
-				router.promptsview.search('');
+				router.promptsview.render(undefined, false);
 				$('#main .search-query').attr('value', '').blur();
 			}
 		}

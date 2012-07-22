@@ -10,11 +10,16 @@
 				return model.get(field);
 			});
 		},
+    filterByTag: function (tag) {
+      return this.filter(function (prompt) {
+        return _.include(prompt.get('tags'), tag);
+      });
+    },
 		search: function (query) {
-			return this.filter(function (notif) {
-				return notif.get('header').indexOf(query) >= 0 ||
-					notif.get('body').indexOf(query) >= 0 ||
-					_.any(notif.get('tags'), function (tag) {
+			return this.filter(function (prompt) {
+				return prompt.get('header').indexOf(query) >= 0 ||
+					prompt.get('body').indexOf(query) >= 0 ||
+					_.any(prompt.get('tags'), function (tag) {
 						return tag.indexOf(query) >= 0;
 					});
 			});
