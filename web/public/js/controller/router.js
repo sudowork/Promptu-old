@@ -1,9 +1,13 @@
 (function (window, $, _, Backbone, PUApp) {
-	var Prompt = PUApp.models.Prompt,
-		Prompts = PUApp.collections.Prompts,
-		PromptsView = PUApp.views.PromptsView;
+  var Prompt = PUApp.models.Prompt,
+    Prompts = PUApp.collections.Prompts,
+    PromptsView = PUApp.views.PromptsView,
+	  Group = PUApp.models.Group,
+		Groups = PUApp.collections.Groups,
+		GroupsView = PUApp.views.GroupsView;
 
 	var $prompts = $('#prompts-container'),
+    $groups = $('#groups-container'),
 		$detail = $('#detail-container'),
 		$prefs = $('#prefs-container'),
 		$current, $next;
@@ -25,8 +29,9 @@
 	var Router = Backbone.Router.extend({
 		routes: {
 			'' : 'prompts',
-			'prompts' : 'prompts',
+			'prompts': 'prompts',
 			'detail/:id': 'showDetail',
+      'groups': 'showGroup',
 			'prefs': 'showPrefs',
 			'sortby/:field': 'sortPrompts',
 			'search/:query': 'searchPrompts',
@@ -70,8 +75,43 @@
 			this.promptsView.render();
 			$('#main .search-query').attr('value', '').blur();
 		},
-		showDetail: function (id) {
-			transition.push($detail);
+    showGroup: function () {
+			transition.push($groups);
+
+      this.groupsModel = this.groupsModel || new Groups();
+      this.groupsView = this.groupsView || new GroupsView({
+	model: this.groupsModel
+      });
+
+      this.groupsModel.reset([
+	{ id: 0, priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
+	{ id: 1, priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
+	{ id: 2, priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
+	{ id: 3, priority: 3, header: 'test', body: 'yolo', tags: [] },
+	{ id: 4, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
+	{ id: 5, priority: 2, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 6, priority: 1, header: 'test', body: 'yolo', tags: [] },
+	{ id: 7, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
+	{ id: 8, priority: 2, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 9, priority: 3, header: 'test', body: 'yolo', tags: ['bbb'] },
+	{ id: 10, priority: 0, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 11, priority: 1, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 12, priority: 2, header: 'test', body: 'yolo', tags: ['bbb'] },
+	{ id: 13, priority: 3, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 14, priority: 0, header: 'test3', body: 'yolo', tags: ['bbb'] },
+	{ id: 15, priority: 1, header: 'test', body: 'yolo', tags: [] },
+	{ id: 16, priority: 2, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 17, priority: 3, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 18, priority: 0, header: 'test', body: 'yolo', tags: [] },
+	{ id: 19, priority: 1, header: 'test2', body: 'yolo', tags: [] },
+	{ id: 20, priority: 1, header: 'test3', body: 'yolo', tags: [] },
+	{ id: 21, priority: 1, header: 'test4', body: 'yolo', tags: [] }
+      ]);
+
+      this.groupsView.render();
+    },
+    showDetail: function (id) {
+      transition.push($detail);
 		},
 		showPrefs: function () {
 			transition.push($prefs);
@@ -88,7 +128,6 @@
 		searchPrompts: function (query) {
 			this.promptsView.search(query);
 		},
-
 		redirect: function () {
 
 		}

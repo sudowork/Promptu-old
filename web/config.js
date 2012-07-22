@@ -70,6 +70,9 @@ config.default = {
     'js/model/prompt.js',
     'js/collection/prompts.js',
     'js/view/promptsview.js',
+    'js/model/group.js',
+    'js/collection/groups.js',
+    'js/view/groupsview.js',
     'js/controller/router.js'
   ],
 	executorInterval: 5 ,
