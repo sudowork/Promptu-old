@@ -89,7 +89,6 @@
 			this.navigate('prompts', { trigger: true });
 		},
 		prompts: function () {
-			this.checkConnection();
 			this.promptsView.render();
 			transition.push($prompts);
 			$('.main .search-query').attr('value', '').blur();
