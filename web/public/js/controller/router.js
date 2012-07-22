@@ -3,12 +3,34 @@
     Prompts = PUApp.collections.Prompts,
     PromptsView = PUApp.views.PromptsView;
 
+  var $prompts = $('#prompts-container'),
+    $detail = $('#detail-container'),
+    $prefs = $('#prefs-container'),
+    $current, $next;
+
+  var transition = {
+    $current: undefined,
+    $next: undefined,
+    param: 'fast',
+    push: function (next) {
+      this.$next = next;
+      if (this.$current) this.$current.slideUp(this.param);
+      if (this.$next) this.$next.slideDown(this.param);
+      this.$current = this.$next;
+    }
+  };
+
   var Router = Backbone.Router.extend({
     routes: {
-      '' : 'init',
+      '' : 'prompts',
+      'prompts' : 'prompts',
+      'detail/:id': 'showDetail',
+      'prefs': 'showPrefs',
       '*other': 'redirect'
     },
-    init: function () {
+    prompts: function () {
+      transition.push($prompts);
+
       this.prompts = new Prompts();
       this.promptsview = new PromptsView({
 	model: this.prompts
@@ -40,7 +62,12 @@
       ]);
 
       this.promptsview.render();
-
+    },
+    showDetail: function (id) {
+      transition.push($detail);
+    },
+    showPrefs: function () {
+      transition.push($prefs);
     },
     redirect: function () {
 

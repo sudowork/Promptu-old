@@ -1,6 +1,6 @@
 (function (window, $, _, Backbone, PUApp) {
   var PromptsView = Backbone.View.extend({
-    el: '#prompts',
+    el: '#prompts-container',
     template: PUApp.templates['prompts-template'],
     initialize: function () {
     },
