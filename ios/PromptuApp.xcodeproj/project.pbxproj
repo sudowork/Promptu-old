@@ -32,6 +32,12 @@
 		E5B1EF1615BB6D540089CC77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B1EF1515BB6D540089CC77 /* QuartzCore.framework */; };
 		E5B1EF1A15BB6EED0089CC77 /* RefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */; };
 		E5B1EF1E15BB70700089CC77 /* UIColor+CreateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */; };
+		E5B1EF3015BB7FC90089CC77 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF2F15BB7FC90089CC77 /* NSString+Helper.m */; };
+		E5B1EF3415BB7FD80089CC77 /* NSData+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF3315BB7FD80089CC77 /* NSData+Helper.m */; };
+		E5B1EF3815BB807A0089CC77 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF3615BB807A0089CC77 /* MenuViewController.m */; };
+		E5B1EF3915BB807A0089CC77 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EF3715BB807A0089CC77 /* MenuViewController.xib */; };
+		E5B1EF3D15BB812F0089CC77 /* PromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */; };
+		E5B1EF3E15BB812F0089CC77 /* PromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +89,16 @@
 		E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshViewController.m; sourceTree = "<group>"; };
 		E5B1EF1C15BB70700089CC77 /* UIColor+CreateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CreateMethods.h"; sourceTree = "<group>"; };
 		E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CreateMethods.m"; sourceTree = "<group>"; };
+		E5B1EF2E15BB7FC90089CC77 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		E5B1EF2F15BB7FC90089CC77 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		E5B1EF3215BB7FD80089CC77 /* NSData+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Helper.h"; sourceTree = "<group>"; };
+		E5B1EF3315BB7FD80089CC77 /* NSData+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Helper.m"; sourceTree = "<group>"; };
+		E5B1EF3515BB807A0089CC77 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		E5B1EF3615BB807A0089CC77 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		E5B1EF3715BB807A0089CC77 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		E5B1EF3A15BB812F0089CC77 /* PromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptViewController.h; sourceTree = "<group>"; };
+		E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptViewController.m; sourceTree = "<group>"; };
+		E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +216,12 @@
 				E5B1EF1815BB6EED0089CC77 /* RefreshViewController.h */,
 				E5B1EEE815BB5FD60089CC77 /* RevealController.m */,
 				E5B1EF1915BB6EED0089CC77 /* RefreshViewController.m */,
+				E5B1EF3515BB807A0089CC77 /* MenuViewController.h */,
+				E5B1EF3615BB807A0089CC77 /* MenuViewController.m */,
+				E5B1EF3715BB807A0089CC77 /* MenuViewController.xib */,
+				E5B1EF3A15BB812F0089CC77 /* PromptViewController.h */,
+				E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */,
+				E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -219,7 +241,11 @@
 				E5B1EEF015BB62B10089CC77 /* Singleton.h */,
 				E5B1EEF115BB62B10089CC77 /* Singleton.m */,
 				E5B1EF1C15BB70700089CC77 /* UIColor+CreateMethods.h */,
+				E5B1EF2E15BB7FC90089CC77 /* NSString+Helper.h */,
+				E5B1EF3215BB7FD80089CC77 /* NSData+Helper.h */,
 				E5B1EF1D15BB70700089CC77 /* UIColor+CreateMethods.m */,
+				E5B1EF2F15BB7FC90089CC77 /* NSString+Helper.m */,
+				E5B1EF3315BB7FD80089CC77 /* NSData+Helper.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -336,6 +362,8 @@
 			files = (
 				E5B1EEB415BB526D0089CC77 /* InfoPlist.strings in Resources */,
 				E5B1EEC015BB526D0089CC77 /* ViewController.xib in Resources */,
+				E5B1EF3915BB807A0089CC77 /* MenuViewController.xib in Resources */,
+				E5B1EF3E15BB812F0089CC77 /* PromptViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +409,10 @@
 				E5B1EF1315BB6D350089CC77 /* PrettyToolbar.m in Sources */,
 				E5B1EF1A15BB6EED0089CC77 /* RefreshViewController.m in Sources */,
 				E5B1EF1E15BB70700089CC77 /* UIColor+CreateMethods.m in Sources */,
+				E5B1EF3015BB7FC90089CC77 /* NSString+Helper.m in Sources */,
+				E5B1EF3415BB7FD80089CC77 /* NSData+Helper.m in Sources */,
+				E5B1EF3815BB807A0089CC77 /* MenuViewController.m in Sources */,
+				E5B1EF3D15BB812F0089CC77 /* PromptViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
