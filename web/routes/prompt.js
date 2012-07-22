@@ -29,7 +29,7 @@ exports.createPrompt = function (req, res) {
     params.channels = JSON.parse(params.channels);
     if (exists(params.tags)) params.tags = JSON.parse(params.tags);
   } catch (err) {
-    E.send(res, 'VALIDATION_EXCEPTION', {devices: params.devices});
+    E.send(res, 'VALIDATION_EXCEPTION', params);
     return false;
   }
   var prompt = new Models.Prompt(_.extend({}, params, {updated: Date.now()}));

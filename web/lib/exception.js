@@ -26,6 +26,10 @@ var exceptions = {
   SESSION_MISSING_EXCEPTION: {
     code: 403,
     msg: 'Need to provide session token in sessionToken param'
+  },
+  SESSION_INVALID_EXCEPTION: {
+    code: 403,
+    msg: 'Session has either expired or is invalid'
   }
 }
 

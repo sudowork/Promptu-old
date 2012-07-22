@@ -65,11 +65,13 @@ exports.signup = function (req, res) {
     'devices'
   );
 
-  try {
-    params.devices = JSON.parse(params.devices);
-  } catch (err) {
-    E.send(res, 'VALIDATION_EXCEPTION', {devices: params.devices});
-    return false;
+  if (exists(params.devices)) {
+    try {
+      params.devices = JSON.parse(params.devices);
+    } catch (err) {
+      E.send(res, 'VALIDATION_EXCEPTION', {devices: params.devices});
+      return false;
+    }
   }
 
   if (!exists(params.email) || !exists(params.password)){
