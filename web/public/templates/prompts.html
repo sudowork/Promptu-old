@@ -1,19 +1,21 @@
 <% _.each(arguments[0], function (prompt) { %>
 <div class="prompt box_shadow" id="prompt-<%= prompt.id %>">
-  <div class="prompt-priority priority-<%= prompt.priority %>"></div>
-  <div class="prompt-content">
-    <h1 class="prompt-header">
-      <div class="prompt-header-text">
+  <div class="priority priority-<%= prompt.priority %>"></div>
+  <div class="content">
+    <h1 class="header">
+      <div class="header-text">
 	<%= prompt.header %>
       </div>
     </h1>
-    <div class="prompt-body">
-      <span class="prompt-body-text">
+    <div class="body">
+      <span class="body-text">
 	<%= prompt.body %>
       </span>
-      <span class="prompt-tags">
+    </div>
+    <div class="footer">
+      <span class="tags">
 	<% for (var i = 0, l = prompt.tags.length; i < l; i += 1) { %>
-	  <a class="prompt-tag"><%= prompt.tags[i] %></a>
+	  <a class="badge tag"><%= prompt.tags[i] %></a>
         <% } %>
       </span>
     </div>
