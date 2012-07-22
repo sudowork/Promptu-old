@@ -51,7 +51,7 @@ $(document).ready(function () {
 					password: password
 				}, function (data) {
 					if (data && data.token) {
-						var authtoken = Sha1(data.token + secret);
+						var authtoken = Sha1.hash(data.token + secret);
 						window.location = '/#login/' + authtoken;
 					}
 				});
