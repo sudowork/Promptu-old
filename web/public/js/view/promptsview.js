@@ -53,7 +53,7 @@
 			var prompts = models || this.model.models,
 				templateCtx = (models && _.invoke(models, 'toJSON')) || this.model.toJSON();
 			this.$el.html(this.template(templateCtx));
-			this.computePosition(prompts, false, animate);
+			this.computePosition(prompts, true, animate);
 			$('.dropdown-toggle').dropdown();
 			$('[rel=tooltipLeft]').tooltip({placement: 'left'});
 			$('[rel=tooltipTop]').tooltip({placement: 'top'});

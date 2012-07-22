@@ -17,7 +17,7 @@
 	var transition = {
 		$current: undefined,
 		$next: undefined,
-		param: 'slow',
+		param: 'fast',
 		push: function (next) {
 			if (this.$current !== next) {
 				this.$next = next;
