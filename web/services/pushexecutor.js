@@ -46,7 +46,7 @@ var channelToAction = {
     var promptPayload = {}
       , devices = user.devices;
     var promptPayload = _(prompt).pick(
-        'id_',
+        '_id',
         'header',
         'body',
         'priority',
