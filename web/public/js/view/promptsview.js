@@ -9,6 +9,8 @@
     render: function (models) {
       var templateCtx = (models && _.invoke(models, 'toJSON')) || this.model.toJSON();
       this.$el.html(this.template(templateCtx));
+      $('[rel=tooltipLeft]').tooltip({placement: 'left'}).tooltip('hide');
+      $('[rel=tooltipTop]').tooltip({placement: 'top'}).tooltip('hide');
       return this;
     }
   });
