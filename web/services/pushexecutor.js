@@ -46,12 +46,12 @@ var channelToAction = {
     var promptPayload = {}
       , devices = user.devices;
     var promptPayload = _(prompt).pick(
-        '_id',
-        'header',
-        'body',
-        'priority',
-        'duedate',
-        'tags'
+        //'_id',
+        'header'
+        //'body',
+        //'priority',
+        //'duedate',
+        //'tags'
     );
     // Convert duedate to seconds since epoch
     if (exists(promptPayload.duedate)) { promptPayload.duedate = promptPayload.duedate / 1000; }
