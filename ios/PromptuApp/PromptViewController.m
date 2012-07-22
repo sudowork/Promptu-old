@@ -76,7 +76,7 @@
 				 ^NSComparisonResult(id a, id b) {
 				     NSDate *first = [(Prompt*)a dueDate];
 				     NSDate *second = [(Prompt*)b dueDate];
-				     return [first compare: second];
+				     return [second compare: first];
 			    }];
 	     self.title = @"promptu";
 	     [self refreshView];
@@ -240,12 +240,12 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     self.prompts = _array(self.prompts).filter(^BOOL (id obj) {
 		if ([obj isKindOfClass:[Prompt class]]) {
-		    if ([((Prompt *)obj).body rangeOfString:searchBar.text].location != NSNotFound)
+		    if ([((Prompt *)obj).body rangeOfString:searchBar.text options:NSCaseInsensitiveSearch].location != NSNotFound)
 		return YES;
-	    if ([((Prompt *)obj).header rangeOfString:searchBar.text].location != NSNotFound)
+	    if ([((Prompt *)obj).header rangeOfString:searchBar.text options:NSCaseInsensitiveSearch].location != NSNotFound)
 		return YES;
 	    for (NSString *s in ((Prompt *)obj).tags) {
-		if ([s rangeOfString:searchBar.text].location != NSNotFound)
+		if ([s rangeOfString:searchBar.text options:NSCaseInsensitiveSearch].location != NSNotFound)
 		    return YES;
 	    }
 		}

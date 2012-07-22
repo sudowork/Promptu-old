@@ -67,6 +67,7 @@
 }
 
 - (IBAction)dayPicker:(id)sender {
+    [self.promptViewController shufflePrompts:nil];
 
 }
 

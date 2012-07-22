@@ -39,7 +39,8 @@
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
 	NSLog(@"AYo");
 	PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
-	frontViewController.title = @"Promptu";
+	frontViewController.title = @"promptu";
+    [frontViewController reloadDataSource];
 	MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
 	rearViewController.promptViewController = frontViewController;
 	UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
