@@ -116,7 +116,7 @@ exports.signup = function (req, res) {
 exports.session = function (req, res, next) {
   // @NOTE: can use session or query string. Used for testing.
   var sessionToken = req.session.sessionToken || req.body.sessionToken || req.query.sessionToken;
-  if (sessionToken)
+  if (!exists(sessionToken)) { E.send(res, 'SESSION_MISSING_EXCEPTION'); return; }
   Models.User.findOne({session: sessionToken})
     .populate('groups', ['_id', 'path'])
     .exec(function (err, user) {
