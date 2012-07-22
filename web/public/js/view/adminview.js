@@ -7,7 +7,7 @@
 		events: {
 			'click button[type="submit"]': 'submitPrompt'
 		},
-		submitPrompt: function () {
+		submitPrompt: function (e) {
 			var head = $('#header').val(),
 				body = $('#body').val(),
 				channels = [],
@@ -32,6 +32,7 @@
 				author: author,
 				duedate: date
 			});
+			e.preventDefault();
 		},
 		createPrompt: function (obj) {
 			$.ajax({
