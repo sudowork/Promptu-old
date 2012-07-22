@@ -34,7 +34,7 @@
 				z = models.length + 1,
 				$e;
 			_.each(models, function (m, i) {
-				$e = $('#prompt-' + m.id);
+				$e = $('#prompt-' + m._id);
 				if (animate) {
 					top += $e.css({
 						'z-index': z--

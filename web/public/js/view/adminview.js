@@ -51,18 +51,20 @@
 				type: 'post',
 				data: obj,
 				success: function () {
-					$('.alert').hide('fast');
-					$(PUApp.templates['success-template']({
-						header: 'Congrats!',
-						message: 'You\'ve successfully created a prompt!'
-					})).insertBefore(self.$el.children().first());
+					$('.alert').hide('fast', function () {
+						$(PUApp.templates['success-template']({
+							header: 'Congrats!',
+							message: 'You\'ve successfully created a prompt!'
+						})).hide().insertBefore(self.$el.children().first()).slideDown('fast');
+					});
 				},
 				error: function () {
-					$('.alert').hide('fast');
-					$(PUApp.templates['error-template']({
-						header: 'Error!',
-						message: 'Something went wrong! Please try again'
-					})).insertBefore(self.$el.children().first());
+					$('.alert').hide('fast', function () {
+						$(PUApp.templates['error-template']({
+							header: 'Error!',
+							message: 'Something went wrong! Please try again'
+						})).hide().insertBefore(self.$el.children().first()).slideDown('fast');
+					});
 				}
 			});
 		},
