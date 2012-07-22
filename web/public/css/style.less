@@ -135,7 +135,6 @@ footer {
 	text-align: center;
 }
 
-@blue: #7EABE2;
 .prompt {
 	position: absolute;
 	width: 94%;
@@ -149,6 +148,26 @@ footer {
 		padding: 5px 10px;
 	}
 	.header {
+    .priority {
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 10px 10px 10px 0px;
+    }
+
+    .priority-0 {
+      .statechange(@p0);
+     }
+    .priority-1 {
+      .statechange(@p1);
+     }
+    .priority-2 {
+      .statechange(@p2);
+     }
+    .priority-3 {
+      .statechange(@p3);
+     }
+
 	}
 	.body {
 		border-bottom: 1px solid #DDD;
@@ -156,16 +175,7 @@ footer {
 	.footer {
 		border-top: 1px solid #FFF;
 		.tag {
-			border: 1px solid darken(@blue, 10%);
-			background-color: @blue;
-			&:hover {
-				background-color: lighten(@blue, 10%);
-				border-color: @blue;
-			}
-			&:active {
-				background-color: darken(@blue, 10%);
-				border-color: darken(@blue, 20%);
-			}
+      .statechange(@blue, darken(@blue, 10%));
 		}
 	}
 }

@@ -42,3 +42,26 @@
 	-ms-transform: rotate(@deg);
 	transform: rotate(@deg);
 }
+
+.statechange (@color, @bordercolor) {
+  background-color: @color;
+  border: 1px solid @bordercolor;
+  &:hover {
+    background-color: lighten(@color, 5%);
+    border-color: lighten(@bordercolor, 5%);
+  }
+  &:active {
+    background-color: darken(@color, 5%);
+    border-color: darken(@bordercolor, 5%);
+  }
+}
+
+.statechange (@color) {
+  background-color: @color;
+  &:hover {
+    background-color: lighten(@color, 5%);
+  }
+  &:active {
+    background-color: darken(@color, 5%);
+  }
+}
