@@ -53,13 +53,13 @@ block content
 		form.well.form-vertical.span3(method="post", action="http://192.168.1.116:3000/auth")
 			h1 promptu
 			fieldset
-				.control-group
+				.control-group.email-container
 					label.control-label(for="email")
 						input#email.input(type="text",placeholder="Email")
-				.control-group
+				.control-group.password-container
 					label.control-label(for="password")
 						input#password.input(type="password",placeholder="Password")
-				.control-group
+				.control-group.password-container
 					label.control-label(for="password-confirm")
 						input#password-confirm.input(type="password",placeholder="Retype Password")
 			button#signin.btn.btn-primary(type="submit") Sign in

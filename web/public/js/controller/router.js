@@ -29,6 +29,7 @@
 	var Router = Backbone.Router.extend({
 		routes: {
 			'' : 'prompts',
+			'login/:hash': 'login',
 			'prompts': 'prompts',
 			'detail/:id': 'showDetail',
 			'groups': 'showGroup',
@@ -38,6 +39,9 @@
 			'tag/:tag': 'filterByTag',
 			'priority/:priority': 'filterByPriority',
 			'*other': 'redirect'
+		},
+		login: function (hash) {
+			console.log(hash);
 		},
 		prompts: function () {
 			transition.push($prompts);
