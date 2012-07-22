@@ -124,7 +124,7 @@
 			this.promptsView.search(query);
 		},
 		redirect: function () {
-			window.location = '/login';
+			// window.location = '/login';
 		}
 	});
 
