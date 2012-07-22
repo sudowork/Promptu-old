@@ -47,6 +47,6 @@ module.exports = _.extend({}, exceptions, {
   },
 
   // Easier method call to send an exception when you don't know the type
-  sendUnk: function (res, info) { this.sendE(res, null, info) }
+  sendUnk: function (res, info) { this.send(res, null, info) }
 });
 
