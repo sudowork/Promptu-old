@@ -28,8 +28,8 @@ body {
 				}
 			}
       img {
-	max-height: 35px;
-	margin: -5px;
+	max-height: 40px;
+	margin: -6px;
       }
 			ul {
 				font-size: 15px;
@@ -90,6 +90,7 @@ body {
 #main {
 	margin-top: 20px;
 	float: right;
+  height: 100%;
 
 	.navbar {
 		margin-bottom: 10px;
@@ -141,9 +142,15 @@ body {
 
 #prompts-container {
 }
+
 #prompts {
 	overflow-y: scroll;
 	position: relative;
+}
+
+#groups {
+  overflow-y: scroll;
+  position: relative;
 }
 
 #detail-container {
@@ -153,8 +160,6 @@ body {
 }
 
 #subscribed-container {
-  overflow-y: scroll;
-  position: relative;
 }
 
 #join-container {
@@ -208,6 +213,50 @@ body {
       .blueButton();
 		}
 	}
+}
+
+.group {
+  width: 94%;
+  border: 1px solid #CCC;
+  .shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.1));
+  .round(5px);
+  background-color: #EEE;
+  margin-top: 10px;
+
+  .header, .body, .footer {
+    padding: 5px 10px;
+  }
+  .header {
+    .priority {
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin: 10px 10px 10px 0px;
+    }
+
+    .priority[priority="0"] {
+      .statechange(@p0);
+     }
+    .priority[priority="1"] {
+      .statechange(@p1);
+     }
+    .priority[priority="2"] {
+      .statechange(@p2);
+     }
+    .priority[priority="3"] {
+      .statechange(@p3);
+     }
+  }
+
+  .body {
+    border-bottom: 1px solid #DDD;
+  }
+  .footer {
+    border-top: 1px solid #FFF;
+    .tag {
+      .blueButton();
+    }
+  }
 }
 
 footer {
