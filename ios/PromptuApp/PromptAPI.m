@@ -9,7 +9,7 @@
 #import "PromptAPI.h"
 #import "AFNetworking.h"
 
-#define kHost @"http://192.168.1.116:3000"
+#define kHost @"http://promptuapp.com:80"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,13 +34,10 @@
 	      withParams:(NSMutableDictionary*)params
 	    onCompletion:(JSONResponseBlock)completionBlock {
 
-    NSMutableURLRequest *apiRequest =
-    [self multipartFormRequestWithMethod:method
-				    path:path
-			      parameters:params
-	       constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-		   //TODO: attach file if needed
-	       }];
+
+    NSMutableURLRequest *apiRequest = [self requestWithMethod:method
+							    path:path
+						      parameters:params];
 
     AFJSONRequestOperation* operation = [[AFJSONRequestOperation alloc] initWithRequest: apiRequest];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

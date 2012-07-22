@@ -36,35 +36,40 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
 
-//    PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
-//    frontViewController.title = @"Promptu";
-//    MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-//    rearViewController.promptViewController = frontViewController;
-//    UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
-//	UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-//
-//    [navigationController pushViewController:frontViewController animated:NO];
-//
-//    PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
-//
-//    navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
-//    navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
-//    navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
-//    navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
-//    navBar.tintColor = navBar.gradientEndColor;
-//
-//	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
-//	self.viewController = revealController;
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
+	NSLog(@"AYo");
+	PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
+	frontViewController.title = @"Promptu";
+	MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+	rearViewController.promptViewController = frontViewController;
+	UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
+	UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
 
-    SignInViewController *signInController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
-    self.viewController = signInController;
+	[navigationController pushViewController:frontViewController animated:NO];
+
+	PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
+
+	navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
+	navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
+	navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
+	navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
+	navBar.tintColor = navBar.gradientEndColor;
+
+	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+	self.viewController = revealController;
+    } else {
+	SignInViewController *signInController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
+	self.viewController = signInController;
+    }
 
 	self.window.rootViewController = self.viewController;
 	[self.window makeKeyAndVisible];
 	return YES;
 }
 
-
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NEW_PROMPT_PUSH object:self userInfo:userInfo];
+}
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 

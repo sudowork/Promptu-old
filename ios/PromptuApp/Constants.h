@@ -15,6 +15,8 @@
 
 #define FONT_BOLD [UIFont fontWithName:@"HelveticaNeue-Bold" size:16]
 #define FONT_LIGHT [UIFont fontWithName:@"HelveticaNeue-Light" size:14]
+#define FONT_NAV [UIFont fontWithName:@"HelveticaNeue" size:23]
+
 
 // Prompt View Setup
 
@@ -24,3 +26,8 @@
 // Notification Center
 
 #define MENU_ITEM_SELECTED @"MENU_ITEM_SELECTED"
+#define NEW_PROMPT_PUSH @"NEW_PROMPT_PUSH"
+
+// Secret
+
+#define API_SECRET @"eUWEUVYKRvfxMaZNgY4Q7eWV"

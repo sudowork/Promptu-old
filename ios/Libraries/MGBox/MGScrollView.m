@@ -121,7 +121,7 @@
 	height += box.topMargin + box.frame.size.height + box.bottomMargin;
     }
     height += BOTTOM_MARGIN; // pad the bottom of the box
-    self.contentSize = CGSizeMake(self.frame.size.width, height);
+    self.contentSize = CGSizeMake(self.frame.size.width, height + kOffset);
 }
 
 - (void)snapToNearestBox {

@@ -21,6 +21,8 @@
 #define PRIORITY_ZERO 0
 #define PRIORITY_ONE  1
 #define PRIORITY_TWO  2
+#define PRIORITY_THREE  3
+
 
 #define STATE_CLOSED 0
 #define STATE_OPENED 1
@@ -29,7 +31,7 @@
 
 @synthesize promptId, delegate, dataSource, expandState, headerLabel;
 
-+ (id)promptBoxWithPromptId:(NSInteger)aPromptId
++ (id)promptBoxWithPromptId:(NSString *)aPromptId
 {
     CGRect frame = CGRectMake(DEFAULT_LEFT_MARGIN, 0, DEFAULT_WIDTH, 0);
     PromptBox *box = [[[self class] alloc] initWithFrame:frame];
@@ -60,7 +62,6 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:sender.view];
-    NSLog(@"%@", NSStringFromCGPoint(point));
     Prompt *prompt = [self.dataSource promptWithId:self.promptId];
 
     if (self.expandState == STATE_CLOSED) {
@@ -147,6 +148,9 @@
 	    blockImage = @"orange";
 	    break;
 	    case PRIORITY_TWO:
+	    blockImage = @"green";
+	    break;
+	case PRIORITY_THREE:
 	    blockImage = @"green";
 	    break;
 	    default:

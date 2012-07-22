@@ -39,6 +39,7 @@
 	     forControlEvents:UIControlEventEditingDidEndOnExit];
     self.username.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.username.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.username.alpha = 0;
 
     [self.password addTarget:self
 		      action:@selector(passwordDoneEditing:)
@@ -46,6 +47,8 @@
     self.password.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.username.autocorrectionType = UITextAutocorrectionTypeNo;
     self.password.secureTextEntry = YES;
+    self.password.alpha = 0;
+
 
 }
 
@@ -55,6 +58,17 @@
     self.password = nil;
     self.backgroundView = nil;
     [super viewDidUnload];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView beginAnimations: @"Fade In" context:nil];
+
+    [UIView setAnimationDelay:1];
+    [UIView setAnimationDuration:1];
+    self.username.alpha = 1;
+    self.password.alpha = 1;
+    [UIView commitAnimations];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,41 +95,46 @@
 							 withPassword:self.password.text
 							 withCB:^(id result, NSError* error) {
 							     if(!error) {
-								 NSLog(@"Yay authenticated!");
+				     NSLog(@"Login Success");
+
+				     [self.progressHud hide:YES];
+
+				     PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
+				     frontViewController.title = @"Promptu";
+				     MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+				     rearViewController.promptViewController = frontViewController;
+				     UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
+				     UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+
+				     [navigationController pushViewController:frontViewController animated:NO];
+
+				     PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
+
+				     navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
+				     navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
+				     navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
+				     navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
+				     navBar.tintColor = navBar.gradientEndColor;
+
+				     RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+
+				     UIViewAnimationTransition trans = UIViewAnimationTransitionFlipFromRight;
+				     [UIView beginAnimations: nil context: nil];
+				     [UIView setAnimationTransition: trans forView: self.view.window cache: YES];
+				     [self presentModalViewController: revealController animated: NO];
+				     [UIView commitAnimations];
+
+				     [frontViewController release];
+				     [rearViewController release];
+				     [rearViewController release];
 
 							     } else {
-								 NSLog(@"Error: auth failed");
-							     }
-				 [self.progressHud hide:YES];
+				     NSLog(@"Login Error");
+				     self.progressHud.mode = MBProgressHUDModeCustomView;
+				     self.progressHud.labelText = @"Try Again!";
+				     [self.progressHud hide:YES afterDelay:2];
+				 }
 
-				 PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
-				 frontViewController.title = @"Promptu";
-				 MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-				 rearViewController.promptViewController = frontViewController;
-				 UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
-				 UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-
-				 [navigationController pushViewController:frontViewController animated:NO];
-
-				 PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
-
-				 navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
-				 navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
-				 navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
-				 navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
-				 navBar.tintColor = navBar.gradientEndColor;
-
-				 RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
-
-				 UIViewAnimationTransition trans = UIViewAnimationTransitionFlipFromRight;
-				 [UIView beginAnimations: nil context: nil];
-				 [UIView setAnimationTransition: trans forView: self.view.window cache: YES];
-				 [self presentModalViewController: revealController animated: NO];
-				 [UIView commitAnimations];
-
-				 [frontViewController release];
-				 [rearViewController release];
-				 [rearViewController release];
     }];
 }
 

@@ -12,9 +12,9 @@
 
 @interface Prompt : NSObject
 
-@property (nonatomic, assign) NSInteger uId;
-@property (nonatomic, assign) NSInteger authorId;
-@property (nonatomic, assign) NSInteger groupId;
+@property (nonatomic, copy) NSString* uId;
+@property (nonatomic, copy) NSString* authorId;
+@property (nonatomic, copy) NSString* groupId;
 @property (nonatomic, copy) NSString* header;
 @property (nonatomic, copy) NSString* body;
 @property (nonatomic, assign) int priority;
@@ -22,5 +22,7 @@
 @property (nonatomic, copy) NSDate* sendDate;
 @property (nonatomic, copy) NSDate* dueDate;
 @property (nonatomic, assign) bool dismissed;
+
++(Prompt *) promptWithJSON:(NSMutableDictionary *)json;
 
 @end

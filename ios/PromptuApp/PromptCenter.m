@@ -11,30 +11,56 @@
 #import "Prompt.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "PromptAPI.h"
+#import "NSString+Helper.h"
 
 @implementation PromptCenter
 
-@synthesize deviceToken, uuid, api;
+@synthesize deviceToken, uuid, api, promptCache, sessionToken;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-	uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-	api = [[PromptAPI alloc] init];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+						 selector:@selector(newPromptNotification:)
+						     name:NEW_PROMPT_PUSH
+						   object:nil];
     }
     return self;
 }
+
+- (void)newPromptNotification:(NSNotification *)notification {
+//    if (!self.promptCache) {
+//        self.promptCache = [[NSMutableArray alloc] initWithCapacity:1];
+//    }
+//    Prompt *newPrompt = [[Prompt alloc] init];
+//    newPrompt.uId = [notification.userInfo objectForKey:@"_id"];
+//    newPrompt.header = [notification.userInfo objectForKey:@"header"];
+//    newPrompt.body = [notification.userInfo objectForKey:@"body"];
+//    newPrompt.priority = [[notification.userInfo objectForKey:@"priority"] intValue];
+//    newPrompt.tags = [notification.userInfo objectForKey:@"tags"];
+//    newPrompt.dueDate = [NSDate dateWithTimeIntervalSince1970:[[notification.userInfo objectForKey:@"duedate"] intValue]];
+//
+//    [self.promptCache addObject:newPrompt];
+//    [newPrompt release];
+//    NSLog(@"Contents of Notif: %@", notification.userInfo);
+}
+
 
 
 - (void)signInWithUsername:(NSString *)username
 	      withPassword:(NSString *)password
 	      withCB:(void(^)(id result, NSError* error))completionBlock {
 
+//////////////////////////////////////////////////////////////////////////
+    self.uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    self.api = [[PromptAPI alloc] init];
+//////////////////////////////////////////////////////////////////////////
+
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 				   username, @"email",
 				   password, @"password",
-				   @"yoyoyoyo", @"uuid",
+				   uuid, @"uuid",
 				   self.deviceToken, @"deviceToken",  nil];
 
     [api commandWithMethod:@"POST" withPath:@"auth" withParams:params onCompletion:
@@ -42,6 +68,7 @@
 	 if([json objectForKey:@"error"]) {
 	     completionBlock(nil, [json objectForKey:@"error"]);
 	 } else {
+	 self.sessionToken = [[NSString stringWithFormat:@"%@%@", [json objectForKey:@"token"], API_SECRET] sha1];
 	     completionBlock(json, nil);
 	 }
      }];
@@ -51,51 +78,35 @@
 - (void)fetchPromptswithForceRefresh:(bool)refresh
 			withCB:(void(^)(id result, NSError* error))completionBlock {
 
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
-
-    Prompt *a = [[Prompt alloc] init];
-    a.uId = 3423432;
-    a.authorId = 2342342;
-    a.groupId = 23434;
-    a.header = @"Walk the dog";
-    a.body = @"sdlfiewufiuw3ksdbfkudsfusdbsd";
-    a.priority = 0;
-    a.tags = [[NSArray alloc] initWithObjects:@"yee", @"yolo", @"rawdog", nil];
-    a.sendDate = [NSDate dateWithTimeIntervalSince1970:1308031456];
-    a.dueDate = [NSDate dateWithTimeIntervalSince1970:1343559306];
-    a.dismissed = NO;
-    [result addObject:a];
-    [a release];
-
-    Prompt *b = [[Prompt alloc] init];
-    b.uId = 34234323;
-    b.authorId = 2342342;
-    b.groupId = 23434;
-    b.header = @"ECE256 Test";
-    b.body = @"blah blah dsfsdf dfsdfsd iujfoijsadfoisjd ewhiwueh9348kdjv";
-    b.priority = 2;
-    b.tags = [[NSArray alloc] initWithObjects:@"blah", @"yo", @"dho", nil];
-    b.sendDate = [NSDate dateWithTimeIntervalSince1970:1309000000];
-    b.dueDate = [NSDate dateWithTimeIntervalSince1970:1343132916];
-    b.dismissed = YES;
-    [result addObject:b];
-    [b release];
-
-    Prompt *c = [[Prompt alloc] init];
-    c.uId = 3423434;
-    c.authorId = 2342342;
-    c.groupId = 23434;
-    c.header = @"Homework";
-    c.body = @"yksdjfuskfuhdskufhsd dsfjasdfkjsadhfo dsfasdfsdaf qewrwqe gtyjyu rffewrfwerfer";
-    c.priority = 1;
-    c.tags = [[NSArray alloc] initWithObjects:@"blah", @"hw", @"dho", nil];
-    c.sendDate = [NSDate dateWithTimeIntervalSince1970:1309000000];
-    c.dueDate = [NSDate dateWithTimeIntervalSince1970:1343219316];
-    c.dismissed = NO;
-    [result addObject:c];
-    [c release];
-
-    completionBlock(result, nil);
+    if(refresh || [self.promptCache count] == 0){
+	NSString *path = [NSString stringWithFormat:@"/prompt/sync?sessionToken=%@", self.sessionToken];
+	[api commandWithMethod:@"GET" withPath:path withParams:nil onCompletion:
+	 ^(NSDictionary * json) {
+	     if([json objectForKey:@"error"]) {
+		 completionBlock(nil, [json objectForKey:@"error"]);
+	     } else {
+		 //self.promptCache = json;
+		 NSMutableArray *newPrompts = [NSMutableArray arrayWithCapacity:1];
+		 for (NSMutableDictionary *dict in [json objectForKey:@"yolo"]) {
+		     [newPrompts addObject:[Prompt promptWithJSON:dict]];
+		 }
+		 self.promptCache = [NSArray arrayWithArray:newPrompts];
+		 completionBlock(self.promptCache, nil);
+	     }
+	 }];
+	return;
+    }
+    completionBlock(self.promptCache, nil);
 }
+
+- (void)updateDismissedState:(bool)state forPrompt:(NSString *)promptId {
+    for (Prompt *p in self.promptCache) {
+	if ([p.uId isEqualToString:promptId]) {
+	    p.dismissed = state;
+	    break;
+	}
+    }
+}
+
 
 @end

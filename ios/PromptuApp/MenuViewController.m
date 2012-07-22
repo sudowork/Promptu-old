@@ -35,6 +35,7 @@
     [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:NO withCB: ^(id result, NSError* error) {
 	if(!error) {
 	    self.promptViewController.prompts = result;
+	self.promptViewController.title = @"promptu";
 	    [self.promptViewController refreshView];
 	}
     }];
@@ -55,6 +56,7 @@
 		}
 		return NO;
 	    }).unwrap;
+	self.promptViewController.title = @"dismissed";
 	    [self.promptViewController refreshView];
 	}
     }];

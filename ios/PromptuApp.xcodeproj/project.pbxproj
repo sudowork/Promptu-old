@@ -112,13 +112,14 @@
 		E5B1F04C15BBAB920089CC77 /* icons-white.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F01C15BBAB920089CC77 /* icons-white.png */; };
 		E5B1F07115BBC6F00089CC77 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1F06F15BBC6F00089CC77 /* SignInViewController.m */; };
 		E5B1F07215BBC6F00089CC77 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F07015BBC6F00089CC77 /* SignInViewController.xib */; };
-		E5B1F07415BBCAA60089CC77 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F07315BBCAA60089CC77 /* splashScreen.png */; };
+		E5B1F07415BBCAA60089CC77 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F07315BBCAA60089CC77 /* Default.png */; };
 		E5B1F08515BBCC760089CC77 /* PromptAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1F08415BBCC760089CC77 /* PromptAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		775E628BF93D4FDEA52A036E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B2D7C8B040494DB5B3016DC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52AE52815BC774700A0AEAD /* PromptuApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PromptuApp-Info.plist"; sourceTree = "<group>"; };
 		E55FFBB015BBF3120060699F /* grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey.png; sourceTree = "<group>"; };
 		E55FFBBA15BC03470060699F /* NSDate+Relative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Relative.h"; sourceTree = "<group>"; };
 		E55FFBBB15BC03470060699F /* NSDate+Relative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Relative.m"; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		E5B1EEA915BB526D0089CC77 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5B1EEAB15BB526D0089CC77 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E5B1EEAD15BB526D0089CC77 /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E5B1EEB115BB526D0089CC77 /* PromptuApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PromptuApp-Info.plist"; sourceTree = "<group>"; };
 		E5B1EEB315BB526D0089CC77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5B1EEB515BB526D0089CC77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5B1EEB715BB526D0089CC77 /* PromptuApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PromptuApp-Prefix.pch"; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		E5B1F06E15BBC6F00089CC77 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		E5B1F06F15BBC6F00089CC77 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		E5B1F07015BBC6F00089CC77 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
-		E5B1F07315BBCAA60089CC77 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashScreen.png; sourceTree = "<group>"; };
+		E5B1F07315BBCAA60089CC77 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E5B1F08315BBCC760089CC77 /* PromptAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptAPI.h; sourceTree = "<group>"; };
 		E5B1F08415BBCC760089CC77 /* PromptAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,7 +330,7 @@
 		E5B1EEB015BB526D0089CC77 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E5B1EEB115BB526D0089CC77 /* PromptuApp-Info.plist */,
+				E52AE52815BC774700A0AEAD /* PromptuApp-Info.plist */,
 				E5B1EEB215BB526D0089CC77 /* InfoPlist.strings */,
 				E5B1EEB515BB526D0089CC77 /* main.m */,
 				E5B1EEB715BB526D0089CC77 /* PromptuApp-Prefix.pch */,
@@ -520,7 +520,7 @@
 		E5B1EFEC15BBAB920089CC77 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				E5B1F07315BBCAA60089CC77 /* splashScreen.png */,
+				E5B1F07315BBCAA60089CC77 /* Default.png */,
 				E5B1EFED15BBAB920089CC77 /* icon-check-black.png */,
 				E5B1EFEE15BBAB920089CC77 /* icon-check-empty-black.png */,
 				E5B1EFEF15BBAB920089CC77 /* icon-check-empty-grey.png */,
@@ -696,7 +696,7 @@
 				E5B1F04B15BBAB920089CC77 /* icons-grey.png in Resources */,
 				E5B1F04C15BBAB920089CC77 /* icons-white.png in Resources */,
 				E5B1F07215BBC6F00089CC77 /* SignInViewController.xib in Resources */,
-				E5B1F07415BBCAA60089CC77 /* splashScreen.png in Resources */,
+				E5B1F07415BBCAA60089CC77 /* Default.png in Resources */,
 				E55FFBB115BBF3120060699F /* grey.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

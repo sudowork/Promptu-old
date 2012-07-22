@@ -43,19 +43,54 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)newPromptNotification:(NSNotification *)notification {
+
+//    Prompt *newPrompt = [[Prompt alloc] init];
+//    newPrompt.uId = [notification.userInfo objectForKey:@"_id"];
+//    newPrompt.header = [notification.userInfo objectForKey:@"header"];
+//    newPrompt.body = [notification.userInfo objectForKey:@"body"];
+//    newPrompt.priority = [[notification.userInfo objectForKey:@"priority"] intValue];
+//    newPrompt.tags = [notification.userInfo objectForKey:@"tags"];
+//    newPrompt.dueDate = [NSDate dateWithTimeIntervalSince1970:[[notification.userInfo objectForKey:@"duedate"] intValue]];
+//    NSMutableArray *temp = [NSMutableArray arrayWithArray:self.prompts];
+//    [temp addObject:newPrompt];
+//    self.prompts = [NSArray arrayWithArray:temp];
+//    [self refreshView];
+//    [newPrompt release];
+
+
+}
+
 
 //// This is the core method you should implement
 - (void)reloadDataSource {
     [super reloadDataSource];
-    // Here you would make an HTTP request or something like that
-    // Call [self doneLoadingTableViewData] when you are done
-    [self performSelector:@selector(doneLoadingData) withObject:nil afterDelay:3.0];
+    [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:YES
+	withCB:^(id result, NSError* error) {
+	 if(!error) {
+	     NSLog(@"%@", result);
+	     self.promptIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
+	     self.promptBoxIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
+//             self.prompts = [NSArray arrayWithArray:newPrompts];
+	     self.prompts = [result sortedArrayUsingComparator:
+				 ^NSComparisonResult(id a, id b) {
+				     NSDate *first = [(Prompt*)a dueDate];
+				     NSDate *second = [(Prompt*)b dueDate];
+				     return [first compare: second];
+			    }];
+	     self.title = @"promptu";
+	     [self refreshView];
+	 } else {
+	     NSLog(@"Pull to Sync Failed");
+	 }
+	[self performSelector:@selector(doneLoadingData)];
+    }];
 }
 
 - (void)refreshView {
     [self.scroller.boxes removeAllObjects];
     for (Prompt *prompt in self.prompts) {
-	[self.scroller.boxes addObject:[self.promptBoxIndex objectForKey:[NSNumber numberWithLong:prompt.uId]]];
+	[self.scroller.boxes addObject:[self.promptBoxIndex objectForKey:prompt.uId]];
     }
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
     [self.scroller flashScrollIndicators];
@@ -81,15 +116,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:NO
+    [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:YES
 						    withCB:^(id result, NSError* error) {
 	 if(!error) {
+	 NSLog(@"%@", result);
 	     self.promptIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
 	     self.promptBoxIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
-	     self.prompts = result;
+	 self.prompts = result;
 	     [self refreshView];
-	 }
+	 } else {
+	 NSLog(@"Initial Sync Failed");
+     }
      }];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+					     selector:@selector(newPromptNotification:)
+						 name:NEW_PROMPT_PUSH
+					       object:nil];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = FONT_NAV;
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = UITextAlignmentCenter;
+    label.textColor =[UIColor whiteColor];
+    label.text=@"promptu";
+    self.navigationItem.titleView = label;
+    [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:-3.0 forBarMetrics:UIBarMetricsDefault];
+    [self.navigationItem.titleView sizeToFit];
+    [label release];
 
     if ([self.navigationController.parentViewController respondsToSelector:@selector(revealGesture:)] && [self.navigationController.parentViewController respondsToSelector:@selector(revealToggle:)]) {
 		UIPanGestureRecognizer *navigationBarPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController.parentViewController action:@selector(revealGesture:)];
@@ -137,12 +192,14 @@
 }
 
 - (void)promptBoxDidDismiss:(PromptBox *)promptBox {
-    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dismissed = YES;
+    ((Prompt *)[self.promptIndex objectForKey:promptBox.promptId]).dismissed = YES;
+    [(PromptCenter *)[PromptCenter sharedInstance] updateDismissedState:YES forPrompt:promptBox.promptId];
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
 - (void)promptBoxDidUndismiss:(PromptBox *)promptBox {
-    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dismissed = NO;
+    ((Prompt *)[self.promptIndex objectForKey:promptBox.promptId]).dismissed = NO;
+    [(PromptCenter *)[PromptCenter sharedInstance] updateDismissedState:NO forPrompt:promptBox.promptId];
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
@@ -152,8 +209,8 @@
 
 #pragma mark - PUPromptBoxDataSource
 
-- (Prompt *)promptWithId:(NSInteger)promptId {
-    return [self.promptIndex objectForKey:[NSNumber numberWithLong:promptId]];
+- (Prompt *)promptWithId:(NSString *)promptId {
+    return [self.promptIndex objectForKey:promptId];
 }
 
 #pragma mark - IBActions
@@ -181,9 +238,27 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    self.prompts = _array(self.prompts).filter(^BOOL (id obj) {
+		if ([obj isKindOfClass:[Prompt class]]) {
+		    if ([((Prompt *)obj).body rangeOfString:searchBar.text].location != NSNotFound)
+		return YES;
+	    if ([((Prompt *)obj).header rangeOfString:searchBar.text].location != NSNotFound)
+		return YES;
+	    for (NSString *s in ((Prompt *)obj).tags) {
+		if ([s rangeOfString:searchBar.text].location != NSNotFound)
+		    return YES;
+	    }
+		}
+		return NO;
+    }).unwrap;
+    for (UIGestureRecognizer *gr in self.gestureRecognizers){
+	gr.enabled = YES;
+    }
+    [searchBar setShowsCancelButton:NO animated:YES];
+    [self refreshView];
+    [searchBar resignFirstResponder];
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    searchBar cl
     [searchBar resignFirstResponder];
     [searchBar setShowsCancelButton:NO animated:YES];
     for (UIGestureRecognizer *gr in self.gestureRecognizers){
@@ -195,22 +270,28 @@
 #pragma mark - Custom accessors
 
 - (void)setPrompts:(NSArray *)newPrompts {
-    [newPrompts retain];
+    [newPrompts copy];
     [prompts release];
     prompts = newPrompts;
     for (Prompt *prompt in self.prompts) {
-	[self.promptIndex setObject:prompt forKey:[NSNumber numberWithInt:prompt.uId]];
-	if (![self.promptBoxIndex objectForKey:[NSNumber numberWithInt:prompt.uId]]) {
+	[self.promptIndex setObject:prompt forKey:prompt.uId];
+	if (![self.promptBoxIndex objectForKey:prompt.uId]) {
 	    PromptBox *box = [PromptBox promptBoxWithPromptId:prompt.uId];
 	    box.delegate = self;
 	    box.dataSource = self;
-	    [self.promptBoxIndex setObject:box forKey:[NSNumber numberWithInt:prompt.uId]];
+	    [self.promptBoxIndex setObject:box forKey:prompt.uId];
 	}
     }
 }
 
 - (void)setTitle:(NSString *)aTitle {
-    self.navigationItem.title = aTitle;
+    UILabel *titleLabel = ((UILabel *)self.navigationItem.titleView);
+    titleLabel.text = aTitle;
+    UIFont* font = titleLabel.font;
+    CGSize constraintSize = CGSizeMake(titleLabel.frame.size.width, MAXFLOAT);
+    CGSize labelSize = [titleLabel.text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+//    titleLabel.frame = CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y, titleLabel.frame.size.width, labelSize.height);
+    titleLabel.frame = CGRectMake(titleLabel.frame.origin.x, titleLabel.frame.origin.y, 200, labelSize.height);
 }
 
 

@@ -15,6 +15,8 @@
 @property (nonatomic, copy) NSString *deviceToken;
 @property (nonatomic, copy) NSString *uuid;
 @property (nonatomic, retain) PromptAPI *api;
+@property (nonatomic, copy) NSMutableDictionary *promptCache;
+@property (nonatomic, copy) NSString *sessionToken;
 
 - (void)signInWithUsername:(NSString *)username
 	      withPassword:(NSString *)password
@@ -22,5 +24,7 @@
 
 - (void)fetchPromptswithForceRefresh:(bool)refresh
 			withCB:(void(^)(id result, NSError* error))completionBlock;
+
+- (void)updateDismissedState:(bool)state forPrompt:(NSString *)promptId;
 
 @end

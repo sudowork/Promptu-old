@@ -15,7 +15,7 @@
 
 @interface PromptViewController : RefreshViewController <PromptBoxDelegate, PromptBoxDataSource>
 
-@property (nonatomic, retain) NSArray *prompts;
+@property (nonatomic, copy) NSArray *prompts;
 @property (nonatomic, retain) NSMutableDictionary *promptIndex;
 @property (nonatomic, retain) NSMutableDictionary *promptBoxIndex;
 @property (nonatomic, retain) IBOutlet PrettyToolbar *toolBar;

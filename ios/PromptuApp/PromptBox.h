@@ -13,13 +13,13 @@
 
 @interface PromptBox : MGStyledBox
 
-@property (nonatomic, assign) NSInteger promptId;
+@property (nonatomic, copy) NSString *promptId;
 @property (nonatomic, assign) id<PromptBoxDelegate> delegate;
 @property (nonatomic, assign) id<PromptBoxDataSource> dataSource;
 @property (nonatomic, assign) int expandState;
 @property (nonatomic, retain) UILabelStrikethrough *headerLabel;
 
-+ (id)promptBoxWithPromptId:(NSInteger)aPromptId;
++ (id)promptBoxWithPromptId:(NSString *)aPromptId;
 
 @end
 
@@ -38,6 +38,6 @@
 @protocol PromptBoxDataSource <NSObject>
 
 @required
-- (Prompt *)promptWithId:(NSInteger)promptId;
+- (Prompt *)promptWithId:(NSString *)promptId;
 
 @end
