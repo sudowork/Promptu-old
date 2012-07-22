@@ -8,7 +8,6 @@
 
 	var $prompts = $('#prompts-container'),
 		$groups = $('#groups-container'),
-		$detail = $('#detail-container'),
 		$prefs = $('#prefs-container'),
 		$current, $next;
 
@@ -28,10 +27,9 @@
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'' : 'prompts',
+			'' : 'init',
 			'login/:hash': 'login',
 			'prompts': 'prompts',
-			'detail/:id': 'showDetail',
 			'groups': 'showGroup',
 			'prefs': 'showPrefs',
 			'sortby/:field': 'sortPrompts',
@@ -42,9 +40,24 @@
 		},
 		login: function (hash) {
 			PUApp.user.token = hash;
-			console.log(hash);
+			sessionStorage['promptutoken'] = hash;
+			this.navigate('', { trigger: true });
+		},
+		checkConnection: function () {
+			PUApp.user.token = PUApp.user.token || sessionStorage['promptutoken'];
+			if (!PUApp.user.token) {
+				window.location = '/login';
+				return false;
+			}
+			return true;
+		},
+		init: function () {
+			if (checkConnection()) {
+				//sync
+			}
 		},
 		prompts: function () {
+			checkConnection();
 			transition.push($prompts);
 
 			this.promptsModel = this.promptsModel || new Prompts();
@@ -81,6 +94,7 @@
 			$('#main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {
+			checkConnection();
 			transition.push($groups);
 
 			this.groupsModel = this.groupsModel || new Groups();
@@ -106,26 +120,28 @@
 
 			this.groupsView.render();
 		},
-		showDetail: function (id) {
-			transition.push($detail);
-		},
 		showPrefs: function () {
+			checkConnection();
 			transition.push($prefs);
 		},
 		sortPrompts: function (field) {
+			checkConnection();
 			this.promptsView.sort(field);
 		},
 		filterByTag: function (tag) {
+			checkConnection();
 			this.promptsView.filterByTag(tag);
 		},
 		filterByPriority: function (priority) {
+			checkConnection();
 			this.promptsView.filterByPriority(priority);
 		},
 		searchPrompts: function (query) {
+			checkConnection();
 			this.promptsView.search(query);
 		},
 		redirect: function () {
-
+			window.location = '/login';
 		}
 	});
 
