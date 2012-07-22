@@ -47,6 +47,24 @@ block content
 							i.icon-random(rel="tooltipTop",title="Filter by Random")
 					#prompts
 
-		#groups-container.sheet
-		#detail-container.sheet
-		#prefs-container.sheet
+			#groups-container.sheet
+				div#sideBar.span1
+					button.white(rel="tooltipLeft",title="Subscribed Groups")
+						i.icon-list-ul
+					button.white(rel="tooltipLeft",title="Join a Group")
+						i.icon-plus
+					button.white(rel="tooltipLeft",title="Group Invites")
+						i.icon-envelope
+
+				div#main.span10.pull-right
+					.navbar
+						.container
+							input.search-query(type="text", placeholder="Search")
+							div.divider-vertical
+							i.icon-font(rel="tooltipTop",title="Sort by Name")
+							i.icon-time(rel="tooltipTop",title="Sort by Priority")
+					#groups
+
+
+			#detail-container.sheet
+			#prefs-container.sheet
