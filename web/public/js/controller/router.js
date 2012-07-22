@@ -13,10 +13,12 @@
 		$next: undefined,
 		param: 'fast',
 		push: function (next) {
-			this.$next = next;
-			if (this.$current) this.$current.slideUp(this.param);
-			if (this.$next) this.$next.slideDown(this.param);
-			this.$current = this.$next;
+			if (this.$current != next) {
+				this.$next = next;
+				if (this.$current) this.$current.slideUp(this.param);
+				if (this.$next) this.$next.slideDown(this.param);
+				this.$current = this.$next;
+			}
 		}
 	};
 
@@ -26,17 +28,21 @@
 			'prompts' : 'prompts',
 			'detail/:id': 'showDetail',
 			'prefs': 'showPrefs',
+			'sortby/:field': 'sortPrompts',
+			'search/:query': 'searchPrompts',
+			'tag/:tag': 'filterByTag',
+			'priority/:priority': 'filterByPriority',
 			'*other': 'redirect'
 		},
 		prompts: function () {
 			transition.push($prompts);
 
-			this.prompts = new Prompts();
-			this.promptsview = new PromptsView({
-				model: this.prompts
+			this.promptsModel = this.promptsModel || new Prompts();
+			this.promptsView = this.promptsView || new PromptsView({
+				model: this.promptsModel
 			});
 
-			this.prompts.add([
+			this.promptsModel.reset([
 				{ id: 0, priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
 				{ id: 1, priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
 				{ id: 2, priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
@@ -61,7 +67,8 @@
 				{ id: 21, priority: 1, header: 'test4', body: 'yolo', tags: [] }
 			]);
 
-			this.promptsview.render();
+			this.promptsView.render();
+			$('#main .search-query').attr('value', '').blur();
 		},
 		showDetail: function (id) {
 			transition.push($detail);
@@ -69,6 +76,19 @@
 		showPrefs: function () {
 			transition.push($prefs);
 		},
+		sortPrompts: function (field) {
+			this.promptsView.sort(field);
+		},
+		filterByTag: function (tag) {
+			this.promptsView.filterByTag(tag);
+		},
+		filterByPriority: function (priority) {
+			this.promptsView.filterByPriority(priority);
+		},
+		searchPrompts: function (query) {
+			this.promptsView.search(query);
+		},
+
 		redirect: function () {
 
 		}
@@ -81,30 +101,36 @@
 	var Doc = Backbone.View.extend({
 		el: 'body',
 		initialize: function () {
-			console.log('init');
 		},
 		events: {
 			'click .byheader': 'sortByHeader',
 			'click .bypriority': 'sortByPriority',
+			'click #prompts-container .tag': 'filterByTag',
+			'click #prompts-container .priority': 'filterByPriority',
 			'keyup #main .search-query': 'searchPrompts',
 			'keyup': 'keyUpHandler'
 		},
 		sortByHeader: function (e) {
-			router.promptsview.sort(router.prompts.sort('header'), true);
+			router.navigate('sortby/header', { trigger: true });
 		},
 		sortByPriority: function (e) {
-			router.promptsview.sort(router.prompts.sort('priority'), true);
+			router.navigate('sortby/priority', { trigger: true });
+		},
+		filterByTag: function (e) {
+			var tagName = $(e.target).html();
+			router.navigate('tag/' + tagName, { trigger: true });
+		},
+		filterByPriority: function (e) {
+			var priority = $(e.target).attr('priority');
+			router.navigate('priority/' + priority, { trigger: true });
 		},
 		searchPrompts: function (e) {
 			var query = $(e.currentTarget).attr('value');
-			if (router.promptsview.search(query)) {
-				e.stopPropagation();
-			}
+			router.navigate('search/' + query, { trigger: true });
 		},
 		keyUpHandler: function (e) {
 			if (e.which === 27) {
-				router.promptsview.render(undefined, false);
-				$('#main .search-query').attr('value', '').blur();
+				router.navigate('', { trigger: true });
 			}
 		}
 	});
