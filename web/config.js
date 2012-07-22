@@ -72,7 +72,22 @@ config.default = {
     'js/view/promptsview.js',
     'js/controller/router.js'
   ],
-	executorInterval: 15
+	executorInterval: 5 ,
+  email: {
+    subjectPrefix: '[PromptU Notification] ',
+    transport: {
+      service: "Gmail",
+      auth: {
+        user: "promptuapp@gmail.com",
+        pass: "6mbTkYe8uXcc"
+      }
+    },
+    defaults: {
+      sender: 'promptU App <notifier@promptuapp.com>',
+      subject: 'New Notification from promptU',
+      template: './public/templates/email.html'
+    }
+  }
 };
 
 module.exports = config;

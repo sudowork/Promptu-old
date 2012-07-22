@@ -41,9 +41,10 @@ var groupFuncts = require('../routes/group');
  * Channel-based action for sending prompt
  */
 var channelToAction = {
-  apn: function (devices, prompt) {
+  apn: function (user, prompt) {
     // Remove _id key/value pair
-    var promptPayload = {};
+    var promptPayload = {}
+      , devices = user.devices;
     _.chain(prompt)
       .keys()
       .each(function (k) {
@@ -63,11 +64,27 @@ var channelToAction = {
         promptPayload
       );
 
+      console.log('APN:', user.email, d.token, prompt.header);
       apn.sendNotification(notif);
     });
   },
-  mail: function (email, prompt) {
-    console.log('mail');
+  email: function (user, prompt) {
+    console.log('Email:', user.email, prompt.header);
+    var mail = require('../lib/mail');
+    mail.send({
+      to: user.email,
+      subject: config.email.subjectPrefix + prompt.header,
+      data: {
+        subject: prompt.header,
+        header_image: 'foo',
+        tw_profile_link: 'foo',
+        fb_profile_link: 'foo',
+        year: new Date().getFullYear(),
+        company_name: 'PromptU',
+        unsub_link: 'foo',
+        update_profile_link: 'foo'
+      }
+    });
   },
   sms: function (phone, prompt) {
   }
@@ -114,7 +131,7 @@ function actOnContactInfo (userids, prompt, cb) {
 function sendNotificationsToUsers(users, prompt) {
   _(users).each(function (user) {
     _(prompt.channels).each(function (chan) {
-      channelToAction[chan](user.devices, prompt);
+      channelToAction[chan](user, prompt);
     });
   });
 }
