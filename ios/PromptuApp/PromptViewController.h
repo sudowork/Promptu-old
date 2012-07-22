@@ -9,6 +9,7 @@
 #import "RefreshViewController.h"
 
 #import <UIKit/UIKit.h>
+//#import "PromptBox.h"
 #import "MGBoxProtocol.h"
 @class PrettyToolbar;
 

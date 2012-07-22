@@ -38,6 +38,27 @@
 		E5B1EF3915BB807A0089CC77 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EF3715BB807A0089CC77 /* MenuViewController.xib */; };
 		E5B1EF3D15BB812F0089CC77 /* PromptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */; };
 		E5B1EF3E15BB812F0089CC77 /* PromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */; };
+		E5B1EFC215BB9B930089CC77 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFAE15BB9B930089CC77 /* arrow.png */; };
+		E5B1EFC315BB9B930089CC77 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFAF15BB9B930089CC77 /* background.png */; };
+		E5B1EFC415BB9B930089CC77 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB015BB9B930089CC77 /* background@2x.png */; };
+		E5B1EFC515BB9B930089CC77 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB115BB9B930089CC77 /* blackArrow.png */; };
+		E5B1EFC615BB9B930089CC77 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB215BB9B930089CC77 /* blackArrow@2x.png */; };
+		E5B1EFC715BB9B930089CC77 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB315BB9B930089CC77 /* blueArrow.png */; };
+		E5B1EFC815BB9B930089CC77 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB415BB9B930089CC77 /* blueArrow@2x.png */; };
+		E5B1EFC915BB9B930089CC77 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB515BB9B930089CC77 /* ButtonMenu.png */; };
+		E5B1EFCA15BB9B930089CC77 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB615BB9B930089CC77 /* ButtonMenu@2x.png */; };
+		E5B1EFCB15BB9B930089CC77 /* dirty_old_shirt.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB715BB9B930089CC77 /* dirty_old_shirt.png */; };
+		E5B1EFCC15BB9B930089CC77 /* gplaypattern.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB815BB9B930089CC77 /* gplaypattern.png */; };
+		E5B1EFCD15BB9B930089CC77 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFB915BB9B930089CC77 /* green.png */; };
+		E5B1EFCE15BB9B930089CC77 /* grey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBA15BB9B930089CC77 /* grey.jpg */; };
+		E5B1EFCF15BB9B930089CC77 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBB15BB9B930089CC77 /* orange.png */; };
+		E5B1EFD015BB9B930089CC77 /* p0.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBC15BB9B930089CC77 /* p0.png */; };
+		E5B1EFD115BB9B930089CC77 /* p1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBD15BB9B930089CC77 /* p1.png */; };
+		E5B1EFD215BB9B930089CC77 /* promptu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBE15BB9B930089CC77 /* promptu.bundle */; };
+		E5B1EFD315BB9B930089CC77 /* rebel.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFBF15BB9B930089CC77 /* rebel.png */; };
+		E5B1EFD415BB9B930089CC77 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFC015BB9B930089CC77 /* red.png */; };
+		E5B1EFD515BB9B930089CC77 /* wood_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFC115BB9B930089CC77 /* wood_pattern.png */; };
+		E5B1EFD815BB9E020089CC77 /* NavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1EFD715BB9E010089CC77 /* NavBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +120,27 @@
 		E5B1EF3A15BB812F0089CC77 /* PromptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptViewController.h; sourceTree = "<group>"; };
 		E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptViewController.m; sourceTree = "<group>"; };
 		E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptViewController.xib; sourceTree = "<group>"; };
+		E5B1EFAE15BB9B930089CC77 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		E5B1EFAF15BB9B930089CC77 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		E5B1EFB015BB9B930089CC77 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		E5B1EFB115BB9B930089CC77 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		E5B1EFB215BB9B930089CC77 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		E5B1EFB315BB9B930089CC77 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		E5B1EFB415BB9B930089CC77 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		E5B1EFB515BB9B930089CC77 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
+		E5B1EFB615BB9B930089CC77 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
+		E5B1EFB715BB9B930089CC77 /* dirty_old_shirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirty_old_shirt.png; sourceTree = "<group>"; };
+		E5B1EFB815BB9B930089CC77 /* gplaypattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gplaypattern.png; sourceTree = "<group>"; };
+		E5B1EFB915BB9B930089CC77 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		E5B1EFBA15BB9B930089CC77 /* grey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grey.jpg; sourceTree = "<group>"; };
+		E5B1EFBB15BB9B930089CC77 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		E5B1EFBC15BB9B930089CC77 /* p0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p0.png; sourceTree = "<group>"; };
+		E5B1EFBD15BB9B930089CC77 /* p1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1.png; sourceTree = "<group>"; };
+		E5B1EFBE15BB9B930089CC77 /* promptu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = promptu.bundle; sourceTree = "<group>"; };
+		E5B1EFBF15BB9B930089CC77 /* rebel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rebel.png; sourceTree = "<group>"; };
+		E5B1EFC015BB9B930089CC77 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		E5B1EFC115BB9B930089CC77 /* wood_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood_pattern.png; sourceTree = "<group>"; };
+		E5B1EFD715BB9E010089CC77 /* NavBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +166,7 @@
 				E5B1EEA815BB526D0089CC77 /* Frameworks */,
 				E5B1EEA615BB526D0089CC77 /* Products */,
 				E5B1EED915BB5D860089CC77 /* Libraries */,
-				E5B1EF1715BB6E930089CC77 /* Resources */,
+				E5B1EFAD15BB9B930089CC77 /* Resources */,
 				775E628BF93D4FDEA52A036E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +194,7 @@
 		E5B1EEAF15BB526D0089CC77 /* PromptuApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EFD615BB9D2F0089CC77 /* Boxes */,
 				E5B1EEE515BB5ECA0089CC77 /* Util */,
 				E5B1EEE415BB5EB90089CC77 /* Centers */,
 				E5B1EEE615BB5F770089CC77 /* API */,
@@ -212,6 +255,7 @@
 		E5B1EEE315BB5EAD0089CC77 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1EFD715BB9E010089CC77 /* NavBar.xib */,
 				E5B1EEE715BB5FD60089CC77 /* RevealController.h */,
 				E5B1EF1815BB6EED0089CC77 /* RefreshViewController.h */,
 				E5B1EEE815BB5FD60089CC77 /* RevealController.m */,
@@ -302,11 +346,38 @@
 			path = PrettyKit;
 			sourceTree = "<group>";
 		};
-		E5B1EF1715BB6E930089CC77 /* Resources */ = {
+		E5B1EFAD15BB9B930089CC77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5B1EFAE15BB9B930089CC77 /* arrow.png */,
+				E5B1EFAF15BB9B930089CC77 /* background.png */,
+				E5B1EFB015BB9B930089CC77 /* background@2x.png */,
+				E5B1EFB115BB9B930089CC77 /* blackArrow.png */,
+				E5B1EFB215BB9B930089CC77 /* blackArrow@2x.png */,
+				E5B1EFB315BB9B930089CC77 /* blueArrow.png */,
+				E5B1EFB415BB9B930089CC77 /* blueArrow@2x.png */,
+				E5B1EFB515BB9B930089CC77 /* ButtonMenu.png */,
+				E5B1EFB615BB9B930089CC77 /* ButtonMenu@2x.png */,
+				E5B1EFB715BB9B930089CC77 /* dirty_old_shirt.png */,
+				E5B1EFB815BB9B930089CC77 /* gplaypattern.png */,
+				E5B1EFB915BB9B930089CC77 /* green.png */,
+				E5B1EFBA15BB9B930089CC77 /* grey.jpg */,
+				E5B1EFBB15BB9B930089CC77 /* orange.png */,
+				E5B1EFBC15BB9B930089CC77 /* p0.png */,
+				E5B1EFBD15BB9B930089CC77 /* p1.png */,
+				E5B1EFBE15BB9B930089CC77 /* promptu.bundle */,
+				E5B1EFBF15BB9B930089CC77 /* rebel.png */,
+				E5B1EFC015BB9B930089CC77 /* red.png */,
+				E5B1EFC115BB9B930089CC77 /* wood_pattern.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E5B1EFD615BB9D2F0089CC77 /* Boxes */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Resources;
+			name = Boxes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +435,27 @@
 				E5B1EEC015BB526D0089CC77 /* ViewController.xib in Resources */,
 				E5B1EF3915BB807A0089CC77 /* MenuViewController.xib in Resources */,
 				E5B1EF3E15BB812F0089CC77 /* PromptViewController.xib in Resources */,
+				E5B1EFC215BB9B930089CC77 /* arrow.png in Resources */,
+				E5B1EFC315BB9B930089CC77 /* background.png in Resources */,
+				E5B1EFC415BB9B930089CC77 /* background@2x.png in Resources */,
+				E5B1EFC515BB9B930089CC77 /* blackArrow.png in Resources */,
+				E5B1EFC615BB9B930089CC77 /* blackArrow@2x.png in Resources */,
+				E5B1EFC715BB9B930089CC77 /* blueArrow.png in Resources */,
+				E5B1EFC815BB9B930089CC77 /* blueArrow@2x.png in Resources */,
+				E5B1EFC915BB9B930089CC77 /* ButtonMenu.png in Resources */,
+				E5B1EFCA15BB9B930089CC77 /* ButtonMenu@2x.png in Resources */,
+				E5B1EFCB15BB9B930089CC77 /* dirty_old_shirt.png in Resources */,
+				E5B1EFCC15BB9B930089CC77 /* gplaypattern.png in Resources */,
+				E5B1EFCD15BB9B930089CC77 /* green.png in Resources */,
+				E5B1EFCE15BB9B930089CC77 /* grey.jpg in Resources */,
+				E5B1EFCF15BB9B930089CC77 /* orange.png in Resources */,
+				E5B1EFD015BB9B930089CC77 /* p0.png in Resources */,
+				E5B1EFD115BB9B930089CC77 /* p1.png in Resources */,
+				E5B1EFD215BB9B930089CC77 /* promptu.bundle in Resources */,
+				E5B1EFD315BB9B930089CC77 /* rebel.png in Resources */,
+				E5B1EFD415BB9B930089CC77 /* red.png in Resources */,
+				E5B1EFD515BB9B930089CC77 /* wood_pattern.png in Resources */,
+				E5B1EFD815BB9E020089CC77 /* NavBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "PromptViewController.h"
+#import "MenuViewController.h"
+#import "RevealController.h"
+#import "PrettyKit.h"
 
 @implementation AppDelegate
 
@@ -24,24 +27,36 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-
-    // Push Notification Setup
+    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window = window;
 
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
-    // Look and Feel
-
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
 
-    // Setup initial View controllers
+    PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
+    frontViewController.title = @"Promptu";
+    MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    rearViewController.promptViewController = frontViewController;
+    UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
+	UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
 
-    self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    [navigationController pushViewController:frontViewController animated:NO];
 
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
 
-    [self.window makeKeyAndVisible];
-    return YES;
+    navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
+    navBar.tintColor = navBar.gradientEndColor;
+
+	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+	self.viewController = revealController;
+
+	self.window.rootViewController = self.viewController;
+	[self.window makeKeyAndVisible];
+	return YES;
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
