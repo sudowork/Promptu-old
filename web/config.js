@@ -72,7 +72,7 @@ config.default = {
     'js/view/promptsview.js',
     'js/controller/router.js'
   ],
-	executorInterval: 60
+	executorInterval: 15
 };
 
 module.exports = config;

@@ -41,7 +41,7 @@ var groupFuncts = require('../routes/group');
  * Channel-based action for sending prompt
  */
 var channelToAction = {
-  apn: function (devToken, prompt) {
+  apn: function (devices, prompt) {
     // Remove _id key/value pair
     var promptPayload = {};
     _.chain(prompt)
@@ -51,18 +51,20 @@ var channelToAction = {
       })
       .values();
     // Send notification to device
-    var device = new Device(devToken[0].token)
-      , notif = new Notification();
-    notif.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
-    notif.alert = prompt.header;
-    notif.device = device;
-    notif.payload = _.extend(
-      {},
-      {'messageFrom': 'PromptU'},
-      promptPayload
-    );
+    _(devices).each(function (d) {
+      var device = new Device(d.token)
+        , notif = new Notification();
+      notif.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
+      notif.alert = prompt.header;
+      notif.device = device;
+      notif.payload = _.extend(
+        {},
+        {'messageFrom': 'PromptU'},
+        promptPayload
+      );
 
-    apn.sendNotification(notif);
+      apn.sendNotification(notif);
+    });
   },
   mail: function (email, prompt) {
     console.log('mail');
