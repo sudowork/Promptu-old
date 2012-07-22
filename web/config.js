@@ -3,7 +3,9 @@ var config = {};
 config.development = {
   vendorcss: [
     'css/bootstrap/bootstrap-responsive.css',
-    'css/bootstrap/bootstrap.css'
+    'css/bootstrap/bootstrap.css',
+    'css/fontawesome/font-awesome.css',
+    'css/fontawesome/font-awesome-ie7.css'
   ],
   vendorjs: [
     'js/vendor/underscore.js',
@@ -28,14 +30,17 @@ config.development = {
 config.production = {
   vendorcss: [
     'css/bootstrap/bootstrap-responsive.min.css',
-    'css/bootstrap/bootstrap.min.css'
+    'css/bootstrap/bootstrap.min.css',
+    'css/fontawesome/font-awesome.css',
+    'css/fontawesome/font-awesome-ie7.css'
   ],
   vendorjs: [
     'js/vendor/underscore.min.js',
     'js/vendor/jquery-1.7.2.min.js',
     'js/vendor/backbone.min.js',
     'js/vendor/bootstrap/bootstrap.min.js'
-  ]
+  ],
+  mongoUri: process.env.PROMPTU_PRODUCTION_MONGO_URI || 'mongodb://localhost/promptu',
 };
 
 config.default = {
