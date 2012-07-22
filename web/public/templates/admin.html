@@ -12,10 +12,10 @@
 			<div class="control-group">
 	<label class="control-label" for="prependedInput">Target Groups</label>
 	<div class="controls">
-		<div class="control-group">
+		<div class="control-group targets">
 			<% _.each(arguments[0].groups, function (group) { %>
 				<label class="checkbox">
-					<input type="checkbox" name="<%= group.name %>" value="group._id">
+					<input type="checkbox" name="<%= group.name %>" value="<%= group._id %>">
 					<%= group.name %>
 				</label>
 			<% }); %>

@@ -13,7 +13,8 @@
 				channels = [],
 				date = new Date()/1000 + 10;
 				author = '500c21f5a8762bad30000001',
-				group = '500c238803c67d0d31000004';
+				group = '500c238803c67d0d31000004',
+				groups = [];
 			if ($('input[value="apn"]').attr('checked')) {
 				channels.push('apn');
 			}
@@ -23,6 +24,13 @@
 			if ($('input[value="sms"]').attr('checked')) {
 				channels.push('checked');
 			}
+			var self = this;
+			$('.targets input[type="checkbox"]').each(function (i, e) {
+					if ($(e).attr('checked')) {
+						console.log($(e).attr('value'));
+						groups.push($(e).attr('value'));
+					}
+			});
 			this.createPrompt({
 				sessionToken: PUApp.user.token,
 				group: group,
@@ -36,7 +44,7 @@
 		},
 		createPrompt: function (obj) {
 			$.ajax({
-				url: 'promptuapp.com/prompt/create',
+				url: '/prompt/create',
 				type: 'post',
 				data: obj,
 				success: function () {
