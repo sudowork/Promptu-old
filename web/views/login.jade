@@ -1,6 +1,6 @@
 extends layout
 
-block content
+block head
 	style
 		.container {
 			width: 27%;
@@ -42,12 +42,26 @@ block content
 			background: radial-gradient(ellipse at center,  #00adee 0%,#0078a5 100%); /* W3C */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adee', endColorstr='#0078a5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		}
+		#finish, #password-confirm {
+			display: none;
+		}
+block scripts
+	script(src='js/login.js')
+
+block content
 	.container
-		form.well.form-vertical.span3
+		form.well.form-vertical.span3(method="post", action="http://192.168.1.116:3000/auth")
 			h1 promptu
-			label.email
-				input.input(type="text",placeholder="Email")
-			label.password
-				input.input(type="password",placeholder="Password")
-			button.btn.btn-primary(type="submit") Sign in
-			button.btn.pull-right(type="register") Register
+			fieldset
+				.control-group
+					label.control-label(for="email")
+						input#email.input(type="text",placeholder="Email")
+				.control-group
+					label.control-label(for="password")
+						input#password.input(type="password",placeholder="Password")
+				.control-group
+					label.control-label(for="password-confirm")
+						input#password-confirm.input(type="password",placeholder="Retype Password")
+			button#signin.btn.btn-primary(type="submit") Sign in
+			button#register.btn.pull-right Register
+			button#finish.btn.btn-primary.pull-right(type="submit") Finish
