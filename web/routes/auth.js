@@ -107,6 +107,21 @@ exports.signup = function (req, res) {
   });
 }
 
+exports.logout = function (req, res) {
+  var userId = req.session.userId;
+  Models.User.findOne({
+    _id: userId
+  }, function (err, user) {
+    if (err) { E.sendUnk(res, err); return; }
+    if (!user) { E.send(res, 'NOT_FOUND_EXCEPTION', {user: userId}); return; }
+    user.session = '';
+    user.sessionExp = new Date(0);
+    user.save(function (err) {
+      E.send(res, 'VALIDATION_EXCEPTION', err);
+    });
+  });
+}
+
 /**
  * Any request needing authentication needs to go through this internal endpoint
  * @param req http request needs to have sessionToken

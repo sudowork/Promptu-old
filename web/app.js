@@ -107,11 +107,14 @@ var routes = _.chain(fs.readdirSync('routes/'))
   }, {})
   .value();
 
+// WEBAPP
 app.get('/', routes.index);
 app.get('/login', routes.login);
 
+// BACKEND
 app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);
+app.post('/logout', routes.session, routes.logout);
 
 app.post('/prompt/create', routes.session, routes.createPrompt);
 app.get('/prompt/sync', routes.session, routes.syncPrompts);
