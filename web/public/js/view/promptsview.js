@@ -31,16 +31,18 @@
 		},
 		computePosition: function (models, delay, animate) {
 			var top = 0,
-				z = models.length + 1;
+				z = models.length + 1,
+				$e;
 			_.each(models, function (m, i) {
+				$e = $('#prompt-' + m.id);
 				if (animate) {
-					top += $('#prompt-' + m.id).css({
+					top += $e.css({
 						'z-index': z--
 					}).delay(delay ? i * 35 : 0).animate({
 						top: top + 'px'
 					}, 'slow').outerHeight(true);
 				} else {
-					top += $('#prompt-' + m.id).css({
+					top += $e.css({
 						top: top + 'px',
 						'z-index': z--
 					}).delay(delay ? i * 35 : 0).outerHeight(true);
