@@ -1,5 +1,7 @@
 (function (window, $, _, Backbone, PUApp) {
-	var Prompt = PUApp.models.Prompt,
+	var Admin = PUApp.models.Admin,
+		AdminView = PUApp.views.AdminView,
+		Prompt = PUApp.models.Prompt,
 		Prompts = PUApp.collections.Prompts,
 		PromptsView = PUApp.views.PromptsView,
 		Group = PUApp.models.Group,
@@ -9,6 +11,7 @@
 	var $prompts = $('#prompts-container'),
 		$groups = $('#groups-container'),
 		$prefs = $('#prefs-container'),
+		$admin = $('#admin-container'),
 		$current, $next;
 
 	var transition = {
@@ -32,16 +35,31 @@
 			this.promptsView = new PromptsView({
 				model: this.promptsModel
 			});
+			this.promptsModel.fetch({
+				success: _.bind(function (data) {
+					this.promptsView.render();
+					transition.push($prompts);
+				}, this)
+			});
+
+
 			this.groupsModel = new Groups();
 			this.groupsView = new GroupsView({
 				model: this.groupsModel
 			});
+
+			this.admin = new Admin();
+			this.adminView = new AdminView({
+				model: this.admin
+			});
+
 		},
 		routes: {
 			'' : 'init',
 			'login/:hash': 'login',
 			'prompts': 'prompts',
 			'groups': 'showGroup',
+			'admin': 'showAdmin',
 			'prefs': 'showPrefs',
 			'sortby/:field': 'sortPrompts',
 			'search/:query': 'searchPrompts',
@@ -66,13 +84,11 @@
 			this.navigate('prompts', { trigger: true });
 		},
 		prompts: function () {
-			this.promptsModel.fetch({
-				success: _.bind(function (data) {
-					this.promptsView.render();
-					transition.push($prompts);
-				}, this)
-			});
 			$('.main .search-query').attr('value', '').blur();
+		},
+		showAdmin: function () {
+			this.checkConnection();
+			transition.push($admin);
 		},
 		showGroup: function () {
 			this.checkConnection();

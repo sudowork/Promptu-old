@@ -1,0 +1,51 @@
+<form class="well">
+  <label>Label name</label>
+  <input type="text" class="span3" placeholder="Type something…">
+  <span class="help-block">Example block-level help text here.</span>
+  <label class="checkbox">
+    <input type="checkbox"> Check me out
+  </label>
+  <button type="submit" class="btn">+</button>
+</form>
+
+<div class="span8">
+  <form class="form-horizontal" _lpchecked="1">
+    <fieldset>
+      <div class="control-group">
+	<label class="control-label">Main</label>
+	<div class="controls docs-input-sizes">
+	  <input id="header" class="input-medium" type="text" placeholder="Header">
+	  <input id="body" class="input-medium" type="text" placeholder="Body">
+	  <p class="help-block">This is the core of a Prompt. In order to ensure the effectiveness of each message, we have placed a <em>140</em> character limit on the message body and <em>30</em> character limit on the message header</p>
+	</div>
+      </div>
+      <div class="control-group">
+	<label class="control-label" for="prependedInput">Target Groups</label>
+	<div class="controls">
+	  <div class="input-prepend">
+	    <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
+	  </div>
+	  <p class="help-block">Here's a list of groups you can send your prompt to</p>
+	</div>
+      </div>
+      <div class="control-group">
+	<label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
+	<div class="controls">
+	  <label class="checkbox inline">
+	    <input type="checkbox" id="inlineCheckbox1" value="apn"> Push
+	  </label>
+	  <label class="checkbox inline">
+	    <input type="checkbox" id="inlineCheckbox2" value="email"> Email
+	  </label>
+	  <label class="checkbox inline">
+	    <input type="checkbox" id="inlineCheckbox3" value="sms"> SMS
+	  </label>
+	</div>
+      </div>
+      <div class="form-actions">
+	<button type="submit" class="btn btn-primary">Save changes</button>
+	<button class="btn">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

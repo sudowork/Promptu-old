@@ -74,6 +74,8 @@ config.default = {
     'js/model/group.js',
     'js/collection/groups.js',
     'js/view/groupsview.js',
+    'js/model/admin.js',
+    'js/view/adminview.js',
     'js/controller/router.js'
   ],
 	executorInterval: 5 ,
