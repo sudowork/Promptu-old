@@ -39,7 +39,6 @@
 			this.promptsModel.fetch({
 				success: _.bind(function (data) {
 					this.promptsView.render();
-					transition.push($prompts);
 				}, this)
 			});
 
@@ -52,7 +51,6 @@
 			this.groupsModel.fetch({
 				success: _.bind(function (data) {
 					this.groupsView.render();
-					transition.push($groups);
 				}, this)
 			});
 
@@ -91,18 +89,20 @@
 			this.navigate('prompts', { trigger: true });
 		},
 		prompts: function () {
+			this.checkConnection();
 			this.promptsView.render();
+			transition.push($prompts);
 			$('.main .search-query').attr('value', '').blur();
 		},
 		showAdmin: function () {
 			this.checkConnection();
-			transition.push($admin);
 			this.adminView.render();
+			transition.push($admin);
 		},
 		showGroup: function () {
 			this.checkConnection();
-			transition.push($groups);
 			this.groupsView.render();
+			transition.push($groups);
 		},
 		showPrefs: function () {
 			this.checkConnection();
