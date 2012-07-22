@@ -10,7 +10,3 @@ var render = function (res, page, ctx) {
 exports.index = function (req, res) {
   render(res, 'index', { title: 'Express' });
 };
-
-exports.subscribedGroups = function (req, res) {
-  render(res, 'subscribedGroups', { title: 'Express' });
-};
