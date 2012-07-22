@@ -1,77 +1,80 @@
 extends layout
 
 block content
-  div.navbar.navbar-fixed-top
-    div.navbar-inner
-      div.container-fluid
-	a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
-	  span.icon-bar
-	  span.icon-bar
-	  span.icon-bar
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
 
-	a.brand(href="#") promptu
-	div.btn-group.pull-right
-	  a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
-	    i.icon-user
-	    | Preferences
-	    span.caret
+        a.brand(href="#") promptu
+        .btn-group.pull-right
+          a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
+            i.icon-user
+            | Preferences
+            span.caret
 
-	  ul.dropdown-menu
-	    li: a(href="#") Profile
-	    li: a(href="#") Setting 1
-	    li: a(href="#") Setting 2
-	    li: a(href="#") Setting 3
-	    li.divider
-	    li: a(href="#") Sign Out
+          ul.dropdown-menu
+            li: a(href="#") Profile
+            li: a(href="#") Setting 1
+            li: a(href="#") Setting 2
+            li: a(href="#") Setting 3
+            li.divider
+            li: a(href="#") Sign Out
 
 
-	div.nav-collapse
+        .nav-collapse
           ul.nav
-	    li.active: a(href="#") Home
-	    li: a(href="#") Notifs
-	    li: a(href="#") Groups
+            li.active: a(href="#") Home
+            li: a(href="#") Notifs
+            li: a(href="#") Groups
 
-  div#main.container-fluid
-    div.row-fluid
-      div.span3
-	div.well.sidebar-nav
-	  ul.nav.nav-list
-	    li.nav-header Sidebar
-	    li.option.active: a
-	      img.icon(src='assets/icons/groups.png')
-	      | Groups
-	    li.option: a
-	      img.icon(src='assets/icons/priority.png')
-	      | Priority
-	    li.option: a
-	      img.icon(src='assets/icons/subscribed.png')
-	      | Subscribed
-	    li.option: a
-	      img.icon(src='assets/icons/tag.png')
-	      | Tag
-	    li.option: a
-	      img.icon(src='assets/icons/time.png')
-	      | Time
+  #content.container-fluid
+    .row-fluid
+      #sidbar.span3
+        .well.sidebar-nav
+          ul.nav.nav-list
+            li.nav-header Sidebar
+            li.option.active: a
+              img.icon(src='assets/icons/groups.png')
+              | Groups
+            li.option: a
+              img.icon(src='assets/icons/priority.png')
+              | Priority
+            li.option: a
+              img.icon(src='assets/icons/subscribed.png')
+              | Subscribed
+            li.option: a
+              img.icon(src='assets/icons/tag.png')
+              | Tag
+            li.option: a
+              img.icon(src='assets/icons/time.png')
+              | Time
 
-      div.span9
-	div.hero-unit
-	  h1 Hello, world!
-	  p This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-	  p: a.btn.btn-primary.btn-largeLearn more &raquo;
+      #main.span9
+        ul.nav.nav-pills
+          li
+            form.navbar-search.pull-left
+              input.search-query(type="text".placeholder="Search")
+          li: a(href="#") Regular link
+          li: a(href="#") Regular link
+          li: a(href="#") Regular link
 
-	div.row-fluid
-	  div.span4
-	    h2 Heading
-	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-	    p: a.btn(href="#") View details &raquo;
-	  div.span4
-	    h2 Heading
-	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-	    p: a.btn(href="#") View details &raquo;
-	  div.span4
-	    h2 Heading
-	    p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-	    p: a.btn(href="#") View details &raquo;
+          li.dropdown.pull-right
+            a.dropdown-toggle(data-toggle="dropdown",href="#")
+              | Dropdown
+              b.caret
+            ul#menu3.dropdown-menu
+              li: a(href="#") Action
+              li: a(href="#") Another action
+              li: a(href="#") Something else here
+              li.divider
+              li: a(href="#") Separated link
+
     hr
     footer
       p &copy; Promptu App 2012
+
+

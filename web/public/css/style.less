@@ -1,23 +1,36 @@
 @import 'mixins.less';
 @import 'colors.less';
 
-html, body, #doc, #page-outer {
+html, body {
   height: 100%;
 }
 
 body {
   padding-top: 60px;
   padding-bottom: 40px;
+  background: url(../assets/bg.png);
 }
 .sidebar-nav {
   padding: 9px 0;
 }
 
-#main {
-  background: url(../assets/bg.png);
-}
-
 .icon {
   width: 30px;
   height: 30px;
+}
+
+#sidebar {
+
+}
+
+#main {
+  .nav.nav-pills {
+    .navbar-search {
+      margin-top: 4px;
+      input {
+        background-color: #DDD;
+        border: 1px #BBB solid;
+      }
+    }
+  }
 }
