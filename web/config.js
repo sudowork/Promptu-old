@@ -47,7 +47,7 @@ config.production = {
 config.default = {
   secret: 'eUWEUVYKRvfxMaZNgY4Q7eWV',
   expressSecret: 'rEZvQxgarSw5LLZe6C94BmPr',
-  sessionTimeout: 4,
+  sessionTimeout: 100,
   bcryptRounds: 10,
   mongoUri: process.env.PROMPTU_MONGO_URI || 'mongodb://localhost/promptu',
   apn: {
