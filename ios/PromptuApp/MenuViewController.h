@@ -19,7 +19,4 @@
 - (IBAction)pinned:(id)sender;
 - (IBAction)checked:(id)sender;
 
-
-- (IBAction)shuffle:(id)sender;
-
 @end

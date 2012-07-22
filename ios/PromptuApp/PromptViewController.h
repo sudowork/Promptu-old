@@ -9,11 +9,11 @@
 #import "RefreshViewController.h"
 
 #import <UIKit/UIKit.h>
-//#import "PromptBox.h"
+#import "PromptBox.h"
 #import "MGBoxProtocol.h"
 @class PrettyToolbar;
 
-@interface PromptViewController : RefreshViewController
+@interface PromptViewController : RefreshViewController <PromptBoxDelegate, PromptBoxDataSource>
 
 @property (nonatomic, retain) NSArray *prompts;
 @property (nonatomic, retain) NSMutableDictionary *promptIndex;

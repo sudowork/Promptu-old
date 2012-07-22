@@ -13,7 +13,7 @@
 #import "MGStyledBox.h"
 #import "MGBoxLine.h"
 #import "PromptCenter.h"
-//#import "PUPromptBox.h"
+#import "PromptBox.h"
 #import "Prompt.h"
 #import "PrettyToolbar.h"
 #import "Underscore.h"
@@ -53,10 +53,10 @@
 
 - (void)refreshView {
     [self.scroller.boxes removeAllObjects];
-    for (PUPrompt *prompt in self.prompts) {
+    for (Prompt *prompt in self.prompts) {
 	[self.scroller.boxes addObject:[self.promptBoxIndex objectForKey:[NSNumber numberWithLong:prompt.uId]]];
     }
-    [self.scroller drawBoxesWithSpeed:ANIM_SPEED];
+    [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
     [self.scroller flashScrollIndicators];
 }
 
@@ -80,7 +80,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234 withCallback:
+    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234
+					       withForceRefresh:NO
+						   withCallback:
      ^(long userId, id result, NSError* error) {
 	 if(!error) {
 	     self.promptIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
@@ -103,7 +105,7 @@
 
 
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:PU_PATTERN]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:PROMPT_BACKGROUND]];
     self.scroller.backgroundColor = [UIColor clearColor];
     self.scroller.alwaysBounceVertical = YES;
 
@@ -124,31 +126,31 @@
 
 #pragma mark - PUPromptBoxDelegate
 
-- (void)promptBoxDidExpand:(PUPromptBox *)promptBox {
+- (void)promptBoxDidExpand:(PromptBox *)promptBox {
     [self.scroller drawBoxesWithSpeed:0.0];
 }
 
-- (void)promptBoxDidCompress:(PUPromptBox *)promptBox {
-    [self.scroller drawBoxesWithSpeed:ANIM_SPEED];
+- (void)promptBoxDidCompress:(PromptBox *)promptBox {
+    [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
-- (void)promptBoxDidDissmiss:(PUPromptBox *)promptBox {
-    ((PUPrompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = YES;
-    [self.scroller drawBoxesWithSpeed:ANIM_SPEED];
+- (void)promptBoxDidDissmiss:(PromptBox *)promptBox {
+    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = YES;
+    [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
-- (void)promptBoxDidUndissmiss:(PUPromptBox *)promptBox {
-    ((PUPrompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = NO;
-    [self.scroller drawBoxesWithSpeed:ANIM_SPEED];
+- (void)promptBoxDidUndissmiss:(PromptBox *)promptBox {
+    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = NO;
+    [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
-- (void)promptBoxShowDetailed:(PUPromptBox *)promptBox {
+- (void)promptBoxShowDetailed:(PromptBox *)promptBox {
 
 }
 
 #pragma mark - PUPromptBoxDataSource
 
-- (PUPrompt *)promptWithId:(NSInteger)promptId {
+- (Prompt *)promptWithId:(NSInteger)promptId {
     return [self.promptIndex objectForKey:[NSNumber numberWithLong:promptId]];
 }
 
@@ -171,10 +173,10 @@
     [newPrompts retain];
     [prompts release];
     prompts = newPrompts;
-    for (PUPrompt *prompt in self.prompts) {
+    for (Prompt *prompt in self.prompts) {
 	[self.promptIndex setObject:prompt forKey:[NSNumber numberWithInt:prompt.uId]];
 	if (![self.promptBoxIndex objectForKey:[NSNumber numberWithInt:prompt.uId]]) {
-	    PUPromptBox *box = [PUPromptBox promptBoxWithPromptId:prompt.uId];
+	    PromptBox *box = [PromptBox promptBoxWithPromptId:prompt.uId];
 	    box.delegate = self;
 	    box.dataSource = self;
 	    [self.promptBoxIndex setObject:box forKey:[NSNumber numberWithInt:prompt.uId]];

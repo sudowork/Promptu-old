@@ -29,19 +29,32 @@
     }
     return self;
 }
+//
+//- (IBAction)shuffle:(id)sender {
+//    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234
+//					       withForceRefresh:NO
+//						   withCallback: ^(long userId, id result, NSError* error) {
+//	if(!error) {
+//	    self.promptViewController.prompts = _array(result).shuffle.unwrap;
+//	    self.promptViewController.title = @"Shuffle";
+//	    [self.promptViewController refreshView];
+//	    [[NSNotificationCenter defaultCenter] postNotificationName:MENU_ITEM_SELECTED object:nil];
+//	}
+//
+//    }];
+//}
 
-- (IBAction)shuffle:(id)sender {
-    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234
-					       withForceRefresh:NO
-						   withCallback: ^(long userId, id result, NSError* error) {
-	if(!error) {
-	    self.promptViewController.prompts = _array(result).shuffle.unwrap;
-	    self.promptViewController.title = @"Shuffle";
-	    [self.promptViewController refreshView];
-	    [[NSNotificationCenter defaultCenter] postNotificationName:MENU_ITEM_SELECTED object:nil];
-	}
+- (IBAction)home:(id)sender {
 
-    }];
+}
+- (IBAction)groups:(id)sender {
+
+}
+- (IBAction)pinned:(id)sender {
+
+}
+- (IBAction)checked:(id)sender {
+
 }
 
 //- (IBAction)shuffle:(id)sender {
