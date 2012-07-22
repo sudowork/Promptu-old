@@ -95,16 +95,16 @@ var PromptSchema = new Schema(
       _id:         ObjectId
     , group:       {type:    ObjectId, ref:     'Group', required:  true, index:  true}
     , author:      {type:    ObjectId, ref:     'User', required:   true, index:  true}
-    , original:    {type:    ObjectId, ref:     'Prompt', required: true, index:  true}
+    , original:    {type:    ObjectId, ref:     'Prompt', index:  true}
     , header:      {type:    String, required:  true}
-    , body:        String
-    , priority:    Number
+    , body:        {type: String, default:      ''}
+    , priority:    {type: Number, default: 3}
     , attachment:  Mixed
     , tags:        {type:    [String], index:   true}
-    , channel:     {type:    [String], required: true, validate:    channelValidator, default: ['apn', 'mail']}
+    , channels:    {type:    [String], required: true, validate:    channelValidator, default: ['apn', 'mail']}
     , expiration:  {type:    Date, index:       true}
     , sendtime:    {type:    Date, index:       true}
-    , due:         {type:    Date, index:       true}
+    , duedate:     {type:    Date, index:       true}
     , sent:        {type:    Boolean, index:    true}
     , type:        {type:    String, enum:      ['original', 'edit', 'reminder'], index:  true}
     , updated:     {type:    Date, required:    true, index:                              true}

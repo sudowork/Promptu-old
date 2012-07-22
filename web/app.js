@@ -107,7 +107,7 @@ var routes = _.chain(fs.readdirSync('routes/'))
 
 app.get('/', routes.index);
 
-app.post('/prompt', routes.prompt);
+app.post('/prompt/create', routes.createPrompt);
 
 app.post('/auth', routes.auth);
 app.post('/signup', routes.signup);
