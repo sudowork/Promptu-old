@@ -119,6 +119,7 @@ app.get('/prompt/sync', routes.session, routes.syncPrompts);
 app.get('/group/:id', routes.session, routes.getGroup);
 app.get('/group/tree/:id', routes.session, routes.getGroupTree);
 app.post('/group/create', routes.session, routes.createGroup);
+app.post('/group/member', routes.session, routes.addMemberToGroup);
 app.del('/group/delete/:id', routes.session, routes.deleteGroup);
 
 /**

@@ -120,6 +120,38 @@ exports.createGroup = function (req, res) {
   }
 }
 
+exports.addMemberToGroup = function (req, res) {
+  params = req.body;
+  console.log(params);
+  if (!exists(params.user) || !exists(params.group)) {
+    E.send(res, 'VALIDATION_EXCEPTION', params);
+    return false;
+  }
+  // Check current user modify permissions on group
+  Models.User.findOne({
+    _id: params.user
+  }, function (err, user) {
+    if (err) { E.sendUnk(res, err); return; }
+    if (!user) { E.send(res, 'NOT_FOUND_EXCEPTION', {user: req.user}); return; }
+      Models.Group.findOne({
+        _id: params.group
+      }, function (err, group) {
+        if (err) { E.sendUnk(res, err); return; }
+        if (!group) { E.send(res, 'NOT_FOUND_EXCEPTION', {group: req.group}); return; }
+        // add member to group and add group to user
+        user.groups.push(params.group);
+        group.members.push({user: params.user, permissions: ['read']});
+        user.save(function (err) {
+          if (err) { E.sendUnk(res, err); return; }
+        });
+        group.save(function (err) {
+          if (err) { E.sendUnk(res, err); return; }
+        });
+        res(201);
+      });
+  });
+}
+
 exports.deleteGroup = function (req, res) {
   var root = req.params.id;
   if (!exists(root)) {

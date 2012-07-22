@@ -64,6 +64,6 @@ exports.syncPrompts = function (req, res) {
     {group: {$in: ancestors}
   }, function (err, prompts) {
     if (err) { E.sendE(res, err); return; }
-    res.json(prompts);
+    res.json({yolo: prompts});
   });
 }
