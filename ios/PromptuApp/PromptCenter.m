@@ -9,12 +9,47 @@
 #import "PromptCenter.h"
 
 #import "Prompt.h"
+#import "UIDevice+IdentifierAddition.h"
+#import "PromptAPI.h"
 
 @implementation PromptCenter
 
-- (void) fetchPrompts:(long)userId
-     withForceRefresh:(bool)refresh
-	 withCallback:(void(^)(long userId, id result, NSError* error))callback {
+@synthesize deviceToken, uuid, api;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+	uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+	api = [[PromptAPI alloc] init];
+    }
+    return self;
+}
+
+
+- (void)signInWithUsername:(NSString *)username
+	      withPassword:(NSString *)password
+	      withCB:(void(^)(id result, NSError* error))completionBlock {
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+				   username, @"email",
+				   password, @"password",
+				   @"yoyoyoyo", @"uuid",
+				   self.deviceToken, @"deviceToken",  nil];
+
+    [api commandWithMethod:@"POST" withPath:@"auth" withParams:params onCompletion:
+     ^(NSDictionary * json) {
+	 if([json objectForKey:@"error"]) {
+	     completionBlock(nil, [json objectForKey:@"error"]);
+	 } else {
+	     completionBlock(json, nil);
+	 }
+     }];
+
+}
+
+- (void)fetchPromptswithForceRefresh:(bool)refresh
+			withCB:(void(^)(id result, NSError* error))completionBlock {
 
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:1];
 
@@ -63,7 +98,7 @@
     [result addObject:c];
     [c release];
 
-    callback(42342342, result, nil);
+    completionBlock(result, nil);
 }
 
 @end

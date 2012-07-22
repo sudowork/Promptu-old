@@ -109,6 +109,10 @@
 		E5B1F04A15BBAB920089CC77 /* icons-black.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F01A15BBAB920089CC77 /* icons-black.png */; };
 		E5B1F04B15BBAB920089CC77 /* icons-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F01B15BBAB920089CC77 /* icons-grey.png */; };
 		E5B1F04C15BBAB920089CC77 /* icons-white.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F01C15BBAB920089CC77 /* icons-white.png */; };
+		E5B1F07115BBC6F00089CC77 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1F06F15BBC6F00089CC77 /* SignInViewController.m */; };
+		E5B1F07215BBC6F00089CC77 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F07015BBC6F00089CC77 /* SignInViewController.xib */; };
+		E5B1F07415BBCAA60089CC77 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B1F07315BBCAA60089CC77 /* splashScreen.png */; };
+		E5B1F08515BBCC760089CC77 /* PromptAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1F08415BBCC760089CC77 /* PromptAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -244,6 +248,12 @@
 		E5B1F01A15BBAB920089CC77 /* icons-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-black.png"; sourceTree = "<group>"; };
 		E5B1F01B15BBAB920089CC77 /* icons-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-grey.png"; sourceTree = "<group>"; };
 		E5B1F01C15BBAB920089CC77 /* icons-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-white.png"; sourceTree = "<group>"; };
+		E5B1F06E15BBC6F00089CC77 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		E5B1F06F15BBC6F00089CC77 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		E5B1F07015BBC6F00089CC77 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		E5B1F07315BBCAA60089CC77 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashScreen.png; sourceTree = "<group>"; };
+		E5B1F08315BBCC760089CC77 /* PromptAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptAPI.h; sourceTree = "<group>"; };
+		E5B1F08415BBCC760089CC77 /* PromptAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromptAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +380,9 @@
 				E5B1EF3A15BB812F0089CC77 /* PromptViewController.h */,
 				E5B1EF3B15BB812F0089CC77 /* PromptViewController.m */,
 				E5B1EF3C15BB812F0089CC77 /* PromptViewController.xib */,
+				E5B1F06E15BBC6F00089CC77 /* SignInViewController.h */,
+				E5B1F06F15BBC6F00089CC77 /* SignInViewController.m */,
+				E5B1F07015BBC6F00089CC77 /* SignInViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -403,6 +416,8 @@
 		E5B1EEE615BB5F770089CC77 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1F08315BBCC760089CC77 /* PromptAPI.h */,
+				E5B1F08415BBCC760089CC77 /* PromptAPI.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -500,6 +515,7 @@
 		E5B1EFEC15BBAB920089CC77 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5B1F07315BBCAA60089CC77 /* splashScreen.png */,
 				E5B1EFED15BBAB920089CC77 /* icon-check-black.png */,
 				E5B1EFEE15BBAB920089CC77 /* icon-check-empty-black.png */,
 				E5B1EFEF15BBAB920089CC77 /* icon-check-empty-grey.png */,
@@ -675,6 +691,8 @@
 				E5B1F04A15BBAB920089CC77 /* icons-black.png in Resources */,
 				E5B1F04B15BBAB920089CC77 /* icons-grey.png in Resources */,
 				E5B1F04C15BBAB920089CC77 /* icons-white.png in Resources */,
+				E5B1F07215BBC6F00089CC77 /* SignInViewController.xib in Resources */,
+				E5B1F07415BBCAA60089CC77 /* splashScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +745,8 @@
 				E5B1EFE315BBA79B0089CC77 /* UILabelStrikethrough.m in Sources */,
 				E5B1EFE715BBA8960089CC77 /* PromptBox.m in Sources */,
 				E5B1EFEB15BBAA1F0089CC77 /* BadgeLabel.m in Sources */,
+				E5B1F07115BBC6F00089CC77 /* SignInViewController.m in Sources */,
+				E5B1F08515BBCC760089CC77 /* PromptAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

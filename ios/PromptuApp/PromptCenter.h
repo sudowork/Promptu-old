@@ -8,10 +8,19 @@
 
 #import "Singleton.h"
 
+@class PromptAPI;
+
 @interface PromptCenter : Singleton
 
-- (void) fetchPrompts:(long)userId
-     withForceRefresh:(bool)refresh
-	 withCallback:(void(^)(long userId, id result, NSError* error))callback;
+@property (nonatomic, copy) NSString *deviceToken;
+@property (nonatomic, copy) NSString *uuid;
+@property (nonatomic, retain) PromptAPI *api;
+
+- (void)signInWithUsername:(NSString *)username
+	      withPassword:(NSString *)password
+	      withCB:(void(^)(id result, NSError* error))completionBlock;
+
+- (void)fetchPromptswithForceRefresh:(bool)refresh
+			withCB:(void(^)(id result, NSError* error))completionBlock;
 
 @end

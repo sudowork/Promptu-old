@@ -12,6 +12,8 @@
 #import "MenuViewController.h"
 #import "RevealController.h"
 #import "PrettyKit.h"
+#import "SignInViewController.h"
+#import "PromptCenter.h"
 
 @implementation AppDelegate
 
@@ -34,25 +36,28 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
 
-    PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
-    frontViewController.title = @"Promptu";
-    MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    rearViewController.promptViewController = frontViewController;
-    UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
-	UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+//    PromptViewController* frontViewController = [[PromptViewController alloc] initWithNibName:@"PromptViewController" bundle:nil];
+//    frontViewController.title = @"Promptu";
+//    MenuViewController *rearViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//    rearViewController.promptViewController = frontViewController;
+//    UINib *nib = [UINib nibWithNibName:@"NavBar" bundle:nil];
+//	UINavigationController *navigationController = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+//
+//    [navigationController pushViewController:frontViewController animated:NO];
+//
+//    PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
+//
+//    navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
+//    navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
+//    navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
+//    navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
+//    navBar.tintColor = navBar.gradientEndColor;
+//
+//	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+//	self.viewController = revealController;
 
-    [navigationController pushViewController:frontViewController animated:NO];
-
-    PrettyNavigationBar *navBar = (PrettyNavigationBar *)navigationController.navigationBar;
-
-    navBar.topLineColor = [UIColor colorWithHex:0x00ADEE];
-    navBar.gradientStartColor = [UIColor colorWithHex:0x00ADEE];
-    navBar.gradientEndColor = [UIColor colorWithHex:0x0078A5];
-    navBar.bottomLineColor = [UIColor colorWithHex:0x0078A5];
-    navBar.tintColor = navBar.gradientEndColor;
-
-	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
-	self.viewController = revealController;
+    SignInViewController *signInController = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
+    self.viewController = signInController;
 
 	self.window.rootViewController = self.viewController;
 	[self.window makeKeyAndVisible];
@@ -66,7 +71,11 @@
     newString = [newString stringByReplacingOccurrencesOfString:@"<" withString:@""];
     newString = [newString stringByReplacingOccurrencesOfString:@">" withString:@""];
 
+
+
     NSLog(@"Your deviceToken ---> %@",newString);
+
+    ((PromptCenter *)[PromptCenter sharedInstance]).deviceToken = newString;
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
