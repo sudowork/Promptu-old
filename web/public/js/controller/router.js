@@ -145,15 +145,27 @@
 		},
 		filterByTag: function (e) {
 			var tagName = $(e.target).html();
-			router.navigate('tag/' + tagName, { trigger: true });
+			if (tagName) {
+				router.navigate('tag/' + tagName, { trigger: true });
+			} else {
+				router.navigate('', { trigger: true });
+			}
 		},
 		filterByPriority: function (e) {
 			var priority = $(e.target).attr('priority');
-			router.navigate('priority/' + priority, { trigger: true });
+			if (priority) {
+				router.navigate('priority/' + priority, { trigger: true });
+			} else {
+				router.navigate('', { trigger: true });
+			}
 		},
 		searchPrompts: function (e) {
 			var query = $(e.currentTarget).attr('value');
-			router.navigate('search/' + query, { trigger: true });
+			if (query) {
+				router.navigate('search/' + query, { trigger: true });
+			} else {
+				router.navigate('', { trigger: true });
+			}
 		},
 		keyUpHandler: function (e) {
 			if (e.which === 27) {
