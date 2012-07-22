@@ -51,7 +51,7 @@ var UserSchema = new Schema(
     , phone:         {type:    String, index:  true}
     , devices:       [DeviceSchema]
     , preferences:   Mixed
-    , grous:         Mixed
+    , groups:        Mixed
     , confirmed:     Boolean
     , needsreset:    Boolean
     , updated:       {type:    Date, required: true, index:    true}
