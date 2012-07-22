@@ -9,19 +9,6 @@ var crypto = require('../lib/crypto');
 exports.auth = function (req, res) {
   var params = req.body;
 
-  // Anon function that updates the session token
-  var updateDbSessionToken = function (userid, clientToken) {
-    var query = {_id: userid}
-      , change = {session: crypto.genSessionToken(clientToken)};
-    Models.User.update(
-      query,
-      {$set: change},
-      {}, // options
-      function (err) {
-        if (err) E.sendUnk(res, err);
-    });
-  };
-
   if (!exists(params.email) || !exists(params.password)) {
     E.send(res, 'VALIDATION_EXCEPTION', 'Need to provide email and password');
     return;
@@ -32,10 +19,27 @@ exports.auth = function (req, res) {
     email: params.email.toLowerCase(),
   }, function (err, user) {
     if (err) { E.sendUnk(res, err); return; }
-    // If user exists and password matches, send client session token
+    // If user exists and password matches, update tokens and device + uuid
     if (user && crypto.checkPassword(params.password, user.password)) {
+      // Modify devices (update token if uuid exists; otherwise add)
+      if (exists(params.uuid) && exists(params.deviceToken)) {
+        var found = false;
+        _(user.devices).map(function (device) {
+          if (device.uuid === params.uuid) {
+            found = true;
+            device.token = params.deviceToken;
+            return device;
+          }
+        });
+        // Add new device if not found
+        if (!found) user.devices.push({uuid: params.uuid, token: params.deviceToken});
+      }
+      // Change session token
       var token = crypto.genClientToken(params.email);
-      updateDbSessionToken(user._id, token);
+      user.session = crypto.genSessionToken(token.token);
+      user.save(function (err) {
+        if (err) E.sendUnk(res, err);
+      });
       res.send(token);
     } else {
       E.send(res, 'INVALID_CREDENTIALS');

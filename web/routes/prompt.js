@@ -19,6 +19,12 @@ exports.createPrompt = function (req, res) {
     'sent',
     'type'
   );
+  // Convert times from seconds to milliseconds
+  if (exists(params.duedate)) params.duedate = params.duedate*1000;
+  if (exists(params.sendtime)) params.sendtime = params.sendtime*1000;
+  if (exists(params.expiration)) params.expiration = params.expiration*1000;
+
+  // Convert stringified arrays into arrays
   try {
     params.channels = JSON.parse(params.channels);
     if (exists(params.tags)) params.tags = JSON.parse(params.tags);

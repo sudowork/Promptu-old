@@ -14,9 +14,10 @@ exports.hash = function (str) {
 // sha1(username + timestamp)
 exports.genClientToken = function (username) {
   var time = new Date();
+  console.log('time', time);
   return {
     token: this.hash(username + time),
-    expiration: new Date().setHours(time.getHours() + app.settings.config.sessionTimeout)
+    expiration: new Date(time).setHours(time.getHours() + app.settings.config.sessionTimeout)
   }
 }
 
