@@ -1,6 +1,6 @@
 (function (window, $, _, Backbone, PUApp) {
   var GroupsView = Backbone.View.extend({
-    el: '#groups-container',
+    el: '#groups',
     template: PUApp.templates['groups-template'],
     initialize: function () {
     },
