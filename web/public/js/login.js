@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	if (sessionStorage['promptutoken']) {
+		window.location = '/#';
+	}
 	var register = false,
 		$signin = $('#signin'),
 		$register = $('#register'),
