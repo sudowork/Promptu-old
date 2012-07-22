@@ -67,7 +67,7 @@ exports.signup = function (req, res) {
 
   if (exists(params.devices)) {
     try {
-      params.devices = JSON.parse(params.devices);
+      if (typeof params.devices !== 'object') params.devices = JSON.parse(params.devices);
     } catch (err) {
       E.send(res, 'VALIDATION_EXCEPTION', {devices: params.devices});
       return false;

@@ -26,8 +26,8 @@ exports.createPrompt = function (req, res) {
 
   // Convert stringified arrays into arrays
   try {
-    params.channels = JSON.parse(params.channels);
-    if (exists(params.tags)) params.tags = JSON.parse(params.tags);
+    if (typeof params.channels !== 'object') params.channels = JSON.parse(params.channels);
+    if (exists(params.tags) && typeof params.tags !== 'object') params.tags = JSON.parse(params.tags);
   } catch (err) {
     E.send(res, 'VALIDATION_EXCEPTION', params);
     return false;
