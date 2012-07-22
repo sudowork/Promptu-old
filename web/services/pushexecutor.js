@@ -53,6 +53,8 @@ var channelToAction = {
         'duedate',
         'tags'
     );
+    // Convert duedate to seconds since epoch
+    if (exists(promptPayload.duedate)) { promptPayload.duedate = promptPayload.duedate / 1000; }
     // Send notification to device
     _(devices).each(function (d) {
       var device = new Device(d.token)
