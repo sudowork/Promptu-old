@@ -59,11 +59,11 @@ body {
 
 #content {
 	margin: 0 auto;
-	background-color: rgba(100,100,100,.1);
+	background-color: rgba(100,100,100,0.1);
 	width: 55%;
 }
 
-#sideBar {
+.sideBar {
 	position: absolute;
 	top: 20%;
 	left: 25%;
@@ -87,7 +87,7 @@ body {
 	}
 }
 
-#main {
+.main {
 	margin-top: 20px;
 	float: right;
   height: 100%;
@@ -154,24 +154,13 @@ body {
   position: relative;
 }
 
-#detail-container {
-}
-
 #prefs-container {
 }
 
 #groups-container {
 }
 
-#join-container {
-
-}
-
-#invites-container {
-
-}
-
-.prompt {
+.prompt, .group {
 	position: absolute
 	width: 94%;
 	border: 1px solid #CCC;
@@ -217,16 +206,6 @@ body {
 }
 
 .group {
-  width: 94%;
-  border: 1px solid #CCC;
-  .shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.1));
-  .round(5px);
-  background-color: #EEE;
-  margin-top: 10px;
-
-  .header, .body, .footer {
-    padding: 5px 10px;
-  }
   .header {
     i {
       float:left;
@@ -234,23 +213,18 @@ body {
       margin-right: 12px;
     }
     .header-text {
-      float:left;
+      display: inline-block;
     }
     .visibility {
       float:right;
+      vertical-align: top;
       font-size: 13px;
     }
   }
 
-  .body {
-    clear:both;
-    border-bottom: 1px solid #DDD;
-  }
-  .footer {
-    border-top: 1px solid #FFF;
-    .tag {
-      .blueButton();
-    }
+  .body, .footer {
+    border: none;
+    display: block;
   }
 }
 

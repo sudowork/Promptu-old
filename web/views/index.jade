@@ -36,7 +36,7 @@ block content
 	#content.container-fluid
 		#prompts-container.sheet
 			.row-fluid
-				#sideBar.span1
+				.sideBar.span1
 					button.white(rel="tooltipLeft",title="Filter by Pinned")
 						i.icon-pushpin
 					button.white(rel="tooltipLeft",title="Filter by Date Due")
@@ -48,7 +48,7 @@ block content
 					button.white(rel="tooltipLeft",title="Filter by Completion")
 						i.icon-check
 
-				#main.span10.pull-right
+				.main.span10.pull-right
 					.navbar
 						.container
 							input.search-query(type="text", placeholder="Search")
@@ -60,7 +60,7 @@ block content
 
 		#groups-container.sheet
 			.row-fluid
-				div#sideBar.span1
+				.sideBar.span1
 					button.white(rel="tooltipLeft",title="Subscribed Groups")
 						i.icon-list-ul
 					button.white(rel="tooltipLeft",title="Join a Group")
@@ -68,13 +68,12 @@ block content
 					button.white(rel="tooltipLeft",title="Group Invites")
 						i.icon-envelope
 
-				div#main.span10.pull-right
+				.main.span10.pull-right
 					.navbar
 						.container
 							input.search-query(type="text", placeholder="Search")
 							div.divider-vertical
 							i.icon-font(rel="tooltipTop",title="Sort by Name")
-							i.icon-time(rel="tooltipTop",title="Sort by Priority")
 					#groups
 
 

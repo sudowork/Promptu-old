@@ -1,23 +1,18 @@
 <% _.each(arguments[0], function (group) { %>
 <div class="group box_shadow" id="group-<%= group.id %>">
-  <div class="content">
-    <h1 class="header">
-      <i class="icon-trash" rel="tooltipTop" title="Leave Group"></i>
-      <div class="header-text"><%= group.header %></div>
-      <div class="visibility"><%= group.visibility %></div>
-    </h1>
-    <div class="body">
-      <span class="body-text">
-	<%= group.body %>
-      </span>
-    </div>
-    <div class="footer">
-      <span class="tags">
-	<% for (var i = 0, l = group.tags.length; i < l; i += 1) { %>
-	  <a class="badge tag"><%= group.tags[i] %></a>
-	<% } %>
-      </span>
-    </div>
-  </div>
+	<div class="content">
+		<h1 class="header">
+			<i class="icon-trash" rel="tooltipTop" title="Leave Group"></i>
+			<div class="header-text"><%= group.header %></div>
+			<div class="visibility"><%= group.visibility %></div>
+		</h1>
+		<div class="body">
+			<span class="body-text">
+				<%= group.body %>
+			</span>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
 </div>
 <% }); %>
