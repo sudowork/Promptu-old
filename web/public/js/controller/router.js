@@ -56,10 +56,10 @@
 		},
 		checkConnection: function () {
 			PUApp.user.token = PUApp.user.token || sessionStorage['promptutoken'];
-			// if (!PUApp.user.token) {
-			// 	window.location = '/login';
-			// 	return false;
-			// }
+			if (!PUApp.user.token) {
+				window.location = '/login';
+				return false;
+			}
 			return true;
 		},
 		init: function () {
