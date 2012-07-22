@@ -26,6 +26,17 @@
 	};
 
 	var Router = Backbone.Router.extend({
+		initialize: function () {
+			this.checkConnection();
+			this.promptsModel = new Prompts();
+			this.promptsView = new PromptsView({
+				model: this.promptsModel
+			});
+			this.groupsModel = new Groups();
+			this.groupsView = new GroupsView({
+				model: this.groupsModel
+			});
+		},
 		routes: {
 			'' : 'init',
 			'login/:hash': 'login',
@@ -51,35 +62,21 @@
 			// }
 			return true;
 		},
-		initPrompts: function () {
-			if (this.checkConnection()) {
-				this.promptsModel = this.promptsModel || new Prompts();
-				this.promptsView = this.promptsView || new PromptsView({
-					model: this.promptsModel
-				});
-				this.promptsModel.fetch({
-					success: _.bind(function (data) {
-						this.promptsView.render();
-						transition.push($prompts);
-					}, this)
-				});
-			}
-		},
 		init: function () {
 			this.navigate('prompts', { trigger: true });
 		},
 		prompts: function () {
-			this.initPrompts();
+			this.promptsModel.fetch({
+				success: _.bind(function (data) {
+					this.promptsView.render();
+					transition.push($prompts);
+				}, this)
+			});
 			$('.main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {
 			this.checkConnection();
 			transition.push($groups);
-
-			this.groupsModel = this.groupsModel || new Groups();
-			this.groupsView = this.groupsView || new GroupsView({
-				model: this.groupsModel
-			});
 
 			this.groupsModel.reset([
 				{ id: 0, priority: 0, header: 'test', body: 'yolo' },
