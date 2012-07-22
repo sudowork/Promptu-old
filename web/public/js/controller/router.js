@@ -86,6 +86,7 @@
     events: {
       'click .byheader': 'sortByHeader',
       'click .bypriority': 'sortByPriority',
+      'keyup #main .search-query': 'searchPrompts',
       'keyup': 'keyUpHandler'
     },
     sortByHeader: function (e) {
@@ -94,7 +95,17 @@
     sortByPriority: function (e) {
       router.promptsview.sort(router.prompts.sort('priority'), true);
     },
+    searchPrompts: function (e) {
+      var query = $(e.currentTarget).attr('value');
+      if (router.promptsview.search(query)) {
+	e.stopPropagation();
+      }
+    },
     keyUpHandler: function (e) {
+      if (e.which === 27) {
+	router.promptsview.search('');
+	$('#main .search-query').attr('value', '').blur();
+      }
     }
   });
 
