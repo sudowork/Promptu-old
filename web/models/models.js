@@ -10,6 +10,18 @@ function toLower (v) {
 }
 
 /**
+ * Custom Validators
+ */
+function permissionsValidator(v) {
+  // enumeration of all possible permissions
+  var permissionTypes = ['read', 'write', 'modify'];
+  _(v).each(function (p) {
+    if (!_(permissionTypes).include(p)) return false;
+  });
+  return true;
+}
+
+/**
  * User Schemas
  */
 var DeviceSchema = new Schema(
@@ -44,16 +56,25 @@ var UserSchema = new Schema(
 /**
  * Group relevant schemas
  */
+var MemberSchema = new Schema(
+  {
+      _id:          ObjectId
+    , user:         {type:    ObjectId, ref:       'User', required:  true}
+    , permissions:  {type:    [String], required:  true, default:     ['read'], validate:  permissionsValidator}
+  }
+  , {strict: true}
+)
+
 var GroupSchema = new Schema(
   {
       _id:         ObjectId
-    , path:        {type:    String,   index:  true}
-    , name:        {type:    String,   index:  true, required:  true}
+    , path:        {type:    String,   index:        true}
+    , name:        {type:    String,   index:        true, required:  true}
     , desc:        {type:    String}
-    , owner:       {type:    ObjectId, ref:    'User', index:   true, required:         true}
-    , members:     {type:    [{type:           ObjectId, ref:   'User'}], index:        true}
-    , visibility:  {type:    String, index:    true, enum:      ['public', 'private']}
-    , updated:     {type:    Date, index:      true}
+    , owner:       {type:    ObjectId, ref:          'User', index:   true, required:         true}
+    , members:     {type:    [MemberSchema], index:  true}
+    , visibility:  {type:    String, index:          true, enum:      ['public', 'private']}
+    , updated:     {type:    Date, index:            true}
   }
   , {strict: true}
 );

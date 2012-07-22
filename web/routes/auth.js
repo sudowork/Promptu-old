@@ -79,13 +79,8 @@ exports.signup = function (req, res) {
   }, function (err, data) {
     if (err) { E.sendUnk(res, err); return; }
     if (data) { E.send(res, 'SIGNUP_EXCEPTION'); return; }
-    // Create new user
-    var now = Date.now()
-      , userParams = _.extend(
-        {},
-        params,
-        {updated: now}
-      )
+    // Create new user and change updated time
+    var userParams = _.extend({}, params, {updated: Date.now()})
       , user = new Models.User(userParams);
     user.save(function (err) {
       if (err) {
