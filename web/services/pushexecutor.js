@@ -136,6 +136,7 @@ function actOnUniqueMembers (groups, prompt) {
     .map(function (user) {
       return user.user;
     })
+    .uniq()
     .value();
   actOnContactInfo(users, prompt, sendNotificationsToUsers);
 }
