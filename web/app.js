@@ -106,6 +106,7 @@ var routes = _.chain(fs.readdirSync('routes/'))
   .value();
 
 app.get('/', routes.index);
+app.get('/subscribed', routes.subscribedGroups);
 
 app.post('/prompt/create', routes.createPrompt);
 

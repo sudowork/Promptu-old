@@ -6,8 +6,8 @@ block content
 			.container-fluid
 				a.brand(href="#") promptu
 				ul.nav
-					li.active: a(href="#") Prompts
-					li: a(href="#detail/1") Groups
+					li: a(href="#") Prompts
+					li.active: a(href="#detail/1") Groups
 
 				.btn-group.pull-right
 					a.btn(href="#prefs")
@@ -25,16 +25,12 @@ block content
 	#content.container-fluid
 		.row-fluid
 			div#sideBar.span1
-				button.white(rel="tooltipLeft",title="Filter by Pinned")
-					i.icon-pushpin
-				button.white(rel="tooltipLeft",title="Filter by Date Due")
-					i.icon-calendar
-				button.white(rel="tooltipLeft",title="Filter by Priority")
-					i.icon-exclamation-sign
-				button.white(rel="tooltipLeft",title="Filter by Group")
-					i.icon-group
-				button.white(rel="tooltipLeft",title="Filter by Completion")
-					i.icon-check
+				button.white(rel="tooltipLeft",title="Subscribed Groups")
+					i.icon-list-ul
+				button.white(rel="tooltipLeft",title="Join a Group")
+					i.icon-plus
+				button.white(rel="tooltipLeft",title="Group Invites")
+					i.icon-envelope
 
 			div#main.span10.pull-right
 				.navbar
@@ -44,7 +40,3 @@ block content
 						i.byheader.icon-time(rel="tooltipTop",title="Sort by Date Due")
 						i.bypriority.icon-exclamation-sign(rel="tooltipTop",title="Sort by Priority")
 						i.icon-random(rel="tooltipTop",title="Filter by Random")
-
-				#prompts-container.sheet
-				#detail-container.sheet
-				#prefs-container.sheet

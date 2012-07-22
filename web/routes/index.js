@@ -4,9 +4,13 @@
  */
 
 var render = function (res, page, ctx) {
-  res.render('index', _.extend(app.get('config'), ctx));
+  res.render(page, _.extend(app.get('config'), ctx));
 };
 
 exports.index = function (req, res) {
   render(res, 'index', { title: 'Express' });
+};
+
+exports.subscribedGroups = function (req, res) {
+  render(res, 'subscribedGroups', { title: 'Express' });
 };

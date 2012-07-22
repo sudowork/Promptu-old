@@ -32,11 +32,6 @@ body {
 				vertical-align: bottom;
 			}
 
-			.search-query {
-				margin: 6px;
-				max-width: 30%;
-				min-width: 10%;
-			}
 			.dropdown-menu {
 				font-size: 13px;
 			}
@@ -100,15 +95,29 @@ body {
 			margin-left: 15px;
 			margin-top: 6px;
 		}
-		.search-query {
+
+    .search-query {
 			float:left;
 		}
-		input[type=text] {
+
+    input[type=text] {
 			margin: 0;
 		}
-		a.navlink {
+
+    a.navlink {
 			padding: 10px;
 		}
+
+    .divider-vertical {
+      float:left;
+      margin-left: 20px;
+      margin-right: 0px;
+      height: 30px;
+      color: #CCC;
+      background-color: #CCC;
+      border-right: 1px solid white
+    }
+
 	}
 
 	.sheet {
@@ -167,6 +176,19 @@ footer {
      }
 
 	}
+    .priority {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      .round(5px);
+      border: solid 1px #B7B7B7;
+    }
+
+    .priority-0 { .blue() }
+    .priority-1 { .blue() }
+    .priority-2 { .blue() }
+    .priority-3 { .blue() }
+
 	.body {
 		border-bottom: 1px solid #DDD;
 	}
