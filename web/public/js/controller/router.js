@@ -43,6 +43,7 @@
 			});
 
 
+			this.admin = new Admin();
 			this.groupsModel = new Groups();
 			this.groupsView = new GroupsView({
 				model: this.groupsModel
@@ -50,11 +51,12 @@
 
 			this.groupsModel.fetch({
 				success: _.bind(function (data) {
+					this.admin.set('groups', this.groupsModel.toJSON());
 					this.groupsView.render();
 				}, this)
 			});
 
-			this.admin = new Admin();
+
 			this.adminView = new AdminView({
 				model: this.admin
 			});
