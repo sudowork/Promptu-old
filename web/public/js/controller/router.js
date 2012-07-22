@@ -31,6 +31,7 @@
 	var Router = Backbone.Router.extend({
 		initialize: function () {
 			this.checkConnection();
+
 			this.promptsModel = new Prompts();
 			this.promptsView = new PromptsView({
 				model: this.promptsModel
@@ -48,11 +49,17 @@
 				model: this.groupsModel
 			});
 
+			this.groupsModel.fetch({
+				success: _.bind(function (data) {
+					this.groupsView.render();
+					transition.push($groups);
+				}, this)
+			});
+
 			this.admin = new Admin();
 			this.adminView = new AdminView({
 				model: this.admin
 			});
-
 		},
 		routes: {
 			'' : 'init',
@@ -89,17 +96,11 @@
 		showAdmin: function () {
 			this.checkConnection();
 			transition.push($admin);
+			this.adminView.render();
 		},
 		showGroup: function () {
 			this.checkConnection();
 			transition.push($groups);
-			this.groupsModel.fetch({
-				success: _.bind(function (data) {
-					this.groupsView.render();
-					transition.push($groups);
-				}, this)
-			});
-
 			this.groupsView.render();
 		},
 		showPrefs: function () {
