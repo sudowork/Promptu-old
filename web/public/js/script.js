@@ -18,3 +18,6 @@ $('script[type="text/template"]').each(function (i, e) {
 }).remove();
 
 $('.dropdown-toggle').dropdown();
+$('[rel=tooltipLeft]').tooltip({placement: 'left'});
+$('[rel=tooltipTop]').tooltip({placement: 'top'});
+

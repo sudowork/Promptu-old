@@ -89,10 +89,10 @@
       'keyup': 'keyUpHandler'
     },
     sortByHeader: function (e) {
-      router.promptsview.sort(router.prompts.sort('header'));
+      router.promptsview.sort(router.prompts.sort('header'), true);
     },
     sortByPriority: function (e) {
-      router.promptsview.sort(router.prompts.sort('priority'));
+      router.promptsview.sort(router.prompts.sort('priority'), true);
     },
     keyUpHandler: function (e) {
     }

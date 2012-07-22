@@ -6,12 +6,13 @@
 		},
 		events: {
 		},
-		sort: function (models) {
+		sort: function (models, delay) {
 			var top = 0,
 				z = models.length + 1;
 			_.each(models, function (m, i) {
-				top += $('#prompt-' + m.id).delay(i * 25).animate({
-						'z-index': z--,
+				top += $('#prompt-' + m.id).css({
+					'z-index': z--
+				}).delay(delay ? i * 35 : 0).animate({
 						top: top + 'px'
 					}, 'slow').outerHeight(true);
 			});
@@ -19,9 +20,7 @@
 		render: function (models) {
 			var templateCtx = (models && _.invoke(models, 'toJSON')) || this.model.toJSON();
 			this.$el.html(this.template(templateCtx));
-			$('[rel=tooltipLeft]').tooltip({placement: 'left'}).tooltip('hide');
-			$('[rel=tooltipTop]').tooltip({placement: 'top'}).tooltip('hide');
-			this.sort(this.model.models);
+			this.sort(this.model.models, false);
 			return this;
 		}
 	});
