@@ -56,7 +56,7 @@
 			this.promptsView = this.promptsView || new PromptsView({
 				model: this.promptsModel
 			});
-			this.prompts.fetch({
+			this.promptsModel.fetch({
 				success: function () {
 					this.promptsView.render();
 				}
