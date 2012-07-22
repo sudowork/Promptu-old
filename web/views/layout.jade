@@ -13,6 +13,8 @@ html(class='no-js', lang='en')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 
 		title= title
+		style
+			body { padding-top: 60px; }
 
 		meta(name='description', content='')
 		meta(name='viewport', content='width=device-width')
@@ -28,7 +30,7 @@ html(class='no-js', lang='en')
 			script(id=key+'-template', type='text/template')
 				!= val
 
-	body.container-fluid
+	body
 		block content
 
 		//if lt IE 7

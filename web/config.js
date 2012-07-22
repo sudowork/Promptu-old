@@ -2,7 +2,7 @@ var config = {};
 
 config.development = {
   vendorcss: [
-    'css/bootstrap/bootstrap-responsive.css',
+    // 'css/bootstrap/bootstrap-responsive.css',
     'css/bootstrap/bootstrap.css',
     'css/fontawesome/font-awesome.css',
     'css/fontawesome/font-awesome-ie7.css'

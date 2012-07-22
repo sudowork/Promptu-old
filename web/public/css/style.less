@@ -2,37 +2,34 @@
 @import 'colors.less';
 
 body {
-  padding-top: 60px;
   background: url(../assets/bg.png);
 }
+.navbar {
 
-// Navbar
-.center.navbar .nav,
-.center.navbar .nav > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-    *zoom:1; /* hasLayout ie7 trigger */
-    vertical-align: top;
-}
-
-.center .navbar-inner {
-  padding-left: 20%;
-  padding-right: 20%;
-  .blue();
-}
-
-.navbar .nav .active > a, .navbar .nav .active > a:hover{
-  .blue();
-}
-
-.navbar .nav > li > a {
-  color: white;
-}
-
-.navbar-fixed-top .brand {
-  color: white;
+  .navbar-inner {
+    .container-fluid {
+      margin: 0 auto;
+      width: 70%;
+      .brand {
+        color: white;
+      }
+      .nav{
+        a {
+          color: white;
+          .blue();
+          &:hover, &:active {
+            .blue();
+          }
+        }
+        .search-query {
+          margin: 6px
+          width: 75px;
+        }
+      }
+    }
+    .blue();
   }
+}
 
 .icon {
   width: 30px;
