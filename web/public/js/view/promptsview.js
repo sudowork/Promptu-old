@@ -8,10 +8,10 @@
 		},
 		lastquery: '',
 		search: function (query) {
-      if (query !== this.lastquery) {
+			if (query !== this.lastquery) {
 				this.render(this.model.search(query));
-	this.lastquery = query;
-	return true;
+			this.lastquery = query;
+			return true;
 			}
 			return false;
 		},
