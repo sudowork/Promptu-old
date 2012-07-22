@@ -43,6 +43,7 @@
 			e.preventDefault();
 		},
 		createPrompt: function (obj) {
+			var self = this;
 			$.ajax({
 				url: '/prompt/create',
 				type: 'post',
@@ -51,13 +52,13 @@
 					$(PUApp.templates['success-template']({
 						header: 'Congrats!',
 						message: 'You\'ve successfully created a prompt!'
-					})).insertBefore(this.$el.children().first());
+					})).insertBefore(self.$el.children().first());
 				},
 				error: function () {
 					$(PUApp.templates['error-template']({
 						header: 'Error!',
 						message: 'Something went wrong! Please try again'
-					})).insertBefore(this.$el.children().first());
+					})).insertBefore(self.$el.children().first());
 				}
 			});
 		},
