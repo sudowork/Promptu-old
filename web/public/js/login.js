@@ -7,7 +7,8 @@ $(document).ready(function () {
 		$emailcontainer = $('.email-container'),
 		$password = $('#password'),
 		$passwordcontainer = $('.password-container'),
-		$passwordconf = $('#password-confirm');
+		$passwordconf = $('#password-confirm'),
+		$alert = $('.alert');
 
 	var checkEmail = function (email) {
 		return (/^[_a-z0-9\-]+(\.[_a-z0-9\-]+)*@[a-z0-9\-]+(\.[a-z0-9\-]+)*(\.[a-z]{2,4})$/).test(email.toLowerCase());
@@ -33,6 +34,8 @@ $(document).ready(function () {
 		$passwordconf.show();
 		register = true;
 		e.preventDefault();
+	}).on('click', '.close', function (e) {
+		$alert.hide();
 	}).on('submit', '.form-vertical', function (e) {
 		var email = $email.val(),
 			validemail = checkEmail(email),
@@ -40,21 +43,49 @@ $(document).ready(function () {
 			passwordconf = $passwordconf.val();
 		if (!validemail) {
 			$emailcontainer.addClass('error');
-		} else if (!password || (register && password != passwordconf)) {
+			$alert.find('p').html('Invalid Email!').show();
+		} else if (!password) {
+			$alert.find('p').html('Invalid Password!').show();
+			$passwordcontainer.addClass('error');
+		} else if (register && password != passwordconf) {
+			$alert.find('p').html('Passwords don\'t match').show();
 			$passwordcontainer.addClass('error');
 		} else {
-			if (register) {
-				console.log('register');
-			} else {
-				$.post('http://promptuapp.com:3000/auth', {
-					email: email,
-					password: password
-				}, function (data) {
-					if (data && data.token) {
-						var authtoken = Sha1.hash(data.token + secret);
-						window.location = '/#login/' + authtoken;
+			var auth = function () {
+				$.ajax({
+					url: 'http://promptuapp.com:3000/auth',
+					data: {
+						email: email,
+						password: password
+					},
+					success: function (data) {
+						if (data && data.token) {
+							var authtoken = Sha1.hash(data.token + secret);
+							window.location = '/#login/' + authtoken;
+						}
+					},
+					error: function (data) {
+						$alert.find('p').html('Invalid Credentials! Please try again').show();
 					}
 				});
+			};
+
+			if (register) {
+				$.ajax({
+					url: 'http://promptuapp.com:3000/signup',
+					data: {
+						email: email,
+						password: password
+					},
+					success: function (data) {
+						auth();
+					},
+					error: function (data) {
+						$alert.find('p').html('Invalid Credentials! Please try again').show();
+					}
+				});
+			} else {
+				auth();
 			}
 		}
 		e.preventDefault();

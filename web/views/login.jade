@@ -4,7 +4,7 @@ block head
 	style
 		.container {
 			width: 27%;
-			margin-top: 20%;
+			margin-top: 16%;
 		}
 		.logo {
 			margin: 10px 20px;
@@ -32,6 +32,9 @@ block head
 			font-weight: lighter;
 			font-size: 35px;
 		}
+		.form-vertical input {
+			width: 96%;
+		}
 		body {
 			background: #00adee; /* Old browsers */
 			background: -moz-radial-gradient(center, ellipse cover,  #00adee 0%, #0078a5 100%); /* FF3.6+ */
@@ -42,7 +45,7 @@ block head
 			background: radial-gradient(ellipse at center,  #00adee 0%,#0078a5 100%); /* W3C */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adee', endColorstr='#0078a5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		}
-		#finish, #password-confirm {
+		#finish, #password-confirm, .alert {
 			display: none;
 		}
 block scripts
@@ -53,7 +56,12 @@ block scripts
 
 block content
 	.container
-		form.well.form-vertical.span3(method="post", action="http://192.168.1.116:3000/auth")
+		.alert.alert-block
+			a.close(href="#") ×
+			h4.alert-heading Error!
+			p Something went wrong!
+
+		form.well.form-vertical.span3
 			h1 promptu
 			fieldset
 				.control-group.email-container
