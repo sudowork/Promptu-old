@@ -45,12 +45,15 @@ block content
           i.icon-search
         button.white(rel="tooltip",title="Filter by completion")
           i.icon-search
-      div#main
+
+      div#main.span8.pull-right
         .navbar
           .container
-            form.nav-search.pull-left
-              input.search-query(type="text", placeholder="Search")
+	    input.search-query(type="text", placeholder="Search")
                     .btn-group.pull-right
+	    a.navlink(href="#") Home
+	    a.navlink(href="#detail/1") Detail
+	    a.navlink(href="#prefs") Prefs
 
         #prompts-container.sheet
         #detail-container.sheet
