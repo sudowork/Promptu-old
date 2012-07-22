@@ -187,3 +187,26 @@ exports.deleteGroup = function (req, res) {
     this.actOnChildren(root, true, true, deleteGroupAndDescendents);
   });
 }
+
+exports.getSubscribedGroups = function (req, res) {
+  var userGroups = req.session.userGroups;
+  // Find all groups that user is directly in
+  Models.Group.find({
+    _id: {$in: userGroups}
+  }, function (err, groups) {
+    if (err) { E.sendE(res, err); return; }
+    res.json(groups);
+  });
+}
+
+exports.getMyGroups = function (req, res) {
+  var userId = req.session.userId;
+  // Find groups owned by user
+  Models.Group.find(
+    {owner: userId}
+  , function (err, groups) {
+    if (err) { E.sendE(res, err); return; }
+    res.json(groups);
+  });
+}
+

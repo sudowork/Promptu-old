@@ -120,6 +120,8 @@ app.get('/group/:id', routes.session, routes.getGroup);
 app.get('/group/tree/:id', routes.session, routes.getGroupTree);
 app.post('/group/create', routes.session, routes.createGroup);
 app.post('/group/member', routes.session, routes.addMemberToGroup);
+app.post('/group/subscribed', routes.session, routes.getSubscribedGroups);
+app.post('/group/mine', routes.session, routes.getMyGroups);
 app.del('/group/delete/:id', routes.session, routes.deleteGroup);
 
 /**

@@ -64,6 +64,10 @@ exports.syncPrompts = function (req, res) {
     {group: {$in: ancestors}
   }, function (err, prompts) {
     if (err) { E.sendE(res, err); return; }
+    prompts = _(prompts).map(function (p) {
+      if (exists(p.duedate)) { p.duedate = p.duedate / 1000; }
+      return p;
+    });
     res.json({yolo: prompts});
   });
 }
