@@ -17,12 +17,12 @@ html(class='no-js', lang='en')
 		meta(name='description', content='')
 		meta(name='viewport', content='width=device-width')
 
-		each css in vendorcss
-			link(rel='stylesheet', href=css)
+    each css in vendorcss
+      link(rel='stylesheet', href=css)
 
-		link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/style.css')
 
-		script(src='js/vendor/modernizr-2.5.3.min.js')
+    script(src='js/vendor/modernizr-2.5.3.min.js')
 
 		each val, key in templates
 			script(id=key+'-template', type='text/template')

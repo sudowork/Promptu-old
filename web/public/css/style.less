@@ -6,44 +6,112 @@ html, body {
 }
 
 body {
-  padding-top: 60px;
-  padding-bottom: 40px;
+  // padding-top: 60px;
+  // padding-bottom: 40px;
   background: url(../assets/bg.png);
 }
-.sidebar-nav {
-  padding: 9px 0;
+
+// Navbar
+.center.navbar .nav,
+.center.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
 }
 
-#sidebar {
-  a {
-    color: #000;
-    height: 30px;
-    line-height: 30px;
+.center .navbar-inner {
+  padding-left: 20%;
+  padding-right: 20%;
+  .blue();
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover{
+  .blue();
+}
+
+.navbar .nav > li > a {
+  color: white;
+}
+
+.navbar-fixed-top .brand {
+  color: white;
   }
-  li.active {
-    a {
-      color: #fff;
-    }
-  }
-  .icon {
-    float: left;
-    width: 30px;
-    height: 30px;
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+#content {
+  margin-right: 20%;
+  margin-left: 20%;
+  height: 3000px;
+  background-color: rgba(100,100,100,.1);
+  .round(10px);
+}
+
+#sideBar {
+
+  margin-top: 150px;
+  margin-left: 50px;
+
+  position: fixed;
+
+  .buttonStyle {
+    display: inline-block;
+    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    *display: inline;
+    vertical-align: baseline;
+    margin-top: 20px;
+    outline: none;
+    cursor: pointer;
     text-align: center;
-    font-size: 24px;
+    padding: 5px;
+    border: solid 1px #B7B7B7;
+
+    .round(0.5em);
+    .shadow(0, 1px, 2px, rgba(0,0,0,0.2));
   }
+
+  .buttonStyle:active {
+    position: relative;
+    top: 1px;
+  }
+
 }
 
-#main {
-  .nav.nav-pills {
-    .navbar-search {
-      margin-top: 4px;
-      input {
-        background-color: #DDD;
-        border: 1px #BBB solid;
-      }
-    }
+#notifs {
+  margin-top:100px;
+  margin-left: 140px;
+  position:fixed;
+
+  .navbar-inner {
+    .color(#606060, #fff, #ededed);
+    padding: 0px;
   }
+
+  .navbar .nav .active > a, .navbar .nav .active > a:hover{
+    .color(#606060, #fff, #ededed);
+  }
+
+  .navbar .nav > li > a {
+    color: white;
+  }
+
+  input[type=text] {
+    margin-bottom: 0px;
+  }
+
+  .nav-search {
+    margin: 0px;
+  }
+
+  .search-query {
+    margin: 5px;
+  }
+
   overflow: hidden;
 }
 
