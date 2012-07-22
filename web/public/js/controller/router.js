@@ -91,6 +91,7 @@
 			this.navigate('prompts', { trigger: true });
 		},
 		prompts: function () {
+			this.promptsView.render();
 			$('.main .search-query').attr('value', '').blur();
 		},
 		showAdmin: function () {
