@@ -70,7 +70,7 @@
 		},
 		prompts: function () {
 			this.initPrompts();
-			$('#main .search-query').attr('value', '').blur();
+			$('.main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {
 			this.checkConnection();
@@ -137,7 +137,7 @@
 			'click .bypriority': 'sortByPriority',
 			'click #prompts-container .tag': 'filterByTag',
 			'click #prompts-container .priority': 'filterByPriority',
-			'keyup #main .search-query': 'searchPrompts',
+			'keyup .main .search-query': 'searchPrompts',
 			'keyup': 'keyUpHandler'
 		},
 		sortByHeader: function (e) {

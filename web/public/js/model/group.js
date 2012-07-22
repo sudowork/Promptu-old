@@ -1,8 +1,9 @@
 (function (window, $, _, Backbone, PUApp) {
-  var Group = Backbone.Model.extend({
-    initialize: function () {
-    }
-  });
+	var Group = Backbone.Model.extend({
+		idAttribute: "_id",
+		initialize: function () {
+		}
+	});
 
-  PUApp.models.Group = Group;
+	PUApp.models.Group = Group;
 }(window, $, _, Backbone, PUApp));
