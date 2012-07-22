@@ -56,7 +56,7 @@ $(document).ready(function () {
 		} else {
 			var auth = function () {
 				$.ajax({
-					url: 'http://promptuapp.com:3000/auth',
+					url: 'http://promptuapp.com/auth',
 					type: 'post',
 					data: {
 						email: email,
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 			if (register) {
 				$.ajax({
-					url: 'http://promptuapp.com:3000/signup',
+					url: 'http://promptuapp.com/signup',
 					type: 'post',
 					data: {
 						email: email,

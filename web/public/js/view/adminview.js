@@ -35,7 +35,7 @@
 		},
 		createPrompt: function (obj) {
 			$.ajax({
-				url: 'promptuapp.com:3000/prompt/create',
+				url: 'promptuapp.com/prompt/create',
 				type: 'post',
 				data: obj,
 				success: function () {
