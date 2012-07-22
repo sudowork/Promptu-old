@@ -51,46 +51,27 @@
 			}
 			return true;
 		},
-		init: function () {
-			if (this.checkConnection()) {
-				//sync
-			}
-		},
-		prompts: function () {
-			this.checkConnection();
-			transition.push($prompts);
-
+		initPrompts: function () {
 			this.promptsModel = this.promptsModel || new Prompts();
 			this.promptsView = this.promptsView || new PromptsView({
 				model: this.promptsModel
 			});
-
-			this.promptsModel.reset([
-				{ id: 0, priority: 0, header: 'test', body: 'yolo', tags: ['aaa'] },
-				{ id: 1, priority: 1, header: 'test2', body: 'yolo', tags: ['bbb'] },
-				{ id: 2, priority: 2, header: 'test3', body: 'yolo', tags: ['aaa'] },
-				{ id: 3, priority: 3, header: 'test', body: 'yolo', tags: [] },
-				{ id: 4, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
-				{ id: 5, priority: 2, header: 'test3', body: 'yolo', tags: [] },
-				{ id: 6, priority: 1, header: 'test', body: 'yolo', tags: [] },
-				{ id: 7, priority: 1, header: 'test2', body: 'yolo', tags: ['aaa'] },
-				{ id: 8, priority: 2, header: 'test3', body: 'yolo', tags: [] },
-				{ id: 9, priority: 3, header: 'test', body: 'yolo', tags: ['bbb'] },
-				{ id: 10, priority: 0, header: 'test2', body: 'yolo', tags: [] },
-				{ id: 11, priority: 1, header: 'test3', body: 'yolo', tags: [] },
-				{ id: 12, priority: 2, header: 'test', body: 'yolo', tags: ['bbb'] },
-				{ id: 13, priority: 3, header: 'test2', body: 'yolo', tags: [] },
-				{ id: 14, priority: 0, header: 'test3', body: 'yolo', tags: ['bbb'] },
-				{ id: 15, priority: 1, header: 'test', body: 'yolo', tags: [] },
-				{ id: 16, priority: 2, header: 'test2', body: 'yolo', tags: [] },
-				{ id: 17, priority: 3, header: 'test3', body: 'yolo', tags: [] },
-				{ id: 18, priority: 0, header: 'test', body: 'yolo', tags: [] },
-				{ id: 19, priority: 1, header: 'test2', body: 'yolo', tags: [] },
-				{ id: 20, priority: 1, header: 'test3', body: 'yolo', tags: [] },
-				{ id: 21, priority: 1, header: 'test4', body: 'yolo', tags: [] }
-			]);
-
-			this.promptsView.render();
+			this.prompts.fetch({
+				success: function () {
+					this.promptsView.render();
+				}
+			});
+		},
+		init: function () {
+			if (this.checkConnection()) {
+				this.initPrompts();
+				transition.push($prompts);
+			}
+		},
+		prompts: function () {
+			this.checkConnection();
+			this.initPrompts();
+			transition.push($prompts);
 			$('#main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {

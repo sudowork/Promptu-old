@@ -2,6 +2,12 @@
 	var Prompt = PUApp.models.Prompt;
 
 	var Prompts = Backbone.Collection.extend({
+		url: function () {
+			return '/prompt/sync?sessionToken=' + PUApp.user.token;
+		},
+		parse: function (data) {
+			return data && data.yolo;
+		},
 		model: Prompt,
 		initialize: function () {
 		},
