@@ -27,12 +27,19 @@ block content
 					button.btn.dropdown-toggle(data-toggle="dropdown")
 						span.caret
 					ul.dropdown-menu
-						li: a(href="#") Profile
-						li: a(href="#") Setting 1
-						li: a(href="#") Setting 2
-						li: a(href="#") Setting 3
+						li
+							a(href="#")
+								i.icon-edit
+								|  Edit Profile
+						li
+							a(href="#")
+								i.icon-bell
+								|  Alert Preferences
 						li.divider
-						li: a(href="#") Sign Out
+						li
+							a(href="#")
+								i.icon-signout
+								|  Sign Out
 
 	#content.container-fluid
 		#prompts-container.sheet
