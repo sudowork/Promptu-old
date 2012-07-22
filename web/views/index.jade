@@ -1,5 +1,15 @@
 extends layout
 
+block head
+	each val, key in templates
+		script(id=key+'-template', type='text/template')
+			!= val
+
+block scripts
+	script(src='js/script.js')
+	each js in appjs
+		script(src=js)
+
 block content
 	.navbar.navbar-fixed-top.center
 		.navbar-inner

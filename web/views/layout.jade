@@ -26,9 +26,7 @@ html(class='no-js', lang='en')
 
 		script(src='js/vendor/modernizr-2.5.3.min.js')
 
-		each val, key in templates
-			script(id=key+'-template', type='text/template')
-				!= val
+		block head
 
 	body
 		block content
@@ -49,9 +47,7 @@ html(class='no-js', lang='en')
 		each js in vendorjs
 			script(src=js)
 
-		script(src='js/script.js')
-		each js in appjs
-			script(src=js)
+		block scripts
 
 		script
 			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
