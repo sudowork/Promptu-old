@@ -33,25 +33,30 @@ block content
 
   #content.container-fluid
     .row-fluid
-      #sidbar.span3
+      #sidebar.span3
         .well.sidebar-nav
           ul.nav.nav-list
             li.nav-header Sidebar
             li.option.active: a
-              img.icon(src='assets/icons/groups.png')
-              | Groups
+              div.icon
+                i(class='icon-group')
+              span Groups
             li.option: a
-              img.icon(src='assets/icons/priority.png')
-              | Priority
+              div.icon
+                i(class='icon-exclamation-sign')
+              span Priority
             li.option: a
-              img.icon(src='assets/icons/subscribed.png')
-              | Subscribed
+              div.icon
+                i(class='icon-plus-sign')
+              span Subscribed
             li.option: a
-              img.icon(src='assets/icons/tag.png')
-              | Tag
+              div.icon
+                i(class='icon-tags')
+              span Tag
             li.option: a
-              img.icon(src='assets/icons/time.png')
-              | Time
+              div.icon
+                i(class='icon-time')
+              span Time
 
       #main.span9
         ul.nav.nav-pills
