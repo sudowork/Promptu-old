@@ -1,89 +1,82 @@
 extends layout
 
 block content
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container-fluid
-        a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+	.navbar.navbar-fixed-top
+		.navbar-inner
+			.container-fluid
+				a.btn.btn-navbar(data-toggle="collapse",data-target='.nav-collapse')
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
 
-        a.brand(href="#") promptu
-        .btn-group.pull-right
-          a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
-            i.icon-user
-            | Preferences
-            span.caret
+				a.brand(href="#") promptu
+				.btn-group.pull-right
+					a.btn.dropdown-toggle(data-toggle="dropdown",href="#")
+						i.icon-user
+						| Preferences
+						span.caret
 
-          ul.dropdown-menu
-            li: a(href="#") Profile
-            li: a(href="#") Setting 1
-            li: a(href="#") Setting 2
-            li: a(href="#") Setting 3
-            li.divider
-            li: a(href="#") Sign Out
-
-
-        .nav-collapse
-          ul.nav
-            li.active: a(href="#") Home
-            li: a(href="#") Notifs
-            li: a(href="#") Groups
-
-  #content.container-fluid
-    .row-fluid
-      #sidebar.span3
-        .well.sidebar-nav
-          ul.nav.nav-list
-            li.nav-header Sidebar
-            li.option.active: a
-              div.icon
-                i(class='icon-group')
-              span Groups
-            li.option: a
-              div.icon
-                i(class='icon-exclamation-sign')
-              span Priority
-            li.option: a
-              div.icon
-                i(class='icon-plus-sign')
-              span Subscribed
-            li.option: a
-              div.icon
-                i(class='icon-tags')
-              span Tag
-            li.option: a
-              div.icon
-                i(class='icon-time')
-              span Time
-
-      #main.span9
-        ul.nav.nav-pills
-          li
-            form.navbar-search.pull-left
-              input.search-query(type="text".placeholder="Search")
-	  li: a(href="#detail/1") Next
-	  li: a(href="#prefs") Prefs
-          li: a(href="#") Regular link
-
-          li.dropdown.pull-right
-            a.dropdown-toggle(data-toggle="dropdown",href="#")
-              | Dropdown
-              b.caret
-            ul#menu3.dropdown-menu
-              li: a(href="#") Action
-              li: a(href="#") Another action
-              li: a(href="#") Something else here
-	      li.divider
-	      li: a(href="#") Separated link
-
-	#prompts-container.sheet
-	#detail-container.sheet
-	#prefs-container.sheet
-
-    hr
-    footer
-      p &copy; Promptu App 2012
+					ul.dropdown-menu
+						li: a(href="#") Profile
+						li: a(href="#") Setting 1
+						li: a(href="#") Setting 2
+						li: a(href="#") Setting 3
+						li.divider
+						li: a(href="#") Sign Out
 
 
+				.nav-collapse
+					ul.nav
+						li.active: a(href="#") Home
+						li: a(href="#") Notifs
+						li: a(href="#") Groups
+
+	#content.container-fluid
+		.row-fluid
+			#sidbar.span3
+				.well.sidebar-nav
+					ul.nav.nav-list
+						li.nav-header Sidebar
+						li.option.active: a
+							img.icon(src='assets/icons/groups.png')
+							| Groups
+						li.option: a
+							img.icon(src='assets/icons/priority.png')
+							| Priority
+						li.option: a
+							img.icon(src='assets/icons/subscribed.png')
+							| Subscribed
+						li.option: a
+							img.icon(src='assets/icons/tag.png')
+							| Tag
+						li.option: a
+							img.icon(src='assets/icons/time.png')
+							| Time
+
+			#main.span9
+				ul.nav.nav-pills
+					li
+						form.navbar-search.pull-left
+							input.search-query(type="text".placeholder="Search")
+					li: a(href="#detail/1") Next
+					li: a(href="#prefs") Prefs
+					li: a(href="#") Regular link
+
+					li.dropdown.pull-right
+						a.dropdown-toggle(data-toggle="dropdown",href="#")
+							| Dropdown
+							b.caret
+						ul#menu3.dropdown-menu
+							li: a(href="#") Action
+							li: a(href="#") Another action
+							li: a(href="#") Something else here
+							li.divider
+							li: a(href="#") Separated link
+
+				#prompts-container.sheet
+				#detail-container.sheet
+				#prefs-container.sheet
+
+		hr
+		footer
+			p &copy; Promptu App 2012
