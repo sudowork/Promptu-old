@@ -58,9 +58,9 @@
 			});
 			this.promptsModel.fetch({
 				success: function () {
-					this.promptsView.render();
 				}
 			});
+			// this.promptsView.render();
 		},
 		init: function () {
 			if (this.checkConnection()) {
