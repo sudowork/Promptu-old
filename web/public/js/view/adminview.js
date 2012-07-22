@@ -13,7 +13,6 @@
 				channels = [],
 				date = new Date()/1000 + 10;
 				author = '500c21f5a8762bad30000001',
-				group = '500c238803c67d0d31000004',
 				groups = [];
 			if ($('input[value="apn"]').attr('checked')) {
 				channels.push('apn');
@@ -27,19 +26,22 @@
 			var self = this;
 			$('.targets input[type="checkbox"]').each(function (i, e) {
 					if ($(e).attr('checked')) {
-						console.log($(e).attr('value'));
 						groups.push($(e).attr('value'));
 					}
 			});
-			this.createPrompt({
-				sessionToken: PUApp.user.token,
-				group: group,
-				channels:channels,
-				header: head,
-				body: body,
-				author: author,
-				duedate: date
+
+			_.each(groups, function (group) {
+				self.createPrompt({
+					sessionToken: PUApp.user.token,
+					group: group,
+					channels: channels,
+					header: head,
+					body: body,
+					author: author,
+					duedate: date
+				});
 			});
+
 			e.preventDefault();
 		},
 		createPrompt: function (obj) {
@@ -49,12 +51,14 @@
 				type: 'post',
 				data: obj,
 				success: function () {
+					$('.alert').hide('fast');
 					$(PUApp.templates['success-template']({
 						header: 'Congrats!',
 						message: 'You\'ve successfully created a prompt!'
 					})).insertBefore(self.$el.children().first());
 				},
 				error: function () {
+					$('.alert').hide('fast');
 					$(PUApp.templates['error-template']({
 						header: 'Error!',
 						message: 'Something went wrong! Please try again'
