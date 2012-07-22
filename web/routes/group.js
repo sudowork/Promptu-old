@@ -155,7 +155,7 @@ exports.addMemberToGroup = function (req, res) {
 exports.deleteGroup = function (req, res) {
   var root = req.params.id;
   if (!exists(root)) {
-    E.sendE(res, 'VALIDATION_EXCEPTION', 'Group to delete needs to be provided');
+    E.send(res, 'VALIDATION_EXCEPTION', 'Group to delete needs to be provided');
     return;
   }
   // TODO: make sure that user is owner
@@ -194,7 +194,7 @@ exports.getSubscribedGroups = function (req, res) {
   Models.Group.find({
     _id: {$in: userGroups}
   }, function (err, groups) {
-    if (err) { E.sendE(res, err); return; }
+    if (err) { E.send(res, err); return; }
     res.json(groups);
   });
 }
@@ -205,7 +205,7 @@ exports.getMyGroups = function (req, res) {
   Models.Group.find(
     {owner: userId}
   , function (err, groups) {
-    if (err) { E.sendE(res, err); return; }
+    if (err) { E.send(res, err); return; }
     res.json(groups);
   });
 }
