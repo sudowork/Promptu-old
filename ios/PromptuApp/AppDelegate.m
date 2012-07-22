@@ -64,6 +64,8 @@
 	return YES;
 }
 
+
+
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     NSString *str = [NSString stringWithFormat:@"%@",deviceToken];

@@ -25,7 +25,7 @@
 	self.yOffset = 4;
 	self.widthOffset = 0;
 	self.stroke = 2;
-	self.strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+	self.strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     }
     return self;
 }

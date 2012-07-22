@@ -81,7 +81,7 @@
     [super viewDidLoad];
 
     [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:NO
-						    withCallback:^(id result, NSError* error) {
+						    withCB:^(id result, NSError* error) {
 	 if(!error) {
 	     self.promptIndex = [[NSMutableDictionary alloc] initWithCapacity:1];
 	     self.promptBoxIndex = [[NSMutableDictionary alloc] initWithCapacity:1];

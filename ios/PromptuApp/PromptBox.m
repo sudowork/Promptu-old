@@ -24,11 +24,10 @@
 
 #define STATE_CLOSED 0
 #define STATE_OPENED 1
-#define STATE_EXPANDED 2
 
 @implementation PromptBox
 
-@synthesize promptId, delegate, dataSource, expandState;
+@synthesize promptId, delegate, dataSource, expandState, headerLabel;
 
 + (id)promptBoxWithPromptId:(NSInteger)aPromptId
 {
@@ -80,10 +79,10 @@
 
 
 	UIButton *pinButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[pinButton setImage:[UIImage imageNamed:@"icon-pushpin-black"] forState:UIControlStateNormal];
+	[pinButton setImage:[UIImage imageNamed:@"icon-pushpin-grey"] forState:UIControlStateNormal];
 	pinButton.frame = CGRectMake(0, 0, 20, 20);
 
-	NSArray *buttons = [NSArray arrayWithObjects:[UIImage imageNamed:@"orange"], pinButton, nil];
+	NSArray *buttons = [NSArray arrayWithObjects:[UIImage imageNamed:@"grey"], pinButton, nil];
 
 
 	MGBoxLine *footer = [MGBoxLine lineWithLeft:tagBadges right:buttons];
@@ -112,12 +111,15 @@
 
 	if (!prompt.dissmissed) {
 	    self.newAlpha = 0.5;
-	    //            ((UILabelStrikethrough *)[[self.topLines objectAtIndex:0] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+//        ((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+//        [((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]) setNeedsDisplay];
 	    [self.delegate promptBoxDidDissmiss:self];
 	} else {
 	    self.newAlpha = 1.0;
-	    //            ((UILabelStrikethrough *)[[self.topLines objectAtIndex:0] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-	    [self.delegate promptBoxDidUndissmiss:self];
+//        ((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+//        [((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]) setNeedsDisplay];
+
+	[self.delegate promptBoxDidUndissmiss:self];
 	}
     }
 
@@ -139,32 +141,29 @@
     if (!prompt.dissmissed) {
 	switch (prompt.priority) {
 	    case PRIORITY_ZERO:
-		blockImage = @"red";
-		break;
+	    blockImage = @"red";
+	    break;
 	    case PRIORITY_ONE:
-		blockImage = @"orange";
-		break;
+	    blockImage = @"orange";
+	    break;
 	    case PRIORITY_TWO:
-		blockImage = @"green";
-		break;
+	    blockImage = @"green";
+	    break;
 	    default:
-		break;
+	    break;
 	}
     } else {
 	blockImage = @"grey";
     }
 
-    UILabelStrikethrough *headerLabel = [[UILabelStrikethrough alloc] initWithFrame:CGRectMake(0, 0, 100, 26)];
+    self.headerLabel = [[UILabelStrikethrough alloc] initWithFrame:CGRectMake(0, 0, 100, 26)];
+    self.headerLabel.text = prompt.header;
+    self.headerLabel.font = FONT_BOLD;
+    CGSize size = [self.headerLabel.text sizeWithFont:self.headerLabel.font];
+    self.headerLabel.frame = CGRectMake(0, 0, size.width, 26);
+    self.headerLabel.backgroundColor = [UIColor clearColor];
 
-
-    // UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.text = prompt.header;
-    headerLabel.font = FONT_BOLD;
-    CGSize size = [headerLabel.text sizeWithFont:headerLabel.font];
-    headerLabel.frame = CGRectMake(0, 0, size.width, 26);
-    headerLabel.backgroundColor = [UIColor clearColor];
-
-    NSArray *left = [NSArray arrayWithObjects:[UIImage imageNamed:blockImage], headerLabel, nil];
+    NSArray *left = [NSArray arrayWithObjects:[UIImage imageNamed:blockImage], self.headerLabel, nil];
 
     MGBoxLine *header = [MGBoxLine lineWithLeft:left right:@"24m"];
     header.rightFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];

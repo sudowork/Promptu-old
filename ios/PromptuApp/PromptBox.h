@@ -8,8 +8,7 @@
 
 #import "MGStyledBox.h"
 
-@class Prompt;
-
+@class Prompt, UILabelStrikethrough;
 @protocol PromptBoxDelegate, PromptBoxDataSource;
 
 @interface PromptBox : MGStyledBox
@@ -18,6 +17,7 @@
 @property (nonatomic, assign) id<PromptBoxDelegate> delegate;
 @property (nonatomic, assign) id<PromptBoxDataSource> dataSource;
 @property (nonatomic, assign) int expandState;
+@property (nonatomic, retain) UILabelStrikethrough *headerLabel;
 
 + (id)promptBoxWithPromptId:(NSInteger)aPromptId;
 

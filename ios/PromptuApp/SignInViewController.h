@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignInViewController : UIViewController<UITextFieldDelegate>
+#import "MBProgressHUD.h"
+
+@interface SignInViewController : UIViewController<UITextFieldDelegate, MBProgressHUDDelegate>
 
 @property(nonatomic, retain) IBOutlet UITextField *username;
 @property(nonatomic, retain) IBOutlet UITextField *password;
 @property(nonatomic, retain) IBOutlet UIImageView *backgroundView;
+@property(nonatomic, retain) MBProgressHUD *progressHud;
 
 - (IBAction)userNameDoneEditing:(id)sender;
 
