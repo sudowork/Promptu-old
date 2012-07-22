@@ -2,9 +2,9 @@
   var Group = PUApp.models.Group;
 
   var Groups = Backbone.Collection.extend({
-		url: function () {
-			return '/prompt/sync?sessionToken=' + PUApp.user.token;
-		},
+    url: function () {
+      return '/group/subscribed?sessionToken=' + PUApp.user.token;
+    },
     model: Group,
 
     initialize: function () {

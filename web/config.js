@@ -78,7 +78,7 @@ config.default = {
     'js/view/adminview.js',
     'js/controller/router.js'
   ],
-	executorInterval: 5 ,
+	executorInterval: 15,
   email: {
     subjectPrefix: '[PromptU Notification] ',
     transport: {

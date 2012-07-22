@@ -81,7 +81,7 @@ var GroupSchema = new Schema(
     , desc:        {type:    String}
     , owner:       {type:    ObjectId, ref:          'User', index:   true, required:         true}
     , members:     {type:    [MemberSchema], index:  true}
-    , visibility:  {type:    String, index:          true, enum:      ['public', 'private']}
+    , visibility:  {type:    String, index:          true, enum:      ['public', 'private'], required: true, default: 'private'}
     , updated:     {type:    Date, required: true, index:            true}
   }
   , {strict: true}
