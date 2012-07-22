@@ -56,8 +56,17 @@ exports.signup = function (req, res) {
     'email',
     'password',
     'phone',
-    'preferences'
+    'preferences',
+    'groups',
+    'devices'
   );
+
+  try {
+    params.devices = JSON.parse(params.devices);
+  } catch (err) {
+    E.send(res, 'VALIDATION_EXCEPTION', {devices: params.devices});
+    return false;
+  }
 
   if (!exists(params.email) || !exists(params.password)){
     E.send(res, 'VALIDATION_EXCEPTION', 'Missing either email or password');
