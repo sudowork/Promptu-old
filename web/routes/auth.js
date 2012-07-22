@@ -119,6 +119,7 @@ exports.logout = function (req, res) {
     user.save(function (err) {
       E.send(res, 'VALIDATION_EXCEPTION', err);
     });
+    res.send(200);
   });
 }
 
