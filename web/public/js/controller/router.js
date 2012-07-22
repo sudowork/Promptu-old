@@ -52,26 +52,24 @@
 			return true;
 		},
 		initPrompts: function () {
-			this.promptsModel = this.promptsModel || new Prompts();
-			this.promptsView = this.promptsView || new PromptsView({
-				model: this.promptsModel
-			});
-			this.promptsModel.fetch({
-				success: function () {
-				}
-			});
-			// this.promptsView.render();
-		},
-		init: function () {
 			if (this.checkConnection()) {
-				this.initPrompts();
-				transition.push($prompts);
+				this.promptsModel = this.promptsModel || new Prompts();
+				this.promptsView = this.promptsView || new PromptsView({
+					model: this.promptsModel
+				});
+				this.promptsModel.fetch({
+					success: _.bind(function (data) {
+						this.promptsView.render();
+						transition.push($prompts);
+					}, this)
+				});
 			}
 		},
+		init: function () {
+			this.navigate('prompts', { trigger: true });
+		},
 		prompts: function () {
-			this.checkConnection();
 			this.initPrompts();
-			transition.push($prompts);
 			$('#main .search-query').attr('value', '').blur();
 		},
 		showGroup: function () {
