@@ -10,6 +10,10 @@ var PUApp = {
 
 $(document).ready(function () {
   Backbone.history.start();
+  $('.dropdown-toggle').dropdown();
+  $('[rel=tooltipLeft]').tooltip({placement: 'left'});
+  $('[rel=tooltipTop]').tooltip({placement: 'top'});
+
 });
 
 $('script[type="text/template"]').each(function (i, e) {
@@ -17,7 +21,4 @@ $('script[type="text/template"]').each(function (i, e) {
     PUApp.templates[$e.attr('id')] = _.template($e.html());
 }).remove();
 
-$('.dropdown-toggle').dropdown();
-$('[rel=tooltipLeft]').tooltip({placement: 'left'});
-$('[rel=tooltipTop]').tooltip({placement: 'top'});
 

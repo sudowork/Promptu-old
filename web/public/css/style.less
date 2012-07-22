@@ -172,7 +172,7 @@ body {
 }
 
 .prompt {
-	position: absolute;
+	position: absolute
 	width: 94%;
 	border: 1px solid #CCC;
 	.shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.1));
@@ -228,28 +228,22 @@ body {
     padding: 5px 10px;
   }
   .header {
-    .priority {
-      width: 20px;
-      height: 20px;
-      float: left;
-      margin: 10px 10px 10px 0px;
+    i {
+      float:left;
+      margin-top: 4px;
+      margin-right: 12px;
     }
-
-    .priority[priority="0"] {
-      .statechange(@p0);
-     }
-    .priority[priority="1"] {
-      .statechange(@p1);
-     }
-    .priority[priority="2"] {
-      .statechange(@p2);
-     }
-    .priority[priority="3"] {
-      .statechange(@p3);
-     }
+    .header-text {
+      float:left;
+    }
+    .visibility {
+      float:right;
+      font-size: 13px;
+    }
   }
 
   .body {
+    clear:both;
     border-bottom: 1px solid #DDD;
   }
   .footer {
