@@ -27,11 +27,12 @@
 			});
 		},
 		search: function (query) {
+			query = query.toLowerCase();
 			return this.filter(function (prompt) {
-				return prompt.get('header').indexOf(query) >= 0 ||
-					prompt.get('body').indexOf(query) >= 0 ||
+				return prompt.get('header').toLowerCase().indexOf(query) >= 0 ||
+					prompt.get('body').toLowerCase().indexOf(query) >= 0 ||
 					_.any(prompt.get('tags'), function (tag) {
-						return tag.indexOf(query) >= 0;
+						return tag.toLowerCase().indexOf(query) >= 0;
 					});
 			});
 		}
