@@ -42,6 +42,15 @@ var groupFuncts = require('../routes/group');
  */
 var channelToAction = {
   apn: function (devToken, prompt) {
+    // Remove _id key/value pair
+    var promptPayload = {};
+    _.chain(prompt)
+      .keys()
+      .each(function (k) {
+      if (k !== '_id') promptPayload = prompt[k];
+      })
+      .values();
+    // Send notification to device
     var device = new Device(devToken[0].token)
       , notif = new Notification();
     notif.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
@@ -50,7 +59,7 @@ var channelToAction = {
     notif.payload = _.extend(
       {},
       {'messageFrom': 'PromptU'},
-      {'test': 'test'}
+      promptPayload
     );
 
     apn.sendNotification(notif);
@@ -158,6 +167,10 @@ function processPrompts() {
     // Send message to all unique members of groups
     _(prompts).each(function (p) {
       performActionOnAllChildren(p, actOnUniqueMembers);
+      p.sent = true;
+      p.save(function (err) {
+        if (err) console.log(err);
+      });
     });
     // NOTE: callback chain:
     // performActionOnAllChildren -> actOnUniqueMembers -> sendNotificationsToUsers
