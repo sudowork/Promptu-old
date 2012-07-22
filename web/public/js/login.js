@@ -50,7 +50,10 @@ $(document).ready(function () {
 					email: email,
 					password: password
 				}, function (data) {
-					console.log(data);
+					if (data && data.token) {
+						var authtoken = Sha1(data.token + secret);
+						window.location = '/#login/' + authtoken;
+					}
 				});
 			}
 		}

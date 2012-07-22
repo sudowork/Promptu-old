@@ -46,7 +46,10 @@ block head
 			display: none;
 		}
 block scripts
+	script(src='js/vendor/sha1.js')
 	script(src='js/login.js')
+	script
+		var secret = '#{secret}';
 
 block content
 	.container

@@ -41,6 +41,7 @@
 			'*other': 'redirect'
 		},
 		login: function (hash) {
+			PUApp.user.token = hash;
 			console.log(hash);
 		},
 		prompts: function () {
