@@ -21,6 +21,6 @@
 @property (nonatomic, copy) NSArray* tags;
 @property (nonatomic, copy) NSDate* sendDate;
 @property (nonatomic, copy) NSDate* dueDate;
-@property (nonatomic, assign) bool dissmissed;
+@property (nonatomic, assign) bool dismissed;
 
 @end

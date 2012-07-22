@@ -11,6 +11,7 @@
 #import "PromptViewController.h"
 #import "PromptCenter.h"
 #import "Underscore.h"
+#import "Prompt.h"
 
 
 @implementation MenuViewController
@@ -29,44 +30,52 @@
     }
     return self;
 }
-//
-//- (IBAction)shuffle:(id)sender {
-//    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234
-//					       withForceRefresh:NO
-//						   withCallback: ^(long userId, id result, NSError* error) {
-//	if(!error) {
-//	    self.promptViewController.prompts = _array(result).shuffle.unwrap;
-//	    self.promptViewController.title = @"Shuffle";
-//	    [self.promptViewController refreshView];
-//	    [[NSNotificationCenter defaultCenter] postNotificationName:MENU_ITEM_SELECTED object:nil];
-//	}
-//
-//    }];
-//}
 
 - (IBAction)home:(id)sender {
-
+    [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:NO withCB: ^(id result, NSError* error) {
+	if(!error) {
+	    self.promptViewController.prompts = result;
+	    [self.promptViewController refreshView];
+	}
+    }];
 }
-- (IBAction)groups:(id)sender {
 
-}
 - (IBAction)pinned:(id)sender {
 
 }
+
 - (IBAction)checked:(id)sender {
+    [(PromptCenter *)[PromptCenter sharedInstance] fetchPromptswithForceRefresh:NO withCB: ^(id result, NSError* error) {
+	if(!error) {
+	    self.promptViewController.prompts = _array(result).filter(^BOOL (id obj) {
+		if ([obj isKindOfClass:[Prompt class]]) {
+		    if (((Prompt *)obj).dismissed) {
+			return YES;
+		    }
+		}
+		return NO;
+	    }).unwrap;
+	    [self.promptViewController refreshView];
+	}
+    }];
+}
+
+- (IBAction)overdue:(id)sender {
 
 }
 
-//- (IBAction)shuffle:(id)sender {
-//    [(PromptCenter *)[PromptCenter sharedInstance] fetchPrompts:234234 withCallback: ^(long userId, id result, NSError* error) {
-//        if(!error) {
-//            self.promptViewController.prompts = _array(result).filter(^BOOL (id obj) {
-//                return [obj isKindOfClass:[NSDictionary class]];
-//            }).unwrap;
-//            [self.promptViewController refreshView];
-//        }
-//    }];
-//}
+- (IBAction)dayPicker:(id)sender {
+
+}
+
+- (IBAction)groups:(id)sender {
+
+}
+
+- (IBAction)settings:(id)sender {
+
+}
+
 
 
 #pragma mark - View lifecycle

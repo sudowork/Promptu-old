@@ -10,7 +10,7 @@
 
 @implementation Prompt
 
-@synthesize uId, authorId, groupId, header, body, priority, tags, sendDate, dueDate, dissmissed;
+@synthesize uId, authorId, groupId, header, body, priority, tags, sendDate, dueDate, dismissed;
 
 - (void)dealloc {
     [header release];

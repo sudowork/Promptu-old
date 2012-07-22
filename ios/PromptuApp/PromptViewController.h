@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSMutableDictionary *promptBoxIndex;
 @property (nonatomic, retain) IBOutlet PrettyToolbar *toolBar;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, retain) NSArray *gestureRecognizers;
 
 - (void)refreshView;
 - (IBAction)shufflePrompts:(id)sender;

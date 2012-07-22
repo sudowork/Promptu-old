@@ -62,9 +62,8 @@
     a.priority = 0;
     a.tags = [[NSArray alloc] initWithObjects:@"yee", @"yolo", @"rawdog", nil];
     a.sendDate = [NSDate dateWithTimeIntervalSince1970:1308031456];
-    a.dueDate = [NSDate dateWithTimeIntervalSince1970:1309000000];
-    a.dissmissed = NO;
-
+    a.dueDate = [NSDate dateWithTimeIntervalSince1970:1343559306];
+    a.dismissed = NO;
     [result addObject:a];
     [a release];
 
@@ -77,9 +76,8 @@
     b.priority = 2;
     b.tags = [[NSArray alloc] initWithObjects:@"blah", @"yo", @"dho", nil];
     b.sendDate = [NSDate dateWithTimeIntervalSince1970:1309000000];
-    b.dueDate = [NSDate dateWithTimeIntervalSince1970:23423423432];
-    b.dissmissed = NO;
-
+    b.dueDate = [NSDate dateWithTimeIntervalSince1970:1343132916];
+    b.dismissed = YES;
     [result addObject:b];
     [b release];
 
@@ -92,9 +90,8 @@
     c.priority = 1;
     c.tags = [[NSArray alloc] initWithObjects:@"blah", @"hw", @"dho", nil];
     c.sendDate = [NSDate dateWithTimeIntervalSince1970:1309000000];
-    c.dueDate = [NSDate dateWithTimeIntervalSince1970:23423423432];
-    c.dissmissed = NO;
-
+    c.dueDate = [NSDate dateWithTimeIntervalSince1970:1343219316];
+    c.dismissed = NO;
     [result addObject:c];
     [c release];
 

@@ -13,7 +13,7 @@
 @class MGScrollView;
 @class MGBox;
 
-@interface RefreshViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface RefreshViewController : UIViewController <EGORefreshTableHeaderDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (nonatomic, retain) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, assign) BOOL reloading;

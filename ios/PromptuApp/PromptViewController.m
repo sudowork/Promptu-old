@@ -20,13 +20,14 @@
 
 @implementation PromptViewController
 
-@synthesize prompts, promptIndex, promptBoxIndex, toolBar, title;
+@synthesize prompts, promptIndex, promptBoxIndex, toolBar, title, gestureRecognizers;
 
 - (void)dealloc{
     [prompts release];
     [promptIndex release];
     [promptBoxIndex release];
     [toolBar release];
+    [gestureRecognizers release];
     [super dealloc];
 }
 
@@ -95,7 +96,10 @@
 	UIPanGestureRecognizer *viewPanGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController.parentViewController action:@selector(revealGesture:)];
 		[self.navigationController.navigationBar addGestureRecognizer:navigationBarPanGestureRecognizer];
 	[self.view addGestureRecognizer:viewPanGestureRecognizer];
-	[navigationBarPanGestureRecognizer release];
+
+	self.gestureRecognizers = [NSArray arrayWithObjects:navigationBarPanGestureRecognizer, viewPanGestureRecognizer, nil];
+
+    [navigationBarPanGestureRecognizer release];
 	[viewPanGestureRecognizer release];
 
 		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu"]  style:UIBarButtonItemStyleBordered target:self.navigationController.parentViewController action:@selector(revealToggle:)];
@@ -132,13 +136,13 @@
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
-- (void)promptBoxDidDissmiss:(PromptBox *)promptBox {
-    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = YES;
+- (void)promptBoxDidDismiss:(PromptBox *)promptBox {
+    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dismissed = YES;
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
-- (void)promptBoxDidUndissmiss:(PromptBox *)promptBox {
-    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dissmissed = NO;
+- (void)promptBoxDidUndismiss:(PromptBox *)promptBox {
+    ((Prompt *)[self.promptIndex objectForKey:[NSNumber numberWithLong:promptBox.promptId]]).dismissed = NO;
     [self.scroller drawBoxesWithSpeed:PROMPT_ANIM_SPEED];
 }
 
@@ -163,6 +167,29 @@
 }
 - (IBAction)sortPrompts:(id)sender {
 
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+//    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Header", @"Body", @"Tags", nil];
+//    searchBar.showsScopeBar = YES;
+    for (UIGestureRecognizer *gr in self.gestureRecognizers){
+	gr.enabled = NO;
+    }
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar cl
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    for (UIGestureRecognizer *gr in self.gestureRecognizers){
+	gr.enabled = YES;
+    }
+//    searchBar.showsScopeBar = NO;
 }
 
 #pragma mark - Custom accessors

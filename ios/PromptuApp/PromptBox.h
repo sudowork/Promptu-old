@@ -28,8 +28,8 @@
 @required
 - (void)promptBoxDidExpand:(PromptBox *)promptBox;
 - (void)promptBoxDidCompress:(PromptBox *)promptBox;
-- (void)promptBoxDidDissmiss:(PromptBox *)promptBox;
-- (void)promptBoxDidUndissmiss:(PromptBox *)promptBox;
+- (void)promptBoxDidDismiss:(PromptBox *)promptBox;
+- (void)promptBoxDidUndismiss:(PromptBox *)promptBox;
 - (void)promptBoxShowDetailed:(PromptBox *)promptBox;
 
 

@@ -109,17 +109,17 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
 	Prompt *prompt = [self.dataSource promptWithId:self.promptId];
 
-	if (!prompt.dissmissed) {
+	if (!prompt.dismissed) {
 	    self.newAlpha = 0.5;
 //        ((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
 //        [((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]) setNeedsDisplay];
-	    [self.delegate promptBoxDidDissmiss:self];
+	    [self.delegate promptBoxDidDismiss:self];
 	} else {
 	    self.newAlpha = 1.0;
 //        ((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]).strokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
 //        [((UILabelStrikethrough *)[[[self.topLines objectAtIndex:0] contentsLeft] objectAtIndex:1]) setNeedsDisplay];
 
-	[self.delegate promptBoxDidUndissmiss:self];
+	[self.delegate promptBoxDidUndismiss:self];
 	}
     }
 
@@ -138,7 +138,7 @@
 
     Prompt *prompt = [self.dataSource promptWithId:self.promptId];
     NSString *blockImage = nil;
-    if (!prompt.dissmissed) {
+    if (!prompt.dismissed) {
 	switch (prompt.priority) {
 	    case PRIORITY_ZERO:
 	    blockImage = @"red";
@@ -165,7 +165,7 @@
 
     NSArray *left = [NSArray arrayWithObjects:[UIImage imageNamed:blockImage], self.headerLabel, nil];
 
-    MGBoxLine *header = [MGBoxLine lineWithLeft:left right:@"24m"];
+    MGBoxLine *header = [MGBoxLine lineWithLeft:left right:[prompt.dueDate distanceOfTimeInWordsFromNow]];
     header.rightFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     //header.font = TITLE_FONT;
     [self.topLines addObject:header];

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		87D42EFEFC64418793F2F580 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D7C8B040494DB5B3016DC8 /* libPods.a */; };
 		E55FFBB115BBF3120060699F /* grey.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FFBB015BBF3120060699F /* grey.png */; };
+		E55FFBBC15BC03470060699F /* NSDate+Relative.m in Sources */ = {isa = PBXBuildFile; fileRef = E55FFBBB15BC03470060699F /* NSDate+Relative.m */; };
 		E5B1EEAA15BB526D0089CC77 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B1EEA915BB526D0089CC77 /* UIKit.framework */; };
 		E5B1EEAC15BB526D0089CC77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B1EEAB15BB526D0089CC77 /* Foundation.framework */; };
 		E5B1EEAE15BB526D0089CC77 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B1EEAD15BB526D0089CC77 /* CoreGraphics.framework */; };
@@ -119,6 +120,8 @@
 		775E628BF93D4FDEA52A036E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B2D7C8B040494DB5B3016DC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55FFBB015BBF3120060699F /* grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey.png; sourceTree = "<group>"; };
+		E55FFBBA15BC03470060699F /* NSDate+Relative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Relative.h"; sourceTree = "<group>"; };
+		E55FFBBB15BC03470060699F /* NSDate+Relative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Relative.m"; sourceTree = "<group>"; };
 		E5B1EEA515BB526D0089CC77 /* PromptuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PromptuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B1EEA915BB526D0089CC77 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5B1EEAB15BB526D0089CC77 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +412,8 @@
 				E5B1EF3315BB7FD80089CC77 /* NSData+Helper.m */,
 				E5B1EFE115BBA79B0089CC77 /* UILabelStrikethrough.h */,
 				E5B1EFE215BBA79B0089CC77 /* UILabelStrikethrough.m */,
+				E55FFBBA15BC03470060699F /* NSDate+Relative.h */,
+				E55FFBBB15BC03470060699F /* NSDate+Relative.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -747,6 +752,7 @@
 				E5B1EFEB15BBAA1F0089CC77 /* BadgeLabel.m in Sources */,
 				E5B1F07115BBC6F00089CC77 /* SignInViewController.m in Sources */,
 				E5B1F08515BBCC760089CC77 /* PromptAPI.m in Sources */,
+				E55FFBBC15BC03470060699F /* NSDate+Relative.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
