@@ -127,7 +127,6 @@ exports.session = function (req, res, next) {
         return false;
       }
       // Store userid, and groups
-      console.log(user);
       req.session.userId = user._id;
       req.session.userGroups = user.groups;
       next();

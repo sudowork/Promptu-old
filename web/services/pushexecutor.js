@@ -62,6 +62,8 @@ var channelToAction = {
       notif.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
       notif.alert = prompt.header;
       notif.device = device;
+      notif.badge = 1;
+      notif.sound = 'dong.aiff';
       notif.payload = {'messageFrom': 'PromptU'};
       // Add custom data to payload
       _.extend(notif.payload, promptPayload);
